@@ -8,6 +8,6 @@ package componentes;
  *
  * @author abner
  */
-public class Usuario {
+public class Aluno extends Pessoa {
 	
 }
