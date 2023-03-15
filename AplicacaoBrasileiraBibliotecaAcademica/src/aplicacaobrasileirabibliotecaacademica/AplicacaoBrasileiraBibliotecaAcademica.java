@@ -1,13 +1,48 @@
 
 package aplicacaobrasileirabibliotecaacademica;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class AplicacaoBrasileiraBibliotecaAcademica {
 	
+	protected ArrayList<Cliente> carteiraClientes;
+	protected ArrayList<Funcionario> quadroFuncionarios;
+	protected ArrayList<Livro> acervoLivros;
+	protected ArrayList<Emprestimo> logEmprestimos;
+	
+	
+	
+	
+	
+	static boolean autenticarLogin() {
+		boolean estaAutenticado;
+		estaAutenticado= true;
+		return estaAutenticado;
+	}
+	
+	static int mostrarMenuPrincipal() {
+		Scanner INPUTUSER = new Scanner(System.in);
+		int inputOpcaoMenu;
+		
+		System.out.println("\n\n========== MENU PRINCIPAL ==========");
+
+		System.out.println("\nEscolha uma opção\n");
+		System.out.println("1 - NOVO");
+		System.out.println("2 - BUSCA");
+		System.out.println("3 - ATUALIZAÇÃO");
+		System.out.println("4 - ADMIN");
+		System.out.println("0 - ENCERRAR");
+
+
+		System.out.print("\n=> ");
+		inputOpcaoMenu = INPUTUSER.nextInt();
+			
+		return inputOpcaoMenu;	
+	}
 	
 	private static void mostrarMenuNovo() {
-		Scanner teclado = new Scanner(System.in);
+		Scanner USERINPUT = new Scanner(System.in);
 		int inputOpcaoNovo;
 		int opcaoNovo;
 		
@@ -25,7 +60,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 			
 			
 			System.out.print("\n=> ");
-			inputOpcaoNovo = teclado.nextInt();
+			inputOpcaoNovo = USERINPUT.nextInt();
 			opcaoNovo = inputOpcaoNovo;
 			
 			switch (opcaoNovo) {
@@ -33,6 +68,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 					
 					break;
 				case 2:
+					
 					
 					break;
 				case 3:
@@ -49,7 +85,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	}
 	
 	private static void mostrarMenuBusca() {
-		Scanner teclado = new Scanner(System.in);
+		Scanner USERINPUT = new Scanner(System.in);
 		int inputOpcaoBusca;
 		int opcaoBusca;
 		
@@ -67,7 +103,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 			
 			
 			System.out.print("\n=> ");
-			inputOpcaoBusca = teclado.nextInt();
+			inputOpcaoBusca = USERINPUT.nextInt();
 			
 			opcaoBusca = inputOpcaoBusca;
 			
@@ -92,7 +128,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	}
 	
 	private static void mostrarMenuAtualizacao() {
-		Scanner teclado = new Scanner(System.in);
+		Scanner USERINPUT = new Scanner(System.in);
 		int inputOpcaoAtualizacao;
 		int opcaoAtualizacao;
 		
@@ -110,7 +146,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 			
 			
 			System.out.print("\n=> ");
-			inputOpcaoAtualizacao = teclado.nextInt();
+			inputOpcaoAtualizacao = USERINPUT.nextInt();
 			
 			opcaoAtualizacao = inputOpcaoAtualizacao;
 			
@@ -135,7 +171,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	}
 	
 	private static void mostrarMenuAdmin() {
-		Scanner teclado = new Scanner(System.in);
+		Scanner USERINPUT = new Scanner(System.in);
 		int inputOpcaoAdmin;
 		int opcaoAdmin;
 		
@@ -154,7 +190,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 			
 			
 			System.out.print("\n=> ");
-			inputOpcaoAdmin = teclado.nextInt();
+			inputOpcaoAdmin = USERINPUT.nextInt();
 			
 			opcaoAdmin = inputOpcaoAdmin;
 			
@@ -185,30 +221,44 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	
 	
 	public static void main(String[] args) {
-
-		Scanner teclado = new Scanner(System.in);
-		int inputOpcaoMenu;
-		int opcaoMenu;
 		
+		Scanner INPUTUSER = new Scanner(System.in);
+		
+		System.out.println("Bem Vinde");
+		System.out.println("\n ==== MUDA TELA ====\n");
+		
+		int opcaoLogin = 1;
+		boolean autenticado = false;
+		String loginEmail;
+		String loginSenha;
+		Funcionario objetoFuncionarioLogado;
+		int nivelFuncionarioLogado = 0;
+		
+		while(autenticado == false) {
+			System.out.println("Preencha os dados abaixo para acessar ");
+			System.out.print("ID: ");
+			loginEmail = INPUTUSER.next();
+			System.out.print("Senha: ");
+			loginSenha = INPUTUSER.next();
+			
+			if(autenticarLogin()) {
+				autenticado = true;
+				//objetoFuncionarioLogado = quadroFuncionarios[XXXX] ;
+				nivelFuncionarioLogado = 1;
+				break;
+			}
+			
+			if(opcaoLogin == 0) {
+				System.out.println("Encerrando Aplicação");
+				break;
+			}
+		}
+		
+		int opcaoMenuPrincipal;
 		do {
-			System.out.println("\n\n========== MENU PRINCIPAL ==========");
-			
-			System.out.println("\nEscolha uma opção\n");
-			
-			
-			System.out.println("1 - NOVO");
-			System.out.println("2 - BUSCA");
-			System.out.println("3 - ATUALIZAÇÃO");
-			System.out.println("4 - ADMIN");
-			System.out.println("0 - ENCERRAR");
-			
-			
-			System.out.print("\n=> ");
-			inputOpcaoMenu = teclado.nextInt();
-			
-			opcaoMenu = inputOpcaoMenu;
-			
-			switch (opcaoMenu) {
+			opcaoMenuPrincipal = mostrarMenuPrincipal();
+
+			switch (opcaoMenuPrincipal) {
 				case 1:
 					mostrarMenuNovo();
 					break;
@@ -219,7 +269,11 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 					mostrarMenuAtualizacao();
 					break;
 				case 4:
-					mostrarMenuAdmin();
+					if (nivelFuncionarioLogado != 1) {
+						System.out.println("Você não tem permissão para acessar esta área. Contate o administrador.");
+					} else {
+						mostrarMenuAdmin();
+					}
 					break;
 				case 0:
 					System.out.println("Encerrando Aplicação...");
@@ -227,11 +281,11 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 				default:
 					throw new AssertionError();
 			}
-			
-		} while (opcaoMenu != 0);
-
-
+		} while (opcaoMenuPrincipal != 0);
 
 	}
+
+
 	
 }
+
