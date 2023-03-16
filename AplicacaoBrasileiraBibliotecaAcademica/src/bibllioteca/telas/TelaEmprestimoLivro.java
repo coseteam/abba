@@ -2,7 +2,7 @@ package bibllioteca.telas;
 
 import javax.swing.*;
 
-public class TelaEmprestimoLivro {
+public class TelaEmprestimoLivro{
     public String data;
     public String dataDevolucao;
     public String aluno;
