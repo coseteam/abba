@@ -220,7 +220,7 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	
 	
 	public static void main(String[] args) {
-		
+		System.out.println("SINCRONIZANDO REPOSITÓRIOS");
 		Scanner INPUTUSER = new Scanner(System.in);
 		
 		System.out.println("Bem Vinde");
