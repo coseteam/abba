@@ -14,7 +14,6 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	
 	
 	
-	
 	static boolean autenticarLogin() {
 		boolean estaAutenticado;
 		estaAutenticado= true;
@@ -221,11 +220,11 @@ public class AplicacaoBrasileiraBibliotecaAcademica {
 	
 	
 	public static void main(String[] args) {
-		
+		System.out.println("SINCRONIZANDO REPOSITÓRIOS");
 		Scanner INPUTUSER = new Scanner(System.in);
 		
 		System.out.println("Bem Vinde");
-		System.out.println("\n ==== MUDA TELA ====\n");
+		System.out.println("\n ==== MUDA TELA ==== \n");
 		
 		int opcaoLogin = 1;
 		boolean autenticado = false;
