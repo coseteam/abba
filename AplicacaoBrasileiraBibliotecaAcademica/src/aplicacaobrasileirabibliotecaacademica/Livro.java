@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Livro implements Operador {
 	private String titulo;
+	private String autor;
 	private String genero;
 	private String editora;
 	private String isbn;

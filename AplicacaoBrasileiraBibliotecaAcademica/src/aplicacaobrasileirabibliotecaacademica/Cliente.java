@@ -16,11 +16,7 @@ public class Cliente implements Operador {
 		this.estaAtivo = true;
 	}
 	
-	
-	
-	
-	
-	
+
 	
 	
 	
