@@ -9,7 +9,7 @@ public class Funcionario extends Usuario {
 
 
     public Funcionario( String nome, String cpf, String login, double salario, String funcao, Date dataAdmissao) {
-        super( nome, cpf, login);
+        super( nome, cpf);
         this.salario = salario;
         this.funcao = funcao;
         this.dataAdmissao = dataAdmissao;

@@ -1,10 +1,13 @@
 package biblioteca.model;
 
+import java.util.ArrayList;
+
 public class Aluno extends Usuario {
     private String matricula;
+    ArrayList<Emprestimo> emprestimosDoAluno = new ArrayList();
 
-    public Aluno(String nome, String cpf, String login, String matricula) {
-        super(nome, cpf, login);
+    public Aluno(String nome, String cpf, String matricula) {
+        super(nome, cpf);
         this.matricula = matricula;
     }
 
@@ -17,12 +20,10 @@ public class Aluno extends Usuario {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        Aluno aluno  = (Aluno) obj;
-
-        if (aluno.getCpf() == this.getCpf()){
-            return true;
-        }
-        return false;
+    public String toString() {
+        return  "id = " + this.getId() + "\n" +
+                "Nome = " + this.getNome() + "\n" +
+                "CPF = " + this.getCpf() + "\n" +
+                "Matricula = " + matricula + '\n';
     }
 }

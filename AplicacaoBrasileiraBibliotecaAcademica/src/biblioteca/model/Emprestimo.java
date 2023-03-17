@@ -1,33 +1,34 @@
 package biblioteca.model;
 
 public class Emprestimo {
-    private String data;
-    private String dataDevolucao;
+    private String dataInicioEmprestimo;
+    private String dataDevolucaoEmprestimo;
     private Livro livro;
     private Aluno aluno;
-    private int id;
+    private static int codigo;
 
-    public Emprestimo(String data, String dataDevolucao, Aluno aluno, Livro livro) {
-        this.data = data;
-        this.dataDevolucao = dataDevolucao;
+    public Emprestimo(String dataInicioEmprestimo, String dataDevolucao, Aluno aluno, Livro livro) {
+        this.dataInicioEmprestimo = dataInicioEmprestimo;
+        this.dataDevolucaoEmprestimo = dataDevolucao;
         this.livro = livro;
         this.aluno = aluno;
+        this.codigo++;
     }
 
     public String getData() {
-        return data;
+        return dataInicioEmprestimo;
     }
 
     public void setData(String data) {
-        this.data = data;
+        this.dataInicioEmprestimo = data;
     }
 
     public String getDataDevolucao() {
-        return dataDevolucao;
+        return dataDevolucaoEmprestimo;
     }
 
     public void setDataDevolucao(String dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+        this.dataDevolucaoEmprestimo = dataDevolucao;
     }
 
     public Livro getLivro() {
@@ -50,12 +51,17 @@ public class Emprestimo {
         this.livro = livro;
     }
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public int setId(int id) {
-        this.id = id;
-        return id;
+
+    @Override
+    public String toString() {
+        return  "Codigo do Emprestimo = " + codigo + "\n" +
+                "data do Emprestimo = " + dataInicioEmprestimo + '\n' +
+                "Data da Devolucao = " + dataDevolucaoEmprestimo + '\'' +
+                "Livro = " + livro + '\n' +
+                "Aluno = " + aluno;
     }
 }
