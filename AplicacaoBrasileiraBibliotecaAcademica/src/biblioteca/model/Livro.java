@@ -7,35 +7,30 @@ public class Livro {
 
 //    Atributos da classe abstrata livro
 
+    private static int codigo;
     private String titulo;
     private String autor;
-    private String idioma;
+    private String editora;
     private String genero;
     private int totalPaginas;
-    private static int totalLivros;
+    private static int totalLivros; // contagem total de todos os livros instanciados
     private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-    private boolean emprestado = false;
+    private boolean emprestado = false; //se estiver emprestado = true
 
 //    Construtores
-    public Livro(String titulo, String autor, String idioma, String genero, int totalPaginas){
+    public Livro(String titulo, String autor, String editora, String genero, int totalPaginas){
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
-        this.idioma = idioma;
+        this.editora = editora;
         this.setTotalPaginas(totalPaginas);
+        this.codigo++; //codigo para busca, adiciona um toda vez que um livro for criado
 
-        totalLivros++;
+        totalLivros++; //contador geral de livros
     }
 
-    public Livro(String titulo, String autor) {
-        this.titulo = titulo;
-        this.autor = autor;
-
-        totalLivros++;
-    }
 
 //    Getters
-
 
     public static int getTotalLivros() {
         return totalLivros;
@@ -49,10 +44,6 @@ public class Livro {
         return autor;
     }
 
-    public String getIdioma() {
-        return idioma;
-    }
-
     public String getGenero() {
         return genero;
     }
@@ -61,7 +52,15 @@ public class Livro {
         return totalPaginas;
     }
 
-//    Setters
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    //    Setters
 
 
     public void setTitulo(String titulo) {
@@ -70,10 +69,6 @@ public class Livro {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
     }
 
     public void setGenero(String genero) {
@@ -96,7 +91,11 @@ public class Livro {
         this.emprestado = emprestado;
     }
 
-    public void setTotalPaginas(int totalPaginas) {
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public void setTotalPaginas(int totalPaginas) { //condicao para criação do livro
         if (totalPaginas <= 0) {
 
             String msg = "Quantidade de paginas não pode ser menor ou igual a 0";
@@ -123,21 +122,13 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "\nTitulo = " + titulo + "\n" +
+        return  "Codigo = " + codigo + "\n" +
+                "\nTitulo = " + titulo + "\n" +
                 "Autor = " + autor + "\n" +
-                "Idioma = " + idioma + "\n" +
+                "Editora = " + editora + "\n" +
                 "Genero = " + genero + "\n" +
                 "Total de paginas = " + totalPaginas + "\n" +
                 "-----------------------------------\n";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Livro livro  = (Livro) obj;
-
-        if (livro.getTitulo() == this.getTitulo()){
-            return true;
-        }
-        return false;
-    }
 }

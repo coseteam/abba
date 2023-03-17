@@ -5,15 +5,15 @@ import javax.swing.*;
 public class TelaEmprestimoLivro{
     public String data;
     public String dataDevolucao;
-    public String aluno;
-    public String livro;
+    public int aluno;
+    public int livro;
 
 
     public TelaEmprestimoLivro() {
         this.data = JOptionPane.showInputDialog("Digite a data de hoje: DD/MM/YYYY");
         this.dataDevolucao = JOptionPane.showInputDialog("Digite a data da devolução: DD/MM/YYYY");
-        this.livro = JOptionPane.showInputDialog("Digite o titulo do livro: ");
-        this.aluno = JOptionPane.showInputDialog("Digite o CPF do aluno:");
+        this.livro = Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro: "));
+        this.aluno = Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno:"));
     }
 
 }
