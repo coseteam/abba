@@ -19,11 +19,28 @@ public class Aluno extends Usuario {
         this.matricula = matricula;
     }
 
+    public ArrayList<Emprestimo> getEmprestimosDoAluno() {
+        return emprestimosDoAluno;
+    }
+
+//    public ArrayList<String> buscandoTitulosDoAluno() {
+//        if (emprestimosDoAluno.isEmpty()){
+//            for (Emprestimo emprestimo: emprestimosDoAluno) {
+//                buscandoTitulosDoAluno().add(emprestimo.getLivro().getTitulo());
+//            }
+//        }else {
+//            buscandoTitulosDoAluno().add("Nenhum livro emprestado neste momento");
+//        }
+//
+//        return buscandoTitulosDoAluno();
+//    }
+
     @Override
     public String toString() {
         return  "id = " + this.getId() + "\n" +
                 "Nome = " + this.getNome() + "\n" +
                 "CPF = " + this.getCpf() + "\n" +
-                "Matricula = " + matricula + '\n';
+                "Matricula = " + matricula + '\n' ;
+//                "Livros em uso = " + buscandoTitulosDoAluno();
     }
 }

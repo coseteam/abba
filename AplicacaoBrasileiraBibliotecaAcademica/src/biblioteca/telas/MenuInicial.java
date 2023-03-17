@@ -35,7 +35,7 @@ public class MenuInicial {
                 Aluno aluno = biblioteca.buscarAluno(el.aluno);
                 biblioteca.emprestar(el.data,el.dataDevolucao, aluno, livro);
                 TelaInicial();
-//            case 5:
+//            case 6:
 //                biblioteca.devolver();
 //                TelaInicial();
         }
