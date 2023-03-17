@@ -1,4 +1,4 @@
-package bibllioteca.model;
+package biblioteca.model;
 
 import javax.swing.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package bibllioteca.model;
+package biblioteca.model;
 
 public class Emprestimo {
     private String data;

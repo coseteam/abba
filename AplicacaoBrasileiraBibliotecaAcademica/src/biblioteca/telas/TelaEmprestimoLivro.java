@@ -1,4 +1,4 @@
-package bibllioteca.telas;
+package biblioteca.telas;
 
 import javax.swing.*;
 

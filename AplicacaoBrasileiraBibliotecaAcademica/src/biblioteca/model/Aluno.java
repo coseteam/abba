@@ -1,9 +1,9 @@
-package bibllioteca.model;
+package biblioteca.model;
 
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
     private String matricula;
 
-    public Aluno( String nome, String cpf, String login, String matricula) {
+    public Aluno(String nome, String cpf, String login, String matricula) {
         super(nome, cpf, login);
         this.matricula = matricula;
     }

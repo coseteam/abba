@@ -1,11 +1,11 @@
-package bibllioteca.model;
+package biblioteca.model;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class Biblioteca {
     private ArrayList<Livro> livros = new ArrayList<>();
-    private ArrayList<Aluno> alunos = new ArrayList<>();
+    private ArrayList<biblioteca.model.Aluno> alunos = new ArrayList<>();
     private Livro livro;
     private Aluno aluno;
 
@@ -26,7 +26,7 @@ public class Biblioteca {
         this.alunos = alunos;
     }
 
-    public int emprestar(String data, String dataDevolucao,Aluno aluno, Livro livro){
+    public int emprestar(String data, String dataDevolucao, Aluno aluno, Livro livro){
         Emprestimo emprestar = new Emprestimo(data, dataDevolucao, aluno, livro);
         livro.estaEmprestado(true, emprestar);
         aluno.getEmprestimos().add(emprestar);

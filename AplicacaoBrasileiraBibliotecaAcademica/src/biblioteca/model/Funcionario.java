@@ -1,9 +1,8 @@
-package bibllioteca.model;
+package biblioteca.model;
 
-import javax.swing.*;
 import java.util.Date;
 
-public class Funcionario extends Usuario{
+public class Funcionario extends Usuario {
     private double salario;
     private String funcao;
     private Date dataAdmissao;

@@ -1,7 +1,8 @@
-package bibllioteca.telas;
+package biblioteca.telas;
 
-import bibllioteca.model.*;
-import bibllioteca.telas.*;
+import biblioteca.model.Aluno;
+import biblioteca.model.Biblioteca;
+import biblioteca.model.Livro;
 
 import javax.swing.*;
 
