@@ -21,7 +21,7 @@ public class Aluno extends Usuario {
 
     @Override
     public String toString() {
-        return  "id = " + this.getId() + "\n" +
+        return  "id = " + this.getId() + " \n" +
                 "Nome = " + this.getNome() + "\n" +
                 "CPF = " + this.getCpf() + "\n" +
                 "Matricula = " + matricula + '\n';
