@@ -7,7 +7,7 @@ public class Livro {
 
 //    Atributos da classe abstrata livro
 
-    private static int codigo;
+    private int codigo;
     private String titulo;
     private String autor;
     private String editora;
@@ -15,7 +15,7 @@ public class Livro {
     private int totalPaginas;
     private static int totalLivros; // contagem total de todos os livros instanciados
     private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-    private boolean emprestado = false; //se estiver emprestado = true
+    private boolean emprestado; //se estiver emprestado = true
 
 //    Construtores
     public Livro(String titulo, String autor, String editora, String genero, int totalPaginas){
@@ -24,15 +24,22 @@ public class Livro {
         this.genero = genero;
         this.editora = editora;
         this.setTotalPaginas(totalPaginas);
-        this.codigo++; //codigo para busca, adiciona um toda vez que um livro for criado
+        totalLivros++;//contador geral de livros
 
-        totalLivros++; //contador geral de livros
+        this.setCodigo(getTotalLivros()); //codigo para busca, adiciona um toda vez que um livro for criado
+
+
     }
 
 
 //    Getters
 
-    public static int getTotalLivros() {
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getTotalLivros() {
         return totalLivros;
     }
 
