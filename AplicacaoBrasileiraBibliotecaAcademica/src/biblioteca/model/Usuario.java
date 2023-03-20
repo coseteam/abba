@@ -1,9 +1,11 @@
 package biblioteca.model;
 
 public abstract class Usuario {
-    private static int id;
+    private static int numOfAlunos;
+    private int id;
     private String nome;
     private String cpf;
+
 
 
 
@@ -11,7 +13,16 @@ public abstract class Usuario {
     public Usuario(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
-        setId(getId() + 1);
+        setNumOfAlunos(getNumOfAlunos() + 1);
+        setId(getNumOfAlunos());
+    }
+
+    public static int getNumOfAlunos() {
+        return numOfAlunos;
+    }
+
+    public static void setNumOfAlunos(int numOfAlunos) {
+        Usuario.numOfAlunos = numOfAlunos;
     }
 
     public int getId() {
