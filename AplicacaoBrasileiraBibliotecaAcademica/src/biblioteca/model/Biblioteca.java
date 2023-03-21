@@ -1,6 +1,7 @@
 package biblioteca.model;
 
 import javax.swing.*;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Biblioteca {
@@ -11,6 +12,9 @@ public class Biblioteca {
     private Livro livro;
     private Aluno aluno;
 
+    public Biblioteca(){
+        this.acervoLivros = lerLivrosPersistidos();
+    }
 
 
     public ArrayList<Livro> getLivros() {
@@ -51,6 +55,7 @@ public class Biblioteca {
     public void adionarNovoLivro(String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(titulo, autor, editora, genero, totalPaginas);
         getLivros().add(livro);
+        persistirListaDeLivros(this.acervoLivros);
     }
 
     public void removerLivro(int codigo){
@@ -182,6 +187,58 @@ public class Biblioteca {
             JOptionPane.showMessageDialog(null,"Emprestimo nao localizado");
         }
         return this.emprestimo;
+    }
+
+//========================================================================================================
+//                              metodos para persistir objetos
+
+    public static void persistirListaDeLivros(ArrayList<Livro> livros) {
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        try {
+            fos = new FileOutputStream("livrosPersistidos.dat");
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(livros);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo");
+        } finally {
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo");
+                }
+            }
+        }
+    }
+
+    public static ArrayList<Livro> lerLivrosPersistidos() {
+        ArrayList<Livro> livros = null;
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+            fis = new FileInputStream("livrosPersistidos.dat");
+            ois = new ObjectInputStream(fis);
+            livros = (ArrayList<Livro>) ois.readObject();
+            return livros;
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Classe não encontrado");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo");
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo");
+                }
+            }
+        }
+        return livros;
     }
 
 }
