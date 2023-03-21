@@ -1,11 +1,12 @@
 package biblioteca.telas;
 
+import biblioteca.services.AlunoService;
+
 import javax.swing.*;
 
 public class MenuCadastro extends MenuPrincipal {
 
-
-
+    private AlunoService alunoService = new AlunoService();
 
     private String msg = "Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Cadastrar um aluno\n 2 - Remover um aluno\n" +
             " 3 - Atualizar um cadastro de aluno\n 4 -Listar todos os alunos\n 5 - Apagar todos os alunos da lista\n " +
@@ -20,24 +21,24 @@ public class MenuCadastro extends MenuPrincipal {
         switch (caminho){
             case 1:
                 TelaCadastroAluno ca = new TelaCadastroAluno();
-                biblioteca.cadastrarAluno(ca.nome, ca.cpf, ca.matricula);
+                alunoService.cadastrarAluno(ca.nome, ca.cpf, ca.matricula);
                 menuCadastro();
                 break;
             case 2:
                 int id = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
-                biblioteca.removerAluno(id);
+                alunoService.removerAluno(id);
                 menuCadastro();
                 break;
             case 3:
-                biblioteca.atualizarAluno(Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno:")));
+                alunoService.atualizarAluno(Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno:")));
                 menuCadastro();
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, biblioteca.listarAlunos());
+                JOptionPane.showMessageDialog(null, alunoService.listarAlunos());
                 menuCadastro();
                 break;
             case 5:
-                biblioteca.apagarListaAlunos();
+                alunoService.apagarListaAlunos();
                 menuCadastro();
                 break;
             case 6:

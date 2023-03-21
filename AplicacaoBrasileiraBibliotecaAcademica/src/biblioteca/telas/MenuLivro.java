@@ -1,11 +1,12 @@
 package biblioteca.telas;
 
+import biblioteca.services.LivroService;
+
 import javax.swing.*;
 
 public class MenuLivro extends MenuPrincipal {
 
-
-
+    private LivroService livroService = new LivroService();
 
     private String msg = "Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Cadastrar um livros\n 2 - Remover um livro\n" +
             " 3 - Atualizar um livro\n 4 -Listar todos os livros\n 5 - Apagar todos os livros da lista\n " +
@@ -20,24 +21,24 @@ public class MenuLivro extends MenuPrincipal {
         switch (caminho){
             case 1:
                 TelaAdicionarLivro ad = new TelaAdicionarLivro();
-                biblioteca.adionarNovoLivro(ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
+                livroService.adionarNovoLivro(ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
                 break;
             case 2:
                 int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
-                biblioteca.removerLivro(codigo);
+                livroService.removerLivro(codigo);
                 menuLivro();
                 break;
             case 3:
-                biblioteca.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro:")));
+                livroService.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro:")));
                 menuLivro();
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, biblioteca.listarLivros());
+                JOptionPane.showMessageDialog(null, livroService.listarLivros());
                 menuLivro();
                 break;
             case 5:
-                biblioteca.apagarListaLivros();
+                livroService.apagarListaLivros();
                 menuLivro();
                 break;
             case 6:
