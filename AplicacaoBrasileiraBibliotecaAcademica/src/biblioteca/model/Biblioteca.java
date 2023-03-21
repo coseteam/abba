@@ -63,6 +63,7 @@ public class Biblioteca {
         int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja remover este livro?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().remove(livroR);
+            persistirListaDeLivros(this.acervoLivros);
         }
 
     }
@@ -71,6 +72,7 @@ public class Biblioteca {
         int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja APAGAR a lista de livros?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
+            persistirListaDeLivros(this.acervoLivros);
             JOptionPane.showMessageDialog(null, "Lista de livros apagada com sucesso!");
         }
     }
@@ -84,18 +86,23 @@ public class Biblioteca {
         if (caminho == 1) {
             livro.setTitulo(JOptionPane.showInputDialog("Digitar titulo:"));
             JOptionPane.showMessageDialog(null, "Titulo Atualizado!");
+            persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 2) {
             livro.setAutor(JOptionPane.showInputDialog("Digitar autor:"));
             JOptionPane.showMessageDialog(null,"Autor Atualizado!");
+            persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 3) {
             livro.setEditora(JOptionPane.showInputDialog("Digitar editora:"));
             JOptionPane.showMessageDialog(null,"Editora Atualizada!");
+            persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 4) {
             livro.setGenero(JOptionPane.showInputDialog("Digitar genero:"));
             JOptionPane.showMessageDialog(null,"Genero Atualizado!");
+            persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 5){
             livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de paginas:")));
             JOptionPane.showMessageDialog(null,"Total de paginas Atualizado!");
+            persistirListaDeLivros(this.acervoLivros);
         }
     }
 
