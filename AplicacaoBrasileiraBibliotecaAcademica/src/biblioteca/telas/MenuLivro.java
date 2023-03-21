@@ -24,7 +24,7 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
                 break;
             case 2:
-                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
+                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro"));
                 biblioteca.removerLivro(codigo);
                 menuLivro();
                 break;
