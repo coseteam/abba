@@ -1,9 +1,10 @@
 package biblioteca.model;
 
 import javax.swing.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Livro {
+public class Livro implements Serializable {
 
 //    Atributos da classe abstrata livro
 
