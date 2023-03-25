@@ -11,7 +11,7 @@ public class LivroService {
 
     private ArrayList<Livro> acervoLivros = new ArrayList<>(); //todos os livros da biblioteca
 
-    private PersistenciaService persistenciaService = new PersistenciaService();
+    private PersistenciaService persistenciaService = new PersistenciaService(); // ForJoyce: (5) Quero tua ajuda pra entender melhor essa relação
 
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
