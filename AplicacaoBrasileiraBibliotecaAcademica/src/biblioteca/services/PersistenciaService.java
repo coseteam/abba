@@ -8,7 +8,13 @@ import java.util.ArrayList;
 
 public class PersistenciaService {
 
-    private ArrayList<Livro> livros = lerLivrosPersistidos();
+    private ArrayList<Livro> livros;
+
+    public PersistenciaService() {
+        this.livros = lerLivrosPersistidos();
+    }
+
+
 
 
     public static void persistirListaDeLivros(ArrayList<Livro> livros) {
@@ -60,4 +66,7 @@ public class PersistenciaService {
         return livros;
     }
 
+    public ArrayList<Livro> getLivros() {
+        return livros;
+    }
 }

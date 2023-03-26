@@ -16,8 +16,11 @@ public class MenuLivro extends MenuPrincipal {
     public void menuLivro() {
 
 
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
-
+        String input = JOptionPane.showInputDialog(msg);
+        if (input == null) {
+            menuPrincipal();
+        }
+        int caminho = Integer.parseInt(input);
         switch (caminho){
             case 1:
                 TelaAdicionarLivro ad = new TelaAdicionarLivro();

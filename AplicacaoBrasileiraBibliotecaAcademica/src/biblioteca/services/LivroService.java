@@ -76,6 +76,9 @@ public class LivroService {
     }
 
     public String listarLivros(){
+        if (this.acervoLivros.isEmpty()){
+            acervoLivros = persistenciaService.lerLivrosPersistidos();
+        }
         return acervoLivros.toString();
     }
 

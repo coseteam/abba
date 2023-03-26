@@ -9,7 +9,13 @@ public class MenuPrincipal {
                 " 3 - Emprestimos\n";
 
     public void menuPrincipal(){
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+
+        String input = JOptionPane.showInputDialog(msg);
+        if (input == null) {
+            JOptionPane.showMessageDialog(null, "Saindo do sistema");
+            System.exit(0);
+        }
+        int caminho = Integer.parseInt(input);
         switch (caminho) {
             case 1: //Menu livros
                 MenuLivro menuLivro = new MenuLivro();
