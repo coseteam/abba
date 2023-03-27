@@ -15,20 +15,30 @@ public class MenuPrincipal {
             JOptionPane.showMessageDialog(null, "Saindo do sistema");
             System.exit(0);
         }
+
         int caminho = Integer.parseInt(input);
+
         switch (caminho) {
-            case 1: //Menu livros
+            case 1 -> { //Menu livros
                 MenuLivro menuLivro = new MenuLivro();
                 menuLivro.menuLivro();
-                break;
-            case 2: // Menu cadastros
+            }
+            case 2 -> { // Menu cadastros
                 MenuCadastro menuCadastro = new MenuCadastro();
                 menuCadastro.menuCadastro();
-                break;
-            case 3: // menu emprestimos
+            }
+            case 3 -> { // Menu emprestimos
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
-                break;
+            }
         }
+    }
+
+    public static void validaMenu(String input) {
+        if (input == null) {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            menuPrincipal.menuPrincipal();
+        }
+
     }
 }

@@ -2,7 +2,7 @@ package biblioteca.model;
 
 import java.util.ArrayList;
 
-public class Aluno extends Usuario {
+public class Aluno extends Usuario{
     private String matricula;
     private ArrayList<Emprestimo> emprestimosDoAluno = new ArrayList();
     private ArrayList<Livro> livrosComAluno = new ArrayList();

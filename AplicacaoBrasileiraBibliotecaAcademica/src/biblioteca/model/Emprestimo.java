@@ -1,6 +1,6 @@
 package biblioteca.model;
 
-public class Emprestimo {
+public class Emprestimo{
     private String dataInicioEmprestimo;
     private String dataDevolucaoEmprestimo;
     private Livro livro;
