@@ -5,7 +5,7 @@ import javax.swing.*;
 public class MenuPrincipal {
 
 
-    private String msg ="Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Livros\n 2 - Cadastros\n" +
+    private String msg ="Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Livros\n 2 - Alunos\n" +
                 " 3 - Emprestimos\n";
 
     public void menuPrincipal(){
