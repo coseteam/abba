@@ -47,30 +47,30 @@ public class LivroService {
     }
 
     public void atualizarLivro(int codigo){
-        String msg = "Qual informação gostaria de atualizar:\n 1 - Titulo\n 2 - Autor\n 3 - Editora\n 4 - genero\n " +
-                "5 - Total de paginas";
+        String msg = "Qual informação gostaria de atualizar:\n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
+                "5 - Quantidade de Páginas";
         Livro livro = buscarLivro(codigo);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
-            livro.setTitulo(JOptionPane.showInputDialog("Digitar titulo:"));
-            JOptionPane.showMessageDialog(null, "Titulo Atualizado!");
+            livro.setTitulo(JOptionPane.showInputDialog("Digitar título:"));
+            JOptionPane.showMessageDialog(null, "Título Atualizado!");
             persistenciaService.persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 2) {
-            livro.setAutor(JOptionPane.showInputDialog("Digitar autor:"));
-            JOptionPane.showMessageDialog(null,"Autor Atualizado!");
+            livro.setAutor(JOptionPane.showInputDialog("Digitar autor(a):"));
+            JOptionPane.showMessageDialog(null,"Autor(a) Atualizado!");
             persistenciaService.persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 3) {
             livro.setEditora(JOptionPane.showInputDialog("Digitar editora:"));
             JOptionPane.showMessageDialog(null,"Editora Atualizada!");
             persistenciaService.persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 4) {
-            livro.setGenero(JOptionPane.showInputDialog("Digitar genero:"));
-            JOptionPane.showMessageDialog(null,"Genero Atualizado!");
+            livro.setGenero(JOptionPane.showInputDialog("Digitar Gênero:"));
+            JOptionPane.showMessageDialog(null,"Gênero Atualizado!");
             persistenciaService.persistirListaDeLivros(this.acervoLivros);
         }else if (caminho == 5){
-            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de paginas:")));
-            JOptionPane.showMessageDialog(null,"Total de paginas Atualizado!");
+            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de páginas:")));
+            JOptionPane.showMessageDialog(null,"Total de Páginas Atualizada!");
             persistenciaService.persistirListaDeLivros(this.acervoLivros);
         }
     }
@@ -89,7 +89,7 @@ public class LivroService {
         }
 
         if (this.livro == null){
-            JOptionPane.showMessageDialog(null,"Livro nao localizado");
+            JOptionPane.showMessageDialog(null,"Livro não localizado");
         }
         return this.livro;
     }
