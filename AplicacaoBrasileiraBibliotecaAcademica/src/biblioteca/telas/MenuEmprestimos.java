@@ -20,31 +20,35 @@ public class MenuEmprestimos extends MenuPrincipal {
 
     public void menuEmprestimos() {
 
+        String input = JOptionPane.showInputDialog(msg);
+        validaMenu(input);
 
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        int caminho = Integer.parseInt(input);
 
-        switch (caminho){
-            case 1:
+        switch (caminho) {
+            case 1 -> {
                 TelaEmprestimoLivro el = new TelaEmprestimoLivro();
                 Livro livroE = livroService.buscarLivro(el.livro);
                 Aluno alunoE = alunoService.buscarAluno(el.aluno);
-                emprestimoService.emprestar(el.data,el.dataDevolucao, alunoE, livroE);
+                emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
-                break;
-            case 2:
+            }
+            case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
                 Livro livroD = livroService.buscarLivro(dl.livro);
                 Aluno alunoD = alunoService.buscarAluno(dl.aluno);
                 emprestimoService.devolver(alunoD, livroD, dl.codigo);
                 menuEmprestimos();
-                break;
-            case 3:
-                JOptionPane.showMessageDialog(null, emprestimoService.getEmprestimos());
+            }
+            case 3 -> {
+                JOptionPane.showMessageDialog(null, emprestimoService.listarEmprestimo());
                 menuEmprestimos();
-                break;
-            case 4:
-                menuPrincipal();
-                break;
+            }
+            case 4 -> menuPrincipal();
+            default -> {
+                JOptionPane.showMessageDialog(null, "Opção inválida");
+                menuEmprestimos();
+            }
         }
 
     }

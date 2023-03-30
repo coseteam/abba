@@ -24,7 +24,7 @@ public class LivroService {
     public void adionarNovoLivro(String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(titulo, autor, editora, genero, totalPaginas);
         getLivros().add(livro);
-        persistenciaService.persistirListaDeLivros(this.acervoLivros);
+        persistenciaService.persistirEntidade(this.acervoLivros);
     }
 
     public void removerLivro(int codigo){
@@ -32,7 +32,7 @@ public class LivroService {
         int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja remover este livro?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().remove(livroR);
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }
 
     }
@@ -41,7 +41,7 @@ public class LivroService {
         int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja APAGAR a lista de livros?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            persistenciaService.persistirEntidade(this.acervoLivros);
             JOptionPane.showMessageDialog(null, "Lista de livros apagada com sucesso!");
         }
     }
@@ -53,29 +53,32 @@ public class LivroService {
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
-            livro.setTitulo(JOptionPane.showInputDialog("Digitar título:"));
-            JOptionPane.showMessageDialog(null, "Título Atualizado!");
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            livro.setTitulo(JOptionPane.showInputDialog("Digitar titulo:"));
+            JOptionPane.showMessageDialog(null, "Titulo Atualizado!");
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 2) {
-            livro.setAutor(JOptionPane.showInputDialog("Digitar autor(a):"));
-            JOptionPane.showMessageDialog(null,"Autor(a) Atualizado!");
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            livro.setAutor(JOptionPane.showInputDialog("Digitar autor:"));
+            JOptionPane.showMessageDialog(null,"Autor Atualizado!");
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 3) {
             livro.setEditora(JOptionPane.showInputDialog("Digitar editora:"));
             JOptionPane.showMessageDialog(null,"Editora Atualizada!");
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 4) {
-            livro.setGenero(JOptionPane.showInputDialog("Digitar Gênero:"));
-            JOptionPane.showMessageDialog(null,"Gênero Atualizado!");
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            livro.setGenero(JOptionPane.showInputDialog("Digitar genero:"));
+            JOptionPane.showMessageDialog(null,"Genero Atualizado!");
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 5){
-            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de páginas:")));
-            JOptionPane.showMessageDialog(null,"Total de Páginas Atualizada!");
-            persistenciaService.persistirListaDeLivros(this.acervoLivros);
+            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de paginas:")));
+            JOptionPane.showMessageDialog(null,"Total de paginas Atualizado!");
+            persistenciaService.persistirEntidade(this.acervoLivros);
         }
     }
 
     public String listarLivros(){
+        if (this.acervoLivros.isEmpty()){
+            acervoLivros = persistenciaService.lerLivrosPersistidos();
+        }
         return acervoLivros.toString();
     }
 

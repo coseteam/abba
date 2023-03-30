@@ -16,39 +16,39 @@ public class MenuLivro extends MenuPrincipal {
     public void menuLivro() {
 
 
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        String input = JOptionPane.showInputDialog(msg);
+        validaMenu(input);
 
-        switch (caminho){
-            case 1:
+        int caminho = Integer.parseInt(input);
+        switch (caminho) {
+            case 1 -> {
                 TelaAdicionarLivro ad = new TelaAdicionarLivro();
                 livroService.adionarNovoLivro(ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
-                break;
-            case 2:
-                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do aluno:"));
+            }
+            case 2 -> {
+                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
                 livroService.removerLivro(codigo);
                 menuLivro();
-                break;
-            case 3:
+            }
+            case 3 -> {
                 livroService.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro:")));
                 menuLivro();
-                break;
-            case 4:
+            }
+            case 4 -> {
                 JOptionPane.showMessageDialog(null, livroService.listarLivros());
                 menuLivro();
-                break;
-            case 5:
+            }
+            case 5 -> {
                 livroService.apagarListaLivros();
                 menuLivro();
-                break;
-            case 6:
-                menuPrincipal();
-                break;
+            }
+            case 6 -> menuPrincipal();
+            default -> {
+                JOptionPane.showMessageDialog(null, "Opção inválida");
+                menuLivro();
+            }
         }
 
     }
 }
-
-//         case 6:
-//                biblioteca.devolver();
-//                TelaInicial();

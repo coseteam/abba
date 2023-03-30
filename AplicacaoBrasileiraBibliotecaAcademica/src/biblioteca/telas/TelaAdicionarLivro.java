@@ -10,11 +10,18 @@ public class TelaAdicionarLivro{
     public int totalPaginas;
 
     public TelaAdicionarLivro() {
-        this.titulo = JOptionPane.showInputDialog("Título da obra:");
-        this.autor = JOptionPane.showInputDialog("Nome do(a) autor(a):");
-        this.editora = JOptionPane.showInputDialog("Informe a editora:");
-        this.genero = JOptionPane.showInputDialog("Informe o gênero:");
-        this.totalPaginas = Integer.parseInt(JOptionPane.showInputDialog("Quantidade páginas:"));
+        cadastrarLivroUsuario();
+    }
+
+    private void cadastrarLivroUsuario() {
+        this.titulo = JOptionPane.showInputDialog("Digite o titulo:");
+        this.autor = JOptionPane.showInputDialog("Digite o autor:");
+        this.editora = JOptionPane.showInputDialog("Digite o editora:");
+        this.genero = JOptionPane.showInputDialog("Digite o genero:");
+        String s = JOptionPane.showInputDialog("Digite o total de paginas:");
+        if (s != null) {
+            this.totalPaginas = Integer.parseInt(s);
+        }
     }
 
 }
