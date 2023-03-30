@@ -15,35 +15,39 @@ public class MenuCadastro extends MenuPrincipal {
 
     public void menuCadastro() {
 
+        String input = JOptionPane.showInputDialog(msg);
+        validaMenu(input);
 
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        int caminho = Integer.parseInt(input);
 
-        switch (caminho){
-            case 1:
+        switch (caminho) {
+            case 1 -> {
                 TelaCadastroAluno ca = new TelaCadastroAluno();
                 alunoService.cadastrarAluno(ca.nome, ca.cpf, ca.matricula);
                 menuCadastro();
-                break;
-            case 2:
+            }
+            case 2 -> {
                 int id = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
                 alunoService.removerAluno(id);
                 menuCadastro();
-                break;
-            case 3:
+            }
+            case 3 -> {
                 alunoService.atualizarAluno(Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno:")));
                 menuCadastro();
-                break;
-            case 4:
+            }
+            case 4 -> {
                 JOptionPane.showMessageDialog(null, alunoService.listarAlunos());
                 menuCadastro();
-                break;
-            case 5:
+            }
+            case 5 -> {
                 alunoService.apagarListaAlunos();
                 menuCadastro();
-                break;
-            case 6:
-                menuPrincipal();
-                break;
+            }
+            case 6 -> menuPrincipal();
+            default -> {
+                JOptionPane.showMessageDialog(null, "Opção inválida");
+                menuCadastro();
+            }
         }
 
     }

@@ -19,6 +19,9 @@ public class AlunoService {
         this.carteiraAlunos = alunos;
     }
 
+    private PersistenciaService persistenciaService = new PersistenciaService();
+
+
 
     public void cadastrarAluno(String nome, String cpf, String matricula){
         Aluno aluno = new Aluno(nome, cpf, matricula);
@@ -59,7 +62,12 @@ public class AlunoService {
         }
     }
 
-    public String listarAlunos(){ return carteiraAlunos.toString();}
+    public String listarAlunos(){
+        if (this.carteiraAlunos.isEmpty()){
+            carteiraAlunos = PersistenciaService.lerAlunosPersistidos();
+        }
+        return carteiraAlunos.toString();
+    }
 
     public Aluno buscarAluno(int id){
         for (Aluno aluno: this.carteiraAlunos){

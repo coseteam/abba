@@ -47,4 +47,11 @@ public class EmprestimoService {
         return this.emprestimo;
     }
 
+    public String listarEmprestimo(){
+        if (this.emprestimos.isEmpty()){
+            emprestimos = PersistenciaService.lerAlunosPersistidos();
+        }
+        return emprestimos.toString();
+    }
+
 }
