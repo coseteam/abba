@@ -11,7 +11,7 @@ public class LivroService {
 
     private ArrayList<Livro> acervoLivros = new ArrayList<>(); //todos os livros da biblioteca
 
-    private PersistenciaService persistenciaService = new PersistenciaService();
+    private PersistenciaService persistenciaService = new PersistenciaService(); // ForJoyce: (5) Quero tua ajuda pra entender melhor essa relação
 
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
@@ -47,8 +47,8 @@ public class LivroService {
     }
 
     public void atualizarLivro(int codigo){
-        String msg = "Qual informação gostaria de atualizar:\n 1 - Titulo\n 2 - Autor\n 3 - Editora\n 4 - genero\n " +
-                "5 - Total de paginas";
+        String msg = "Qual informação gostaria de atualizar:\n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
+                "5 - Quantidade de Páginas";
         Livro livro = buscarLivro(codigo);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
@@ -92,7 +92,7 @@ public class LivroService {
         }
 
         if (this.livro == null){
-            JOptionPane.showMessageDialog(null,"Livro nao localizado");
+            JOptionPane.showMessageDialog(null,"Livro não localizado");
         }
         return this.livro;
     }

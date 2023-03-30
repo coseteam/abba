@@ -1,7 +1,7 @@
 package biblioteca.model;
 
 public abstract class Usuario {
-    private static int numOfAlunos;
+    private static int numOfAlunos; // ForJoyce: (3) Essa contagem realmente deve ficar em Usuario?
     private int id;
     private String nome;
     private String cpf;
