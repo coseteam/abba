@@ -19,10 +19,6 @@ public class AlunoService {
         this.carteiraAlunos = alunos;
     }
 
-    private PersistenciaService persistenciaService = new PersistenciaService();
-
-
-
     public void cadastrarAluno(String nome, String cpf, String matricula){
         Aluno aluno = new Aluno(nome, cpf, matricula);
         this.getUsuarios().add(aluno);
@@ -65,6 +61,9 @@ public class AlunoService {
     public String listarAlunos(){
         if (this.carteiraAlunos.isEmpty()){
             carteiraAlunos = PersistenciaService.lerAlunosPersistidos();
+        }
+        if (this.carteiraAlunos.isEmpty() || this.carteiraAlunos == null){
+            return "Não há alunos cadastrados.";
         }
         return carteiraAlunos.toString();
     }
