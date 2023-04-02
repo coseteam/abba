@@ -3,6 +3,8 @@ package biblioteca.services;
 import biblioteca.model.Livro;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -45,7 +47,15 @@ public class LivroService {
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir todos os livros do acervo?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
-            persistenciaService.persistirEntidade(this.acervoLivros);
+//            persistenciaService.persistirEntidade(this.acervoLivros);
+            File file = new File("livrosPersistidos.dat");
+            file.delete();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
             JOptionPane.showMessageDialog(null, "Operação Finalizada. Não há nenhum livro no acervo.");
         }
     }
@@ -81,7 +91,10 @@ public class LivroService {
 
     public String listarLivros(){
         if (this.acervoLivros.isEmpty()){
-            acervoLivros = persistenciaService.lerLivrosPersistidos();
+            acervoLivros = PersistenciaService.lerLivrosPersistidos();
+        }
+        if (this.acervoLivros.isEmpty() || this.acervoLivros == null){
+            return "Não há livros cadastrados.";
         }
         return acervoLivros.toString();
     }
