@@ -9,6 +9,7 @@ public class Livro implements Serializable{
 
 //    Atributos da classe abstrata livro
     private int codigo;
+    private String isbn;
     private String titulo;
     private String autor;
     private String editora;
@@ -23,8 +24,8 @@ public class Livro implements Serializable{
 
 
 //    Construtores
-    public Livro(int codigoAtual, String titulo, String autor, String editora, String genero, int totalPaginas){ // Renba
-        this.codigo = codigoAtual + 1;
+    public Livro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){ // Renba
+        this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
@@ -150,7 +151,7 @@ public class Livro implements Serializable{
 
     @Override
     public String toString() {
-        return  "Código = " + codigo + "\n" +
+        return  "ISBN = " + isbn + "\n" +
                 "\nTítulo = " + titulo + "\n" +
                 "Autor = " + autor + "\n" +
                 "Editora = " + editora + "\n" +

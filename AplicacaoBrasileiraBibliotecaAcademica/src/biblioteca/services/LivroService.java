@@ -22,9 +22,9 @@ public class LivroService {
         this.acervoLivros = livros;
     }
 
-    public void adionarNovoLivro(int codigoAtual, String titulo, String autor, String editora, String genero, int totalPaginas){
+    public void adionarNovoLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         //int quantidadeLivros = 50; // Renba
-        Livro livro = new Livro(codigoAtual, titulo, autor, editora, genero, totalPaginas);
+        Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
         getLivros().add(livro);
         persistenciaService.persistirEntidade(this.acervoLivros);
     }
