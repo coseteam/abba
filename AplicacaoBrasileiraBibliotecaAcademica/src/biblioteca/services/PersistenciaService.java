@@ -45,14 +45,19 @@ public class PersistenciaService {
     }
 
     public static <T> ArrayList<T> lerEntidadePersistida(FileInputStream fis) {
-        ArrayList<T> entidade = null;
+        ArrayList<T> entidade = new ArrayList<T>();
         ObjectInputStream ois = null;
 
         try {
+            if (fis.available() == 0){
+                return new ArrayList<T>();}
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+        try {
             ois = new ObjectInputStream(fis);
             entidade = (ArrayList<T>) ois.readObject();
-
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada.");
         } catch (IOException e) {
@@ -80,12 +85,23 @@ public class PersistenciaService {
 
     }
 
-    public static <T> ArrayList<T> lerAlunosPersistidos(){
+    public static <T> ArrayList<T> lerAlunosPersistidos() {
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("alunosPersistidos.dat");
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
+            File file = new File("alunosPersistidos.dat");
+            try {
+                file.createNewFile();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            try {
+                fis = new FileInputStream("alunosPersistidos.dat");
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
         }
         return lerEntidadePersistida(fis);
 
