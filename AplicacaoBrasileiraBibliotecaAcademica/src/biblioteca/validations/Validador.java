@@ -4,8 +4,6 @@ import biblioteca.services.BibliotecaService;
 
 import java.util.ArrayList;
 
-import static biblioteca.services.BibliotecaService.setTodosISBNCadastrados;
-
 public class Validador {
 
     // ================== Atributos
@@ -67,20 +65,24 @@ public class Validador {
     }
 
 
-    public static boolean validarInputISBN(String inputISBN) {
+    public static boolean validarInputISBN(String inputISBN) { // VALIDAR ISBN
         boolean checkISBN = true;
 
-        if (allISBN.isEmpty()) {
-            checkISBN = true;
+        if (inputISBN.isBlank()) {
+            checkISBN = false;
         } else {
-            for (String isbn : allISBN) {
-                if (isbn.equals(inputISBN)) {
-                    checkISBN = false;
+            if (allISBN.isEmpty()) {
+                checkISBN = true;
+            } else {
+                for (String isbn : allISBN) {
+                    if (isbn.equals(inputISBN)) {
+                        checkISBN = false;
+                    }
                 }
             }
         }
 
-        setTodosISBNCadastrados(inputISBN);
+        //setTodosISBNCadastrados(inputISBN);
         System.out.println("valida ISBN >>> " + checkISBN);
         return true;
     }
