@@ -79,7 +79,13 @@ public class PersistenciaService {
         try {
             fis = new FileInputStream("livrosPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
+            File file = new File("livrosPersistidos.dat");
+            try {
+                file.createNewFile();
+                fis = new FileInputStream("alunosPersistidos.dat");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         }
         return lerEntidadePersistida(fis);
 
