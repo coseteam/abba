@@ -1,11 +1,28 @@
 package biblioteca.validations;
 
+import biblioteca.services.BibliotecaService;
+
+import java.util.ArrayList;
+
 public class Validador {
 
     // ================== Atributos
     Object input;
-    static String inputString = "Strings";
-    static Integer inputInteger = 1;
+    public static String inputString = "Strings";
+    public static Integer inputInteger = 1;
+    public static ArrayList<String> allISBN;
+    public static ArrayList<String> copiaISBN;
+
+
+    // ================== Construtor
+    public Validador() {
+
+        inputString = "Strings";
+        allISBN = (ArrayList<String>) (BibliotecaService.todosISBNCadastrados);
+        if (allISBN == null) {
+            allISBN.add("010101");
+        }
+    }
 
 
     // ================== Métodos
@@ -28,6 +45,7 @@ public class Validador {
         return checkString;
     }
 
+
     public static boolean validarInputInteger(Object currentInput) { // VALIDAR INTEIROS
         boolean checkInteger = true;
 
@@ -47,6 +65,27 @@ public class Validador {
     }
 
 
+    public static boolean validarInputISBN(String inputISBN) { // VALIDAR ISBN
+        boolean checkISBN = true;
+
+        if (inputISBN.isBlank()) {
+            checkISBN = false;
+        } else {
+            if (allISBN.isEmpty()) {
+                checkISBN = true;
+            } else {
+                for (String isbn : allISBN) {
+                    if (isbn.equals(inputISBN)) {
+                        checkISBN = false;
+                    }
+                }
+            }
+        }
+
+        //setTodosISBNCadastrados(inputISBN);
+        System.out.println("valida ISBN >>> " + checkISBN);
+        return true;
+    }
 
 
 

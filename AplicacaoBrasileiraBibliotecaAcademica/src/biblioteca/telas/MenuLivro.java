@@ -24,20 +24,21 @@ public class MenuLivro extends MenuPrincipal {
         switch (caminho) {
             case 1 -> {
                 TelaAdicionarLivro ad = new TelaAdicionarLivro(); // Renba Tela Adicionar Livro
-                int codigoAtual = livroService.capturarQuantidadeLivros();
-                System.out.println(codigoAtual);
+                //int codigoAtual = livroService.capturarQuantidadeLivros();
+                //System.out.println(codigoAtual);
                 boolean checkValidadorTituloLivro = Validador.validarInputString(ad.titulo);
                 boolean checkValidadorQuantidadePaginas = Validador.validarInputInteger(ad.totalPaginas);
-                livroService.adionarNovoLivro(codigoAtual, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
+                boolean checkValidadorNovoISBN = Validador.validarInputISBN(ad.isbn);
+                livroService.adionarNovoLivro(ad.isbn, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
             }
             case 2 -> {
-                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do Livro: "));
-                livroService.removerLivro(codigo);
+                String isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
+                livroService.removerLivro(isbn);
                 menuLivro();
             }
             case 3 -> {
-                livroService.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o código do Livro:")));
+                livroService.atualizarLivro(JOptionPane.showInputDialog("Digite o ISBN do Livro:"));
                 menuLivro();
             }
             case 4 -> {
