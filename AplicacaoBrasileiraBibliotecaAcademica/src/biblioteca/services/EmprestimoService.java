@@ -42,7 +42,7 @@ public class EmprestimoService {
         }
 
         if (this.emprestimo == null){
-            JOptionPane.showMessageDialog(null,"Emprestimo nao localizado");
+            JOptionPane.showMessageDialog(null,"Desculpe, não localizamos este empréstimo.");
         }
         return this.emprestimo;
     }

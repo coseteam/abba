@@ -5,13 +5,14 @@ import biblioteca.model.Livro;
 import javax.swing.*;
 import java.util.ArrayList;
 
+
+
 public class LivroService {
-
     private Livro livro;
-
     private ArrayList<Livro> acervoLivros = new ArrayList<>(); //todos os livros da biblioteca
-
     private PersistenciaService persistenciaService = new PersistenciaService(); // ForJoyce: (5) Quero tua ajuda pra entender melhor essa relação
+    //private int quantidadeLivros = acervoLivros.size(); // Renba
+
 
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
@@ -21,15 +22,16 @@ public class LivroService {
         this.acervoLivros = livros;
     }
 
-    public void adionarNovoLivro(String titulo, String autor, String editora, String genero, int totalPaginas){
-        Livro livro = new Livro(titulo, autor, editora, genero, totalPaginas);
+    public void adionarNovoLivro(int codigoAtual, String titulo, String autor, String editora, String genero, int totalPaginas){
+        //int quantidadeLivros = 50; // Renba
+        Livro livro = new Livro(codigoAtual, titulo, autor, editora, genero, totalPaginas);
         getLivros().add(livro);
         persistenciaService.persistirEntidade(this.acervoLivros);
     }
 
     public void removerLivro(int codigo){
         Livro livroR = buscarLivro(codigo);
-        int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja remover este livro?");
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este livro?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().remove(livroR);
             persistenciaService.persistirEntidade(this.acervoLivros);
@@ -38,39 +40,39 @@ public class LivroService {
     }
 
     public void apagarListaLivros(){
-        int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja APAGAR a lista de livros?");
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir todos os livros do acervo?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
             persistenciaService.persistirEntidade(this.acervoLivros);
-            JOptionPane.showMessageDialog(null, "Lista de livros apagada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Operação Finalizada. Não há nenhum livro no acervo.");
         }
     }
 
     public void atualizarLivro(int codigo){
-        String msg = "Qual informação gostaria de atualizar:\n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
+        String msg = "Qual informação deseja atualizar? \n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
                 "5 - Quantidade de Páginas";
         Livro livro = buscarLivro(codigo);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
-            livro.setTitulo(JOptionPane.showInputDialog("Digitar titulo:"));
-            JOptionPane.showMessageDialog(null, "Titulo Atualizado!");
+            livro.setTitulo(JOptionPane.showInputDialog("Digite o novo título: "));
+            JOptionPane.showMessageDialog(null, "Título Atualizado!");
             persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 2) {
-            livro.setAutor(JOptionPane.showInputDialog("Digitar autor:"));
-            JOptionPane.showMessageDialog(null,"Autor Atualizado!");
+            livro.setAutor(JOptionPane.showInputDialog("Informe o(a) autor(a): "));
+            JOptionPane.showMessageDialog(null,"Autor(a) Atualizado!");
             persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 3) {
-            livro.setEditora(JOptionPane.showInputDialog("Digitar editora:"));
+            livro.setEditora(JOptionPane.showInputDialog("Digite a editora:"));
             JOptionPane.showMessageDialog(null,"Editora Atualizada!");
             persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 4) {
-            livro.setGenero(JOptionPane.showInputDialog("Digitar genero:"));
-            JOptionPane.showMessageDialog(null,"Genero Atualizado!");
+            livro.setGenero(JOptionPane.showInputDialog("Informe o gênero: "));
+            JOptionPane.showMessageDialog(null,"Gênero Atualizado!");
             persistenciaService.persistirEntidade(this.acervoLivros);
         }else if (caminho == 5){
-            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Digitar total de paginas:")));
-            JOptionPane.showMessageDialog(null,"Total de paginas Atualizado!");
+            livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de páginas:")));
+            JOptionPane.showMessageDialog(null,"Total de páginas atualizado!");
             persistenciaService.persistirEntidade(this.acervoLivros);
         }
     }
@@ -82,6 +84,8 @@ public class LivroService {
         return acervoLivros.toString();
     }
 
+
+
     public Livro buscarLivro(int codigo){
         for (Livro livro: this.acervoLivros){
             if (codigo == livro.getCodigo()){
@@ -92,9 +96,45 @@ public class LivroService {
         }
 
         if (this.livro == null){
-            JOptionPane.showMessageDialog(null,"Livro não localizado");
+            JOptionPane.showMessageDialog(null,"Desculpe, não foi possível localizar este livro.");
         }
         return this.livro;
+    }
+
+
+    public int capturarQuantidadeLivros() { // ============== Renba: Service capturar quantidade para devolver a LIVRO
+        int quantidadeLivros = 123;
+
+        if (this.acervoLivros.isEmpty()) {
+            acervoLivros = persistenciaService.lerLivrosPersistidos();
+        }
+
+        quantidadeLivros = acervoLivros.size();
+        System.out.println("Size de Acervo Livros: " + quantidadeLivros);
+        return quantidadeLivros;
+    }
+
+
+    public String listarLivrosRenba(){
+        System.out.println("Entrou em Listar Livros");
+        String retornoDeLista = String.valueOf(0); // Renba
+        if (this.acervoLivros.isEmpty()){
+            this.acervoLivros = persistenciaService.lerLivrosPersistidos();
+            System.out.println("LivroService Linha 85");
+            // Renba
+            if (this.acervoLivros.isEmpty()) {
+                retornoDeLista = "0";
+
+            } else {
+                retornoDeLista = this.acervoLivros.toString();
+            }
+        } else {
+            retornoDeLista = this.acervoLivros.toString();
+        }
+
+        //return acervoLivros.toString(); // Renba: Exclui a implantação da Joyce
+        System.out.println("Retorno da Lista" + retornoDeLista);
+        return retornoDeLista;
     }
 
 
