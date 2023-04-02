@@ -103,6 +103,18 @@ public class PersistenciaService {
     }
 
 
+    public static <T> ArrayList<T> lerISBNPersisitidos(){
+        FileInputStream fis = null;
+
+        try {
+            fis = new FileInputStream("isbnPersistidos.dat");
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Nenhum ISBN encontrado.");
+        }
+        return lerEntidadePersistida(fis);
+    }
+
+
 //    public static void persistirListaDeAlunos(ArrayList<Aluno> alunos) {
 //        FileOutputStream arquivoStream = null;
 //        ObjectOutputStream objetoStream = null;

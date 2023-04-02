@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 
-
 public class LivroService {
     private Livro livro;
     private ArrayList<Livro> acervoLivros = new ArrayList<>(); //todos os livros da biblioteca
@@ -25,12 +24,15 @@ public class LivroService {
     public void adionarNovoLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         //int quantidadeLivros = 50; // Renba
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
+        BibliotecaService.todosISBNCadastrados.add(isbn); // Renba
+
+        System.out.println(BibliotecaService.todosISBNCadastrados);
         getLivros().add(livro);
         persistenciaService.persistirEntidade(this.acervoLivros);
     }
 
-    public void removerLivro(int codigo){
-        Livro livroR = buscarLivro(codigo);
+    public void removerLivro(String isbn){
+        Livro livroR = buscarLivro(isbn);
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este livro?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().remove(livroR);
@@ -48,10 +50,10 @@ public class LivroService {
         }
     }
 
-    public void atualizarLivro(int codigo){
+    public void atualizarLivro(String isbn){
         String msg = "Qual informação deseja atualizar? \n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
                 "5 - Quantidade de Páginas";
-        Livro livro = buscarLivro(codigo);
+        Livro livro = buscarLivro(isbn);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
@@ -86,10 +88,10 @@ public class LivroService {
 
 
 
-    public Livro buscarLivro(int codigo){
+    public Livro buscarLivro(String isbn){
         for (Livro livro: this.acervoLivros){
-            if (codigo == livro.getCodigo()){
-                JOptionPane.showMessageDialog(null,livro);
+            if (isbn.equals(livro.getISBN())){
+                JOptionPane.showMessageDialog(null, livro);
                 this.livro = livro;
                 break;
             }

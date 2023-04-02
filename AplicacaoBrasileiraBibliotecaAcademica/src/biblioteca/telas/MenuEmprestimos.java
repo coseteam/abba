@@ -28,14 +28,14 @@ public class MenuEmprestimos extends MenuPrincipal {
         switch (caminho) {
             case 1 -> {
                 TelaEmprestimoLivro el = new TelaEmprestimoLivro();
-                Livro livroE = livroService.buscarLivro(el.livro);
+                Livro livroE = livroService.buscarLivro(String.valueOf(el.livro));
                 Aluno alunoE = alunoService.buscarAluno(el.aluno);
                 emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
             }
             case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
-                Livro livroD = livroService.buscarLivro(dl.livro);
+                Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
                 Aluno alunoD = alunoService.buscarAluno(dl.aluno);
                 emprestimoService.devolver(alunoD, livroD, dl.codigo);
                 menuEmprestimos();

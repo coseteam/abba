@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Livro implements Serializable{
+public class Livro implements Serializable {
 
-//    Atributos da classe abstrata livro
+    //    Atributos da classe abstrata livro
     private int codigo;
     private String isbn;
     private String titulo;
@@ -22,9 +22,8 @@ public class Livro implements Serializable{
     public int qtdTotalLivrosPersistidos; // Renba: Atributo criado
 
 
-
-//    Construtores
-    public Livro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){ // Renba
+    //    Construtores
+    public Livro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas) { // Renba
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -52,15 +51,16 @@ public class Livro implements Serializable{
     }
 
 
-
     // ============== ====================== Renba > Teste para persistir quantidade de Livros
     public int capturarTotalLivrosPersistidos() {
         int qtdLivrosPersistidos = 55;
         //qtdLivrosPersistidos = LivroService.capturarQuantidadeLivros();
         return qtdLivrosPersistidos;
-
     }
 
+    public String getISBN() {
+        return isbn;
+    }
 
 
     public String getTitulo() {
@@ -86,7 +86,6 @@ public class Livro implements Serializable{
     public String getEditora() {
         return editora;
     }
-
 
 
     //    SETTERS
@@ -128,31 +127,31 @@ public class Livro implements Serializable{
         if (totalPaginas <= 0) {
 
             String msg = "Quantidade de páginas deve ser maior que 0!";
-            JOptionPane.showMessageDialog(new JFrame(),msg,"Alerta",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), msg, "Alerta", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException(msg);
 
-        }else {
+        } else {
             this.totalPaginas = totalPaginas;
         }
     }
 
-    public void estaEmprestado(boolean estaEmprestado, Emprestimo emprestimo){
+    public void estaEmprestado(boolean estaEmprestado, Emprestimo emprestimo) {
         if (estaEmprestado) {
             this.getEmprestimos().add(emprestimo);
             this.setEmprestado(true);
         }
     }
 
-    public void foiDevolvido(boolean devolveu, Livro livro){
-        if (devolveu){
+    public void foiDevolvido(boolean devolveu, Livro livro) {
+        if (devolveu) {
             livro.setEmprestado(false);
         }
     }
 
     @Override
     public String toString() {
-        return  "ISBN = " + isbn + "\n" +
-                "\nTítulo = " + titulo + "\n" +
+        return "ISBN = " + isbn + "\n" +
+                "Título = " + titulo + "\n" +
                 "Autor = " + autor + "\n" +
                 "Editora = " + editora + "\n" +
                 "Gênero = " + genero + "\n" +
@@ -161,4 +160,6 @@ public class Livro implements Serializable{
     }
 
 }
+
+
 
