@@ -1,6 +1,7 @@
 package biblioteca.telas;
 
 import biblioteca.services.LivroService;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
@@ -8,9 +9,9 @@ public class MenuLivro extends MenuPrincipal {
 
     private LivroService livroService = new LivroService();
 
-    private String msg = "Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Cadastrar um livros\n 2 - Remover um livro\n" +
-            " 3 - Atualizar um livro\n 4 -Listar todos os livros\n 5 - Apagar todos os livros da lista\n " +
-            "6 - Voltar ao menu principal";
+    private String msg = "Menu Biblioteca\n Escolha uma opção: \n 1 - Cadastrar Novo Livro\n 2 - Excluir um Livro\n" +
+            " 3 - Atualizar um Livro\n 4 - Listar todo o Acervo\n 5 - Apagar todos os Livros do Acervo\n " +
+            "0 - Voltar ao menu principal";
 
 
     public void menuLivro() {
@@ -22,17 +23,21 @@ public class MenuLivro extends MenuPrincipal {
         int caminho = Integer.parseInt(input);
         switch (caminho) {
             case 1 -> {
-                TelaAdicionarLivro ad = new TelaAdicionarLivro();
-                livroService.adionarNovoLivro(ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
+                TelaAdicionarLivro ad = new TelaAdicionarLivro(); // Renba Tela Adicionar Livro
+                int codigoAtual = livroService.capturarQuantidadeLivros();
+                System.out.println(codigoAtual);
+                boolean checkValidadorTituloLivro = Validador.validarInputString(ad.titulo);
+                boolean checkValidadorQuantidadePaginas = Validador.validarInputInteger(ad.totalPaginas);
+                livroService.adionarNovoLivro(codigoAtual, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
             }
             case 2 -> {
-                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno"));
+                int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do Livro: "));
                 livroService.removerLivro(codigo);
                 menuLivro();
             }
             case 3 -> {
-                livroService.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do livro:")));
+                livroService.atualizarLivro(Integer.parseInt(JOptionPane.showInputDialog("Digite o código do Livro:")));
                 menuLivro();
             }
             case 4 -> {
@@ -43,9 +48,9 @@ public class MenuLivro extends MenuPrincipal {
                 livroService.apagarListaLivros();
                 menuLivro();
             }
-            case 6 -> menuPrincipal();
+            case 0 -> menuPrincipal();
             default -> {
-                JOptionPane.showMessageDialog(null, "Opção inválida");
+                JOptionPane.showMessageDialog(null, "Opção Inválida");
                 menuLivro();
             }
         }

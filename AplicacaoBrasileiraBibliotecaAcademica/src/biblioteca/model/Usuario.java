@@ -52,9 +52,9 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "id =" + id + "\n" +
-                "nome='" + nome + "\n" +
-                "cpf='" + cpf + "\n";
+        return "ID =" + id + "\n" +
+                "Nome ='" + nome + "\n" +
+                "CPF ='" + cpf + "\n";
 
     }
 }

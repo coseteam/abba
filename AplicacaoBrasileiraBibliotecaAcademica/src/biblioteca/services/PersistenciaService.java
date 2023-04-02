@@ -7,8 +7,9 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class PersistenciaService {
 
+
+public class PersistenciaService {
     private ArrayList<Livro> livros;
 
 
@@ -29,15 +30,15 @@ public class PersistenciaService {
             objetoStream = new ObjectOutputStream(arquivoStream);
             objetoStream.writeObject(entidades);
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo");
+            JOptionPane.showMessageDialog(null, "Erro ao criar arquivo.");
         } finally {
             if (objetoStream != null) {
                 try {
                     objetoStream.close();
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo");
+                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo.");
                 }
             }
         }
@@ -53,15 +54,15 @@ public class PersistenciaService {
             entidade = (ArrayList<T>) ois.readObject();
 
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Classe não encontrado");
+            JOptionPane.showMessageDialog(null, "Classe não encontrada.");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo");
+            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo.");
         } finally {
             if (ois != null) {
                 try {
                     ois.close();
                 } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo");
+                    JOptionPane.showMessageDialog(null, "Erro ao fechar arquivo.");
                 }
             }
         }
@@ -73,7 +74,7 @@ public class PersistenciaService {
         try {
             fis = new FileInputStream("livrosPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
         }
         return lerEntidadePersistida(fis);
 
@@ -84,7 +85,7 @@ public class PersistenciaService {
         try {
             fis = new FileInputStream("alunosPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
         }
         return lerEntidadePersistida(fis);
 
@@ -95,7 +96,7 @@ public class PersistenciaService {
         try {
             fis = new FileInputStream("emprestimosPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Arquivo não encontrado");
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
         }
         return lerEntidadePersistida(fis);
 

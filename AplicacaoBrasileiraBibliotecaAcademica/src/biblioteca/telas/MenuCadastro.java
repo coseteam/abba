@@ -8,9 +8,9 @@ public class MenuCadastro extends MenuPrincipal {
 
     private AlunoService alunoService = new AlunoService();
 
-    private String msg = "Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Cadastrar um aluno\n 2 - Remover um aluno\n" +
-            " 3 - Atualizar um cadastro de aluno\n 4 -Listar todos os alunos\n 5 - Apagar todos os alunos da lista\n " +
-            "6 - Voltar ao menu principal";
+    private String msg = "Menu Biblioteca\n Escolha uma opção: \n 1 - Cadastrar Novo Aluno\n 2 - Excluir um Aluno\n" +
+            " 3 - Editar Cadastro de Aluno\n 4 - Ver todos os Alunos\n 5 - Excluir todos os Alunos do Cadastro\n " +
+            "0 - Voltar ao menu principal";
 
 
     public void menuCadastro() {
@@ -32,7 +32,7 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 3 -> {
-                alunoService.atualizarAluno(Integer.parseInt(JOptionPane.showInputDialog("Digite o id do aluno:")));
+                alunoService.atualizarAluno(Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do aluno:")));
                 menuCadastro();
             }
             case 4 -> {
@@ -43,9 +43,10 @@ public class MenuCadastro extends MenuPrincipal {
                 alunoService.apagarListaAlunos();
                 menuCadastro();
             }
-            case 6 -> menuPrincipal();
+            case 0 -> menuPrincipal();
+
             default -> {
-                JOptionPane.showMessageDialog(null, "Opção inválida");
+                JOptionPane.showMessageDialog(null, "Opção Inválida");
                 menuCadastro();
             }
         }

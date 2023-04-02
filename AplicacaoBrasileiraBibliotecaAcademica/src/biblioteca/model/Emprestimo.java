@@ -58,9 +58,9 @@ public class Emprestimo{
 
     @Override
     public String toString() {
-        return  "Codigo do Emprestimo = " + codigo + "\n" +
-                "data do Emprestimo = " + dataInicioEmprestimo + '\n' +
-                "Data da Devolucao = " + dataDevolucaoEmprestimo + '\'' +
+        return  "Código do Emprestimo = " + codigo + "\n" +
+                "Data do Empréstimo = " + dataInicioEmprestimo + '\n' +
+                "Data da Devolução = " + dataDevolucaoEmprestimo + '\'' +
                 "Livro = " + livro + '\n' +
                 "Aluno = " + aluno;
     }

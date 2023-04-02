@@ -14,8 +14,8 @@ public class MenuEmprestimos extends MenuPrincipal {
     private LivroService livroService = new LivroService();
     private AlunoService alunoService = new AlunoService();
 
-    private String msg = "Menu Emprestimos\n Escolha uma das opções abaixo: \n 1 - Fazer um emprestimo\n 2 - fazer devolução\n" +
-            " 3 - Mostrar todos os emprestimos\n 4 - Voltar ao menu principal";
+    private String msg = "Menu Empréstimos\n Escolha uma opção: \n 1 - Registrar Novo Empréstimo\n 2 - Registrar Devolução\n" +
+            " 3 - Ver todos os Empréstimos\n 0 - Voltar ao menu principal";
 
 
     public void menuEmprestimos() {
@@ -44,9 +44,10 @@ public class MenuEmprestimos extends MenuPrincipal {
                 JOptionPane.showMessageDialog(null, emprestimoService.listarEmprestimo());
                 menuEmprestimos();
             }
-            case 4 -> menuPrincipal();
+            case 0 -> menuPrincipal();
+
             default -> {
-                JOptionPane.showMessageDialog(null, "Opção inválida");
+                JOptionPane.showMessageDialog(null, "Opção Inválida");
                 menuEmprestimos();
             }
         }

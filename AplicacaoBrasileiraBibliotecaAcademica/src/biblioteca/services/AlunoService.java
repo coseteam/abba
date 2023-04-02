@@ -30,7 +30,7 @@ public class AlunoService {
 
     public void removerAluno(int id){
         Aluno aluno = buscarAluno(id);
-        int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja remover este cadastro?");
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o cadastro deste aluno?");
         if (confirma == JOptionPane.YES_OPTION){
             getUsuarios().remove(aluno);
         }
@@ -38,27 +38,27 @@ public class AlunoService {
     }
 
     public void apagarListaAlunos(){
-        int confirma = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja APAGAR a lista de Alunos?");
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o cadastro de todos os alunos?");
         if (confirma == JOptionPane.YES_OPTION){
             getUsuarios().clear();
-            JOptionPane.showMessageDialog(null, "Lista de alunos apagada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Operação finalizada. Não há alunos cadastrados.");
         }
     }
 
     public void atualizarAluno(int id){
-        String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matricula";
+        String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matrícula";
         Aluno aluno = buscarAluno(id);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
-            aluno.setNome(JOptionPane.showInputDialog("Digitar novo nome:"));
-            JOptionPane.showMessageDialog(null, "Nome Atualizado!");
+            aluno.setNome(JOptionPane.showInputDialog("Digite o nome correto: "));
+            JOptionPane.showMessageDialog(null, "Nome atualizado!");
         }else if (caminho == 2) {
-            aluno.setCpf(JOptionPane.showInputDialog("Digitar o CPF:"));
-            JOptionPane.showMessageDialog(null,"CPF Atualizado!");
+            aluno.setCpf(JOptionPane.showInputDialog("Digite o CPF correto: "));
+            JOptionPane.showMessageDialog(null,"CPF atualizado!");
         }else if (caminho == 3) {
-            aluno.setMatricula(JOptionPane.showInputDialog("Digitar a Matricula:"));
-            JOptionPane.showMessageDialog(null,"Matricula Atualizada!");
+            aluno.setMatricula(JOptionPane.showInputDialog("Digite a matrícula correta: "));
+            JOptionPane.showMessageDialog(null,"A matrícula foi atualizada!");
         }
     }
 
@@ -79,7 +79,7 @@ public class AlunoService {
         }
 
         if (this.aluno == null){
-            JOptionPane.showMessageDialog(null,"Aluno nao localizado");
+            JOptionPane.showMessageDialog(null,"Desculpe, não localizamos este aluno. ");
         }
         return this.aluno;
     }

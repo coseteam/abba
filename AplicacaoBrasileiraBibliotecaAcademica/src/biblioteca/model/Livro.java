@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class Livro implements Serializable{
 
 //    Atributos da classe abstrata livro
-
     private int codigo;
     private String titulo;
     private String autor;
@@ -16,25 +16,31 @@ public class Livro implements Serializable{
     private int totalPaginas;
     private static int totalLivros; // contagem total de todos os livros instanciados
     private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
-    private boolean emprestado; //se estiver emprestado = true
+    private boolean emprestado; // se estiver emprestado = true
+
+    public int qtdTotalLivrosPersistidos; // Renba: Atributo criado
+
+
 
 //    Construtores
-    public Livro(String titulo, String autor, String editora, String genero, int totalPaginas){
+    public Livro(int codigoAtual, String titulo, String autor, String editora, String genero, int totalPaginas){ // Renba
+        this.codigo = codigoAtual + 1;
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
         this.editora = editora;
         this.setTotalPaginas(totalPaginas);
-        totalLivros++;//contador geral de livros
+        totalLivros++; //contador geral de livros
 
-        this.setCodigo(getTotalLivros()); //codigo para busca, adiciona um toda vez que um livro for criado
+        //this.setCodigo(getTotalLivros()); //codigo para busca, adiciona um toda vez que um livro for criado
 
+        // ======== Renba: manipulando o atributo para incrementar
+        this.qtdTotalLivrosPersistidos = capturarTotalLivrosPersistidos();
 
     }
 
 
 //    Getters
-
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -43,6 +49,18 @@ public class Livro implements Serializable{
     public int getTotalLivros() {
         return totalLivros;
     }
+
+
+
+    // ============== ====================== Renba > Teste para persistir quantidade de Livros
+    public int capturarTotalLivrosPersistidos() {
+        int qtdLivrosPersistidos = 55;
+        //qtdLivrosPersistidos = LivroService.capturarQuantidadeLivros();
+        return qtdLivrosPersistidos;
+
+    }
+
+
 
     public String getTitulo() {
         return titulo;
@@ -68,7 +86,9 @@ public class Livro implements Serializable{
         return editora;
     }
 
-    //    Setters
+
+
+    //    SETTERS
 
 
     public void setTitulo(String titulo) {
@@ -106,7 +126,7 @@ public class Livro implements Serializable{
     public void setTotalPaginas(int totalPaginas) { //condicao para criação do livro
         if (totalPaginas <= 0) {
 
-            String msg = "Quantidade de paginas não pode ser menor ou igual a 0";
+            String msg = "Quantidade de páginas deve ser maior que 0!";
             JOptionPane.showMessageDialog(new JFrame(),msg,"Alerta",JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException(msg);
 
@@ -130,12 +150,12 @@ public class Livro implements Serializable{
 
     @Override
     public String toString() {
-        return  "Codigo = " + codigo + "\n" +
-                "\nTitulo = " + titulo + "\n" +
+        return  "Código = " + codigo + "\n" +
+                "\nTítulo = " + titulo + "\n" +
                 "Autor = " + autor + "\n" +
                 "Editora = " + editora + "\n" +
-                "Genero = " + genero + "\n" +
-                "Total de paginas = " + totalPaginas + "\n" +
+                "Gênero = " + genero + "\n" +
+                "Total de páginas = " + totalPaginas + "\n" +
                 "-----------------------------------\n";
     }
 

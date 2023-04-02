@@ -5,14 +5,14 @@ import javax.swing.*;
 public class MenuPrincipal {
 
 
-    private String msg ="Menu Biblioteca\n Escolha uma das opções abaixo: \n 1 - Livros\n 2 - Alunos\n" +
-                " 3 - Emprestimos\n";
+    private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
+                " 3 - Empréstimos\n";
 
     public void menuPrincipal(){
 
         String input = JOptionPane.showInputDialog(msg);
         if (input == null) {
-            JOptionPane.showMessageDialog(null, "Saindo do sistema");
+            JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
             System.exit(0);
         }
 
