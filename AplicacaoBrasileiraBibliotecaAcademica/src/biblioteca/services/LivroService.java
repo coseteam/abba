@@ -14,7 +14,6 @@ public class LivroService {
     private PersistenciaService persistenciaService = new PersistenciaService(); // ForJoyce: (5) Quero tua ajuda pra entender melhor essa relação
     //private int quantidadeLivros = acervoLivros.size(); // Renba
 
-
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
     }
@@ -23,12 +22,12 @@ public class LivroService {
         this.acervoLivros = livros;
     }
 
-    public void adionarNovoLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
-        //int quantidadeLivros = 50; // Renba
+    public void cadastrarLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
         BibliotecaService.todosISBNCadastrados.add(isbn); // Renba
 
         System.out.println(BibliotecaService.todosISBNCadastrados);
+        acervoLivros = persistenciaService.lerLivrosPersistidos();
         getLivros().add(livro);
         persistenciaService.persistirEntidade(this.acervoLivros);
     }
@@ -40,20 +39,15 @@ public class LivroService {
             getLivros().remove(livroR);
             persistenciaService.persistirEntidade(this.acervoLivros);
         }
-
     }
 
     public void apagarListaLivros(){
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir todos os livros do acervo?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
-//            persistenciaService.persistirEntidade(this.acervoLivros);
             File file = new File("livrosPersistidos.dat");
-            file.delete();
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (file.delete()) {
+                System.out.println("Arquivo deletado com sucesso");
             }
 
             JOptionPane.showMessageDialog(null, "Operação Finalizada. Não há nenhum livro no acervo.");
@@ -91,7 +85,7 @@ public class LivroService {
 
     public String listarLivros(){
         if (this.acervoLivros.isEmpty()){
-            acervoLivros = PersistenciaService.lerLivrosPersistidos();
+            acervoLivros = persistenciaService.lerLivrosPersistidos();
         }
         if (this.acervoLivros.isEmpty() || this.acervoLivros == null){
             return "Não há livros cadastrados.";

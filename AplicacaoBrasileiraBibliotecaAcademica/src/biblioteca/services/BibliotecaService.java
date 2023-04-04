@@ -18,7 +18,8 @@ public class BibliotecaService {
 
 
     public BibliotecaService() {
-        this.todosLivros = PersistenciaService.lerLivrosPersistidos();
+        this.todosLivros = persistenciaService.lerLivrosPersistidos();
+//        this.todosAlunos = persistenciaService.lerAlunosPersistidos();
         //this.todosISBNCadastrados = PersistenciaService.lerISBNPersisitidos();
         this.todosISBNCadastrados.add("A0A0A0");
     }

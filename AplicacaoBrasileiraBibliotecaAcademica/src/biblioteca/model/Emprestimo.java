@@ -1,6 +1,8 @@
 package biblioteca.model;
 
-public class Emprestimo{
+import java.io.Serializable;
+
+public class Emprestimo implements Serializable {
     private String dataInicioEmprestimo;
     private String dataDevolucaoEmprestimo;
     private Livro livro;

@@ -29,7 +29,7 @@ public class MenuLivro extends MenuPrincipal {
                 boolean checkValidadorTituloLivro = Validador.validarInputString(ad.titulo);
                 boolean checkValidadorQuantidadePaginas = Validador.validarInputInteger(ad.totalPaginas);
                 boolean checkValidadorNovoISBN = Validador.validarInputISBN(ad.isbn);
-                livroService.adionarNovoLivro(ad.isbn, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
+                livroService.cadastrarLivro(ad.isbn, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
             }
             case 2 -> {
