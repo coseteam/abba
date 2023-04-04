@@ -3,14 +3,15 @@ package biblioteca.services;
 import biblioteca.model.Aluno;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class AlunoService {
 
     private Aluno aluno;
-
     private ArrayList<Aluno> carteiraAlunos = new ArrayList<>(); //todos os cadastros dos alunos
 
+    private PersistenciaService persistenciaService = new PersistenciaService();
     public ArrayList<Aluno> getUsuarios() {
         return carteiraAlunos;
     }
@@ -21,7 +22,9 @@ public class AlunoService {
 
     public void cadastrarAluno(String nome, String cpf, String matricula){
         Aluno aluno = new Aluno(nome, cpf, matricula);
+        carteiraAlunos = persistenciaService.lerAlunosPersistidos();
         this.getUsuarios().add(aluno);
+        persistenciaService.persistirEntidade(this.carteiraAlunos);
     }
 
     public void removerAluno(int id){
@@ -37,6 +40,10 @@ public class AlunoService {
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o cadastro de todos os alunos?");
         if (confirma == JOptionPane.YES_OPTION){
             getUsuarios().clear();
+            File file = new File("alunosPersistidos.dat");
+            if (file.delete()) {
+                System.out.println("Arquivo deletado com sucesso");
+            }
             JOptionPane.showMessageDialog(null, "Operação finalizada. Não há alunos cadastrados.");
         }
     }
@@ -60,7 +67,7 @@ public class AlunoService {
 
     public String listarAlunos(){
         if (this.carteiraAlunos.isEmpty()){
-            carteiraAlunos = PersistenciaService.lerAlunosPersistidos();
+            carteiraAlunos = persistenciaService.lerAlunosPersistidos();
         }
         if (this.carteiraAlunos.isEmpty() || this.carteiraAlunos == null){
             return "Não há alunos cadastrados.";

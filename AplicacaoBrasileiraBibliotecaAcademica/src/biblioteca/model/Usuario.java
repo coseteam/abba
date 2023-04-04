@@ -1,6 +1,8 @@
 package biblioteca.model;
 
-public abstract class Usuario {
+import java.io.Serializable;
+
+public abstract class Usuario implements Serializable {
     private static int numOfAlunos; // ForJoyce: (3) Essa contagem realmente deve ficar em Usuario?
     private int id;
     private String nome;

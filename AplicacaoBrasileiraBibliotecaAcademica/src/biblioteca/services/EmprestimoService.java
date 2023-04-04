@@ -12,6 +12,8 @@ public class EmprestimoService {
     private ArrayList<Emprestimo> emprestimos = new ArrayList<>();//todos os emprestimos
     private Emprestimo emprestimo;
 
+    private PersistenciaService persistenciaService = new PersistenciaService();
+
     public ArrayList<Emprestimo> getEmprestimos() {return emprestimos;}
 
 
@@ -49,7 +51,7 @@ public class EmprestimoService {
 
     public String listarEmprestimo(){
         if (this.emprestimos.isEmpty()){
-            emprestimos = PersistenciaService.lerAlunosPersistidos();
+            emprestimos = persistenciaService.lerAlunosPersistidos();
         }
         return emprestimos.toString();
     }
