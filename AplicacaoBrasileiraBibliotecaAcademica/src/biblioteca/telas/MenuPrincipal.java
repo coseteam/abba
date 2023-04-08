@@ -2,13 +2,11 @@ package biblioteca.telas;
 
 
 import biblioteca.services.BibliotecaService;
-import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
 public class MenuPrincipal {
-    public BibliotecaService todaBiblioteca = new BibliotecaService(); // Renba
-    public Validador validacao = new Validador();
+    BibliotecaService todaBilioteca = new BibliotecaService();
 
 
     private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +

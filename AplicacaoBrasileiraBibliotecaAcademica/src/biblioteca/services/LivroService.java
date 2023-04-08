@@ -4,15 +4,14 @@ import biblioteca.model.Livro;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class LivroService {
     private Livro livro;
-    private ArrayList<Livro> acervoLivros = new ArrayList<>(); //todos os livros da biblioteca
-    private PersistenciaService persistenciaService = new PersistenciaService(); // ForJoyce: (5) Quero tua ajuda pra entender melhor essa relação
-    //private int quantidadeLivros = acervoLivros.size(); // Renba
+    private ArrayList<Livro> acervoLivros = new ArrayList<>();
+    private PersistenciaService persistenciaService = new PersistenciaService();
+
 
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
@@ -25,7 +24,6 @@ public class LivroService {
     public void cadastrarLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
         BibliotecaService.todosISBNCadastrados.add(isbn); // Renba
-
         System.out.println(BibliotecaService.todosISBNCadastrados);
         acervoLivros = persistenciaService.lerLivrosPersistidos();
         getLivros().add(livro);
