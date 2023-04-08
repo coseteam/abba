@@ -10,8 +10,8 @@ public class AlunoService {
 
     private Aluno aluno;
     private ArrayList<Aluno> carteiraAlunos = new ArrayList<>(); //todos os cadastros dos alunos
-
     private PersistenciaService persistenciaService = new PersistenciaService();
+
     public ArrayList<Aluno> getUsuarios() {
         return carteiraAlunos;
     }

@@ -1,7 +1,6 @@
 package biblioteca.telas;
 
 import biblioteca.services.LivroService;
-import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
@@ -15,8 +14,6 @@ public class MenuLivro extends MenuPrincipal {
 
 
     public void menuLivro() {
-
-
         String input = JOptionPane.showInputDialog(msg);
         validaMenu(input);
 
@@ -24,11 +21,6 @@ public class MenuLivro extends MenuPrincipal {
         switch (caminho) {
             case 1 -> {
                 TelaAdicionarLivro ad = new TelaAdicionarLivro(); // Renba Tela Adicionar Livro
-                //int codigoAtual = livroService.capturarQuantidadeLivros();
-                //System.out.println(codigoAtual);
-                boolean checkValidadorTituloLivro = Validador.validarInputString(ad.titulo);
-                boolean checkValidadorQuantidadePaginas = Validador.validarInputInteger(ad.totalPaginas);
-                boolean checkValidadorNovoISBN = Validador.validarInputISBN(ad.isbn);
                 livroService.cadastrarLivro(ad.isbn, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
             }

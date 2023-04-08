@@ -1,6 +1,7 @@
 package biblioteca.validations;
 
 import biblioteca.services.BibliotecaService;
+import biblioteca.services.PersistenciaService;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class Validador {
     public static Integer inputInteger = 1;
     public static ArrayList<String> allISBN;
     public static ArrayList<String> copiaISBN;
+    private PersistenciaService persistenciaService = new PersistenciaService();
 
 
     // ================== Construtor
@@ -19,7 +21,7 @@ public class Validador {
 
         inputString = "Strings";
         allISBN = (ArrayList<String>) (BibliotecaService.todosISBNCadastrados);
-        if (allISBN == null) {
+        if (allISBN == null || allISBN.isEmpty()) {
             allISBN.add("010101");
         }
     }
@@ -28,10 +30,6 @@ public class Validador {
     // ================== Métodos
     public static boolean validarInputString(Object currentInput) { // VALIDAR STRING
         boolean checkString = true;
-
-        /*System.out.println(currentInput.getClass());
-        System.out.println(inputString.getClass());*/
-        //System.out.println("Só tem espaços? >> " + ((String) currentIput).isBlank());
 
         if (inputString.getClass() == currentInput.getClass()) {
             if(currentInput == "" || ((String) currentInput).isBlank()) {
@@ -71,20 +69,30 @@ public class Validador {
         if (inputISBN.isBlank()) {
             checkISBN = false;
         } else {
-            if (allISBN.isEmpty()) {
-                checkISBN = true;
+            System.out.println("Não is blank: " + checkISBN);
+            if (inputISBN.length() < 7) {
+                inputISBN.length();
+                checkISBN = false;
+                System.out.println("matches and length: " + checkISBN);
             } else {
-                for (String isbn : allISBN) {
-                    if (isbn.equals(inputISBN)) {
-                        checkISBN = false;
+
+                if (allISBN.isEmpty()) {
+                    checkISBN = true;
+                } else {
+                    for (String isbn : allISBN) {
+                        if (isbn.equals(inputISBN)) {
+                            checkISBN = false;
+                            System.out.println("Dentro do FOR: " + checkISBN);
+                        }
                     }
                 }
+
             }
+
         }
 
-        //setTodosISBNCadastrados(inputISBN);
         System.out.println("valida ISBN >>> " + checkISBN);
-        return true;
+        return checkISBN;
     }
 
 
