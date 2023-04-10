@@ -60,6 +60,16 @@ public class Validador {
     }
 
 
+    public static boolean validarInputStringNumerica(String currentInput) {
+        boolean checkStrNum = true;
+
+        if (currentInput.trim().isBlank() || !currentInput.matches("[0-9]+") ) {
+            checkStrNum = false;
+        }
+
+        return checkStrNum;
+    }
+
     public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
         boolean checkISBN = true;
 
@@ -93,6 +103,21 @@ public class Validador {
     }
 
 
+    public static boolean validarInputCPF(String currentCPF) {
+        boolean checkCPF = true;
+
+        if (currentCPF.isBlank()) {
+            checkCPF = false;
+        } else {
+            //System.out.println("CPF not is blank: " + checkCPF);
+            if (currentCPF.length() < 11 || !currentCPF.matches("[0-9]+")) {
+                checkCPF = false;
+                //System.out.println("matches and length: " + checkCPF);
+            }
+
+        }
+        return checkCPF;
+    }
 
 
 // MÉTODOS DESCARTADOS MOMENTANEAMENTE
