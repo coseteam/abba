@@ -1,27 +1,20 @@
 package biblioteca.services;
 
-import biblioteca.model.Aluno;
-import biblioteca.model.Emprestimo;
-import biblioteca.model.Funcionario;
-import biblioteca.model.Livro;
+import biblioteca.validations.Validador;
 
 import java.util.ArrayList;
 
 
 public class BibliotecaService {
-    public ArrayList<Livro> todosLivros = new ArrayList<>();
-    public ArrayList<Aluno> todosAlunos = new ArrayList<>();
-    public ArrayList<Funcionario> todosFuncionarios = new ArrayList<>();
-    public ArrayList<Emprestimo> todosEmprestimos = new ArrayList<>();
     public static ArrayList<String> todosISBNCadastrados = new ArrayList<>();
     public static PersistenciaService persistenciaService = new PersistenciaService();
 
 
+
     public BibliotecaService() {
-        this.todosLivros = persistenciaService.lerLivrosPersistidos();
-//        this.todosAlunos = persistenciaService.lerAlunosPersistidos();
-        //this.todosISBNCadastrados = PersistenciaService.lerISBNPersisitidos();
-        this.todosISBNCadastrados.add("A0A0A0");
+        todosISBNCadastrados = persistenciaService.lerISBNPersisitidos();
+        System.out.println(todosISBNCadastrados);
+        Validador validador = new Validador();
     }
 
     public static void setTodosISBNCadastrados(String newISBN) {
