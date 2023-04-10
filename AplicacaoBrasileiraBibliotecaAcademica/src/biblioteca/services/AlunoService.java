@@ -27,8 +27,8 @@ public class AlunoService {
         persistenciaService.persistirEntidade(this.carteiraAlunos);
     }
 
-    public void removerAluno(int id){
-        Aluno aluno = buscarAluno(id);
+    public void removerAluno(String cpf){
+        Aluno aluno = buscarAluno(cpf);
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o cadastro deste aluno?");
         if (confirma == JOptionPane.YES_OPTION){
             getUsuarios().remove(aluno);
@@ -48,9 +48,9 @@ public class AlunoService {
         }
     }
 
-    public void atualizarAluno(int id){
+    public void atualizarAluno(String cpf){
         String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matrícula";
-        Aluno aluno = buscarAluno(id);
+        Aluno aluno = buscarAluno(cpf);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
@@ -72,12 +72,12 @@ public class AlunoService {
         if (this.carteiraAlunos.isEmpty() || this.carteiraAlunos == null){
             return "Não há alunos cadastrados.";
         }
-        return carteiraAlunos.toString();
+        return carteiraAlunos.toString().replaceAll("\\[|\\,|\\]", "\n");
     }
 
-    public Aluno buscarAluno(int id){
+    public Aluno buscarAluno(String cpf){
         for (Aluno aluno: this.carteiraAlunos){
-            if (id == aluno.getId()){
+            if (cpf.equals(aluno.getCpf())){
                 JOptionPane.showMessageDialog(null,aluno);
                 this.aluno = aluno;
                 break;

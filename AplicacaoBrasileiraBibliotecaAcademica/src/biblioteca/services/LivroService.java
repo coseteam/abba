@@ -88,7 +88,7 @@ public class LivroService {
         if (this.acervoLivros.isEmpty() || this.acervoLivros == null){
             return "Não há livros cadastrados.";
         }
-        return acervoLivros.toString();
+        return acervoLivros.toString().replaceAll("\\[|\\,|\\]", "\n");
     }
 
 
