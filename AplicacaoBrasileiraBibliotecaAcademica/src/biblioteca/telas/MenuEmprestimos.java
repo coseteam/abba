@@ -8,6 +8,8 @@ import biblioteca.services.LivroService;
 
 import javax.swing.*;
 
+
+
 public class MenuEmprestimos extends MenuPrincipal {
 
     private EmprestimoService emprestimoService = new EmprestimoService();
@@ -19,18 +21,20 @@ public class MenuEmprestimos extends MenuPrincipal {
 
 
     public void menuEmprestimos() {
-
         String input = JOptionPane.showInputDialog(msg);
         validaMenu(input);
 
         int caminho = Integer.parseInt(input);
-
         switch (caminho) {
             case 1 -> {
                 TelaEmprestimoLivro el = new TelaEmprestimoLivro();
+                System.out.println("Exibe elementos da tela: " + el.livro + el.aluno);
+                System.out.println((el.livro).getClass());
                 Livro livroE = livroService.buscarLivro(String.valueOf(el.livro));
-                Aluno alunoE = alunoService.buscarAluno(el.aluno);
-                emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
+                Aluno alunoE = alunoService.buscarAluno(String.valueOf(el.aluno));
+                System.out.println(livroE); // Renba: Testando captura de livro e aluno
+                System.out.println(alunoE);
+                int codigoEmprestimo = emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
             }
             case 2 -> {

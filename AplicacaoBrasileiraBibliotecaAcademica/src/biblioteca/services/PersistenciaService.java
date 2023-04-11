@@ -115,12 +115,24 @@ public class PersistenciaService {
 
     }
 
-    public <T> ArrayList<T> lerEmprestimosPersistidos(){
+    public <T> ArrayList<T> lerEmprestimosPersistidos(){ // {PAUSEPLAY} Renba > STOP HERE - GET HERE
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("emprestimosPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Não há registros de Empréstimos.");
+            File file = new File("emprestimosPersistidos.dat");
+            try {
+                if (file.createNewFile()) {
+                    fis = new FileInputStream("emprestimosPersistidos.dat");
+
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Não há registros de Empréstimos.");
+            }
+
+
+
         }
         return lerEntidadePersistida(fis);
 

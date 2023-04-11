@@ -99,7 +99,12 @@ public class LivroService {
 
 
     public Livro buscarLivro(String isbn){
-        for (Livro livro: this.acervoLivros){
+        acervoLivros = persistenciaService.lerLivrosPersistidos(); // Renba > Atent LS 102
+        System.out.println("Recebendo ISBN: " + isbn);
+        System.out.println("THIS.ACERVOLIVROS > " + this.acervoLivros); // Renba
+
+        for (Livro livro: acervoLivros){ // Renba
+        //for (Livro livro: this.acervoLivros){
             if (isbn.equals(livro.getISBN())){
                 JOptionPane.showMessageDialog(null, livro);
                 this.livro = livro;
@@ -110,6 +115,7 @@ public class LivroService {
         if (this.livro == null){
             JOptionPane.showMessageDialog(null,"Desculpe, não foi possível localizar este livro.");
         }
+        System.out.println("Resultado de BuscarLivro " + this.livro);
         return this.livro;
     }
 
