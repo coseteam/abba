@@ -1,6 +1,10 @@
 package biblioteca.telas;
 
+import biblioteca.validations.Validador;
+
 import javax.swing.*;
+
+
 
 public class TelaEmprestimoLivro{
     public String data;
@@ -10,6 +14,12 @@ public class TelaEmprestimoLivro{
 
 
     public TelaEmprestimoLivro() {
+        registrarNovoEmprestimo();
+    }
+
+    private void registrarNovoEmprestimo() {
+        Validador validador = new Validador();
+
         this.data = JOptionPane.showInputDialog("Digite a data de hoje: DD/MM/YYYY");
         this.dataDevolucao = JOptionPane.showInputDialog("Digite a data da devolução: DD/MM/YYYY");
         this.livro = JOptionPane.showInputDialog("Digite o ISBN do livro: ");

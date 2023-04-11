@@ -84,7 +84,9 @@ public class AlunoService {
 
 
     public Aluno buscarAluno(String cpf){
-        for (Aluno aluno: this.carteiraAlunos){
+        carteiraAlunos = persistenciaService.lerAlunosPersistidos(); // Renba > Atent AS 87
+        for (Aluno aluno: carteiraAlunos){
+        //for (Aluno aluno: this.carteiraAlunos){
             if (cpf.equals(aluno.getCpf())){
                 JOptionPane.showMessageDialog(null,aluno);
                 this.aluno = aluno;
