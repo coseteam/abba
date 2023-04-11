@@ -34,7 +34,7 @@ public class MenuEmprestimos extends MenuPrincipal {
                 Aluno alunoE = alunoService.buscarAluno(String.valueOf(el.aluno));
                 System.out.println(livroE); // Renba: Testando captura de livro e aluno
                 System.out.println(alunoE);
-                emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
+                int codigoEmprestimo = emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
             }
             case 2 -> {

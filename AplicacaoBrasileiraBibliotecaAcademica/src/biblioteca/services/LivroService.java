@@ -99,7 +99,7 @@ public class LivroService {
 
 
     public Livro buscarLivro(String isbn){
-        acervoLivros = persistenciaService.lerLivrosPersistidos(); // Renba
+        acervoLivros = persistenciaService.lerLivrosPersistidos(); // Renba > Atent LS 102
         System.out.println("Recebendo ISBN: " + isbn);
         System.out.println("THIS.ACERVOLIVROS > " + this.acervoLivros); // Renba
 

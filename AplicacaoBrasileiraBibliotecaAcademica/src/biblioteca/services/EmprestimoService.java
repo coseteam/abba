@@ -18,11 +18,14 @@ public class EmprestimoService {
 
     public int emprestar(String data, String dataDevolucao, Aluno aluno, Livro livro){
         Emprestimo emprestimo = new Emprestimo(data, dataDevolucao, aluno, livro);
+
         livro.estaEmprestado(true, emprestimo);
         aluno.getEmprestimosDoAluno().add(emprestimo);
         aluno.getLivrosComAluno().add(livro);
         this.emprestimos.add(emprestimo);
+
         emprestimos = persistenciaService.lerEmprestimosPersistidos();
+        getEmprestimos().add(emprestimo);
         persistenciaService.persistirEntidade(this.emprestimos);
         return emprestimo.getCodigo();
     }
@@ -61,7 +64,10 @@ public class EmprestimoService {
 
     public String listarEmprestimo(){
         if (this.emprestimos.isEmpty()){
-            emprestimos = persistenciaService.lerAlunosPersistidos();
+            emprestimos = persistenciaService.lerEmprestimosPersistidos();
+        }
+        if (this.emprestimos.isEmpty() || this.emprestimos == null) {
+            return "Realmente, não há nenhum registro de empréstimos anteriores.";
         }
         return emprestimos.toString().replaceAll("\\[|\\,|\\]", "\n");
     }
