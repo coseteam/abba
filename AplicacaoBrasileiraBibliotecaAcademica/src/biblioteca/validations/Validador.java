@@ -110,7 +110,7 @@ public class Validador {
             checkCPF = false;
         } else {
             //System.out.println("CPF not is blank: " + checkCPF);
-            if (currentCPF.length() < 11 || !currentCPF.matches("[0-9]+")) {
+            if (currentCPF.length() != 11 || !currentCPF.matches("[0-9]+")) {
                 checkCPF = false;
                 //System.out.println("matches and length: " + checkCPF);
             }
