@@ -1,7 +1,6 @@
 package biblioteca.services;
 
 import biblioteca.model.Livro;
-
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -13,13 +12,16 @@ public class LivroService {
     private PersistenciaService persistenciaService = new PersistenciaService();
 
 
+
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
     }
 
+
     public void setLivros(ArrayList<Livro> livros) {
         this.acervoLivros = livros;
     }
+
 
     public void cadastrarLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
@@ -30,6 +32,7 @@ public class LivroService {
         persistenciaService.persistirEntidade(this.acervoLivros);
     }
 
+
     public void removerLivro(String isbn){
         Livro livroR = buscarLivro(isbn);
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este livro?");
@@ -38,6 +41,7 @@ public class LivroService {
             persistenciaService.persistirEntidade(this.acervoLivros);
         }
     }
+
 
     public void apagarListaLivros(){
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir todos os livros do acervo?");
@@ -51,6 +55,7 @@ public class LivroService {
             JOptionPane.showMessageDialog(null, "Operação Finalizada. Não há nenhum livro no acervo.");
         }
     }
+
 
     public void atualizarLivro(String isbn){
         String msg = "Qual informação deseja atualizar? \n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
@@ -81,6 +86,7 @@ public class LivroService {
         }
     }
 
+
     public String listarLivros(){
         if (this.acervoLivros.isEmpty()){
             acervoLivros = persistenciaService.lerLivrosPersistidos();
@@ -88,9 +94,8 @@ public class LivroService {
         if (this.acervoLivros.isEmpty() || this.acervoLivros == null){
             return "Não há livros cadastrados.";
         }
-        return acervoLivros.toString();
+        return acervoLivros.toString().replaceAll("\\[|\\,|\\]", "\n");
     }
-
 
 
     public Livro buscarLivro(String isbn){
@@ -108,41 +113,6 @@ public class LivroService {
         return this.livro;
     }
 
-
-    public int capturarQuantidadeLivros() { // ============== Renba: Service capturar quantidade para devolver a LIVRO
-        int quantidadeLivros = 123;
-
-        if (this.acervoLivros.isEmpty()) {
-            acervoLivros = persistenciaService.lerLivrosPersistidos();
-        }
-
-        quantidadeLivros = acervoLivros.size();
-        System.out.println("Size de Acervo Livros: " + quantidadeLivros);
-        return quantidadeLivros;
-    }
-
-
-    public String listarLivrosRenba(){
-        System.out.println("Entrou em Listar Livros");
-        String retornoDeLista = String.valueOf(0); // Renba
-        if (this.acervoLivros.isEmpty()){
-            this.acervoLivros = persistenciaService.lerLivrosPersistidos();
-            System.out.println("LivroService Linha 85");
-            // Renba
-            if (this.acervoLivros.isEmpty()) {
-                retornoDeLista = "0";
-
-            } else {
-                retornoDeLista = this.acervoLivros.toString();
-            }
-        } else {
-            retornoDeLista = this.acervoLivros.toString();
-        }
-
-        //return acervoLivros.toString(); // Renba: Exclui a implantação da Joyce
-        System.out.println("Retorno da Lista" + retornoDeLista);
-        return retornoDeLista;
-    }
 
 
 }

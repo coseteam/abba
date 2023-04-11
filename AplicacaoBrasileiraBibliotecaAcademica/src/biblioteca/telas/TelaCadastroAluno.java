@@ -1,5 +1,6 @@
 package biblioteca.telas;
 
+import biblioteca.validations.Validador;
 import javax.swing.*;
 
 public class TelaCadastroAluno {
@@ -9,9 +10,21 @@ public class TelaCadastroAluno {
 
 
     public TelaCadastroAluno() {
-        this.nome = JOptionPane.showInputDialog("Digite o nome do aluno:");
-        this.cpf = JOptionPane.showInputDialog("Digite o CPF do aluno:");
-        this.matricula = JOptionPane.showInputDialog("Digite a matrícula do aluno:");
+        Validador validador = new Validador();
+
+        do {
+            this.nome = JOptionPane.showInputDialog("Informe o nome completo do aluno");
+        } while(!validador.validarInputString(this.nome));
+
+
+        do {
+            this.cpf = JOptionPane.showInputDialog("Digite o CPF\nApenas Números. 11 dígitos.");
+        } while (!validador.validarInputCPF(this.cpf));
+
+
+        do {
+            this.matricula = JOptionPane.showInputDialog("Matrícula do aluno\nApenas números.");
+        } while (!validador.validarInputStringNumerica(this.matricula));
     }
 
 }

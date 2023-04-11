@@ -150,12 +150,12 @@ public class Livro implements Serializable {
 
     @Override
     public String toString() {
-        return "ISBN = " + isbn + "\n" +
-                "Título = " + titulo + "\n" +
-                "Autor = " + autor + "\n" +
-                "Editora = " + editora + "\n" +
-                "Gênero = " + genero + "\n" +
-                "Total de páginas = " + totalPaginas + "\n" +
+        return  "ISBN: " + isbn + "\n" +
+                "Título: " + titulo + "\n" +
+                "Autoria: " + autor + "\n" +
+                "Editora:  " + editora + "\n" +
+                "Gênero Literário: " + genero + "\n" +
+                "Quantidade de Páginas: = " + totalPaginas + "\n" +
                 "-----------------------------------\n";
     }
 

@@ -32,14 +32,14 @@ public class Validador {
         boolean checkString = true;
 
         if (inputString.getClass() == currentInput.getClass()) {
-            if(currentInput == "" || ((String) currentInput).isBlank()) {
+            if(currentInput == "" || ((String) currentInput).isBlank() || ((String) currentInput).length() < 3) {
                 checkString = false;
             }
         } else {
             checkString = false;
         }
 
-        System.out.println(checkString);
+        //System.out.println("Check String >>> " + checkString);
         return checkString;
     }
 
@@ -47,11 +47,8 @@ public class Validador {
     public static boolean validarInputInteger(Object currentInput) { // VALIDAR INTEIROS
         boolean checkInteger = true;
 
-        /*System.out.println(currentInput.getClass());
-        System.out.println(inputInteger.getClass());*/
-
         if (inputInteger.getClass() == currentInput.getClass()) {
-            if (((Integer) currentInput).equals(0)) {
+            if (((Integer) currentInput).equals(0) || currentInput == null) {
                 checkInteger = false;
             }
         } else {
@@ -63,26 +60,36 @@ public class Validador {
     }
 
 
-    public static boolean validarInputISBN(String inputISBN) { // VALIDAR ISBN
+    public static boolean validarInputStringNumerica(String currentInput) {
+        boolean checkStrNum = true;
+
+        if (currentInput.trim().isBlank() || !currentInput.matches("[0-9]+") ) {
+            checkStrNum = false;
+        }
+
+        return checkStrNum;
+    }
+
+    public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
         boolean checkISBN = true;
 
-        if (inputISBN.isBlank()) {
+        if (currentISBN.isBlank()) {
             checkISBN = false;
         } else {
-            System.out.println("Não is blank: " + checkISBN);
-            if (inputISBN.length() < 7) {
-                inputISBN.length();
+            //System.out.println("Não is blank: " + checkISBN);
+            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
+                currentISBN.length();
                 checkISBN = false;
-                System.out.println("matches and length: " + checkISBN);
+                //System.out.println("matches and length: " + checkISBN);
             } else {
 
                 if (allISBN.isEmpty()) {
                     checkISBN = true;
                 } else {
                     for (String isbn : allISBN) {
-                        if (isbn.equals(inputISBN)) {
+                        if (isbn.equals(currentISBN)) {
                             checkISBN = false;
-                            System.out.println("Dentro do FOR: " + checkISBN);
+                            //System.out.println("Dentro do FOR: " + checkISBN);
                         }
                     }
                 }
@@ -91,15 +98,49 @@ public class Validador {
 
         }
 
-        System.out.println("valida ISBN >>> " + checkISBN);
+        //System.out.println("valida ISBN >>> " + checkISBN);
         return checkISBN;
     }
 
 
+    public static boolean validarInputCPF(String currentCPF) {
+        boolean checkCPF = true;
+
+        if (currentCPF.isBlank()) {
+            checkCPF = false;
+        } else {
+            //System.out.println("CPF not is blank: " + checkCPF);
+            if (currentCPF.length() < 11 || !currentCPF.matches("[0-9]+")) {
+                checkCPF = false;
+                //System.out.println("matches and length: " + checkCPF);
+            }
+
+        }
+        return checkCPF;
+    }
 
 
+// MÉTODOS DESCARTADOS MOMENTANEAMENTE
+// ============================================================
 
-
+//    public static boolean validarInputTitulo(String inputTitulo) { // VALIDAR TÍTULO
+//        boolean checkTitulo = true;
+//
+//        if (inputTitulo.isBlank()) {
+//            checkTitulo = false;
+//        } else {
+//            System.out.println("Não is blank: " + checkTitulo);
+//            if (inputTitulo.length() < 3) {
+//                inputTitulo.length();
+//                checkTitulo = false;
+//                System.out.println("length: " + checkTitulo);
+//            }
+//
+//        }
+//
+//        System.out.println("valida ISBN >>> " + checkTitulo);
+//        return checkTitulo;
+//    }
 
 
 }
