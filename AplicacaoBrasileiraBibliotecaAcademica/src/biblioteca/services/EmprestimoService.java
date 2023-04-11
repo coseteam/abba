@@ -53,7 +53,7 @@ public class EmprestimoService {
         if (this.emprestimos.isEmpty()){
             emprestimos = persistenciaService.lerAlunosPersistidos();
         }
-        return emprestimos.toString();
+        return emprestimos.toString().replaceAll("\\[|\\,|\\]", "\n");
     }
 
 }
