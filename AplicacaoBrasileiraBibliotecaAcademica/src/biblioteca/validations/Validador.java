@@ -1,6 +1,6 @@
 package biblioteca.validations;
 
-import biblioteca.services.BibliotecaService;
+import biblioteca.services.LivroService;
 import biblioteca.services.PersistenciaService;
 
 import java.util.ArrayList;
@@ -20,7 +20,8 @@ public class Validador {
     public Validador() {
 
         inputString = "Strings";
-        allISBN = (ArrayList<String>) (BibliotecaService.todosISBNCadastrados);
+        LivroService livroService = new LivroService();
+        allISBN = livroService.getTodosISBN();
         if (allISBN == null || allISBN.isEmpty()) {
             allISBN.add("010101");
         }
@@ -90,6 +91,7 @@ public class Validador {
                         if (isbn.equals(currentISBN)) {
                             checkISBN = false;
                             //System.out.println("Dentro do FOR: " + checkISBN);
+                            //System.out.println("Esse ISBN já existe");
                         }
                     }
                 }

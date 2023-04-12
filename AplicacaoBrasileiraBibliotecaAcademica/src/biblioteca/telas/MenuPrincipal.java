@@ -1,12 +1,10 @@
 package biblioteca.telas;
 
 
-import biblioteca.services.BibliotecaService;
-
 import javax.swing.*;
 
 public class MenuPrincipal {
-    BibliotecaService todaBilioteca = new BibliotecaService();
+    //BibliotecaService todaBilioteca = new BibliotecaService(); Renba > Att HERE 12/04
 
 
     private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
