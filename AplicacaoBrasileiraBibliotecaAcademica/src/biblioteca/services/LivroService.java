@@ -1,6 +1,7 @@
 package biblioteca.services;
 
 import biblioteca.model.Livro;
+
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class LivroService {
     private Livro livro;
     private ArrayList<Livro> acervoLivros = new ArrayList<>();
+    public ArrayList<String> todosISBN = new ArrayList<>(); // Renba 12/04
     private PersistenciaService persistenciaService = new PersistenciaService();
 
 
@@ -17,19 +19,25 @@ public class LivroService {
         return acervoLivros;
     }
 
-
     public void setLivros(ArrayList<Livro> livros) {
         this.acervoLivros = livros;
+    }
+
+    public ArrayList<String> getTodosISBN() {
+        return todosISBN;
     }
 
 
     public void cadastrarLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
-        BibliotecaService.todosISBNCadastrados.add(isbn); // Renba
-        System.out.println(BibliotecaService.todosISBNCadastrados);
         acervoLivros = persistenciaService.lerLivrosPersistidos();
+        todosISBN = persistenciaService.lerISBNPersisitidos();
         getLivros().add(livro);
+        getTodosISBN().add(isbn);
         persistenciaService.persistirEntidade(this.acervoLivros);
+        persistenciaService.persistirEntidade(this.todosISBN);
+
+        System.out.println(this.todosISBN);
     }
 
 

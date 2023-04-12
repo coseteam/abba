@@ -23,7 +23,7 @@ public class TelaAdicionarLivro{
         do {
             this.isbn = JOptionPane.showInputDialog(("Digite o ISBN da Obra\nApenas números. Mínimo 6 dígitos. ")); //Renba
 
-        } while (!validador.validarInputISBN(this.isbn));
+        } while (!validador.validarNovoISBN(this.isbn));
 
 
         do {

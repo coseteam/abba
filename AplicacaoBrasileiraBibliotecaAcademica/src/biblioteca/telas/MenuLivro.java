@@ -1,6 +1,7 @@
 package biblioteca.telas;
 
 import biblioteca.services.LivroService;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
@@ -27,7 +28,11 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 2 -> {
-                String isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
+                Validador validador = new Validador();
+                String isbn;
+                do {
+                    isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
+                } while (!validador.validarInputISBN(isbn));
                 livroService.removerLivro(isbn);
                 menuLivro();
             }

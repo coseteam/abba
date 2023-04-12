@@ -25,6 +25,8 @@ public class PersistenciaService {
                 arquivoStream = new FileOutputStream("alunosPersistidos.dat");
             } else if (entidades.get(0) instanceof Emprestimo) {
                 arquivoStream = new FileOutputStream("emprestimosPersistidos.dat");
+            } else if (entidades.get(0) instanceof String) {
+                arquivoStream = new FileOutputStream("isbnPersistidos.dat");
             }
 
             objetoStream = new ObjectOutputStream(arquivoStream);
@@ -121,6 +123,7 @@ public class PersistenciaService {
             fis = new FileInputStream("emprestimosPersistidos.dat");
         } catch (FileNotFoundException e) {
             File file = new File("emprestimosPersistidos.dat");
+
             try {
                 if (file.createNewFile()) {
                     fis = new FileInputStream("emprestimosPersistidos.dat");
@@ -130,8 +133,6 @@ public class PersistenciaService {
                 ioException.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Não há registros de Empréstimos.");
             }
-
-
 
         }
         return lerEntidadePersistida(fis);
@@ -145,8 +146,20 @@ public class PersistenciaService {
         try {
             fis = new FileInputStream("isbnPersistidos.dat");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Nenhum ISBN encontrado.");
+            File file = new File("isbnPersistidos.dat");
+
+            try {
+                if (file.createNewFile()) {
+                    fis = new FileInputStream("isbnPersistidos.dat");
+
+                }
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Nenhum ISBN encontrado.");
+            }
+
         }
+
         return lerEntidadePersistida(fis);
     }
 

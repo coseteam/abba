@@ -1,6 +1,6 @@
 package biblioteca.validations;
 
-import biblioteca.services.BibliotecaService;
+import biblioteca.services.LivroService;
 import biblioteca.services.PersistenciaService;
 
 import java.util.ArrayList;
@@ -20,7 +20,8 @@ public class Validador {
     public Validador() {
 
         inputString = "Strings";
-        allISBN = (ArrayList<String>) (BibliotecaService.todosISBNCadastrados);
+        LivroService livroService = new LivroService();
+        allISBN = livroService.getTodosISBN();
         if (allISBN == null || allISBN.isEmpty()) {
             allISBN.add("010101");
         }
@@ -70,38 +71,6 @@ public class Validador {
         return checkStrNum;
     }
 
-    public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
-        boolean checkISBN = true;
-
-        if (currentISBN.isBlank()) {
-            checkISBN = false;
-        } else {
-            //System.out.println("Não is blank: " + checkISBN);
-            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
-                currentISBN.length();
-                checkISBN = false;
-                //System.out.println("matches and length: " + checkISBN);
-            } else {
-
-                if (allISBN.isEmpty()) {
-                    checkISBN = true;
-                } else {
-                    for (String isbn : allISBN) {
-                        if (isbn.equals(currentISBN)) {
-                            checkISBN = false;
-                            //System.out.println("Dentro do FOR: " + checkISBN);
-                        }
-                    }
-                }
-
-            }
-
-        }
-
-        //System.out.println("valida ISBN >>> " + checkISBN);
-        return checkISBN;
-    }
-
 
     public static boolean validarInputCPF(String currentCPF) {
         boolean checkCPF = true;
@@ -119,6 +88,61 @@ public class Validador {
         return checkCPF;
     }
 
+
+    public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
+        boolean checkISBN = true;
+        System.out.println("Passando por validação de input ISBN");
+
+        if (currentISBN.isBlank()) {
+            checkISBN = false;
+        } else {
+            //System.out.println("Não is blank: " + checkISBN);
+            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
+                currentISBN.length();
+                checkISBN = false;
+                //System.out.println("matches and length: " + checkISBN);
+            }
+
+        }
+
+        //System.out.println("valida ISBN >>> " + checkISBN);
+        return checkISBN;
+    }
+
+
+
+    public static boolean validarNovoISBN(String currentISBN) { // VALIDAR ISBN
+        boolean checkNovoISBN = true;
+
+        if (currentISBN.isBlank()) {
+            checkNovoISBN = false;
+        } else {
+            //System.out.println("Não is blank: " + checkISBN);
+            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
+                currentISBN.length();
+                checkNovoISBN = false;
+                //System.out.println("matches and length: " + checkISBN);
+            } else {
+
+                if (allISBN.isEmpty()) {
+                    checkNovoISBN = true;
+                } else {
+                    for (String isbn : allISBN) {
+                        if (isbn.equals(currentISBN)) {
+                            checkNovoISBN = false;
+                            //System.out.println("Dentro do FOR: " + checkISBN);
+                            //System.out.println("Esse ISBN já existe");
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        //System.out.println("valida ISBN >>> " + checkISBN);
+        return checkNovoISBN;
+    }
 
 // MÉTODOS DESCARTADOS MOMENTANEAMENTE
 // ============================================================
