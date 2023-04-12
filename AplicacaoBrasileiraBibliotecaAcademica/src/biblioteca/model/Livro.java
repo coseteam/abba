@@ -155,8 +155,8 @@ public class Livro implements Serializable {
                 "Autoria: " + autor + "\n" +
                 "Editora:  " + editora + "\n" +
                 "Gênero Literário: " + genero + "\n" +
-                "Quantidade de Páginas: = " + totalPaginas + "\n" +
-                "-----------------------------------\n";
+                "Quantidade de Páginas: " + totalPaginas + "\n" +
+                "______________________________";
     }
 
 }

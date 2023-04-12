@@ -42,7 +42,8 @@ public class Aluno extends Usuario implements Serializable {
     public String toString() {
         return  "Nome: " + this.getNome() + "\n" +
                 "CPF: " + this.getCpf() + "\n" +
-                "Matrícula: " + matricula + '\n';
+                "Matrícula: " + matricula + "\n" +
+                "_____________________________";
     }
 }
 

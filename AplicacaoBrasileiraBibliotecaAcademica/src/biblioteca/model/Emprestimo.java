@@ -60,10 +60,12 @@ public class Emprestimo implements Serializable {
 
     @Override
     public String toString() {
-        return  "Código do Emprestimo = " + codigo + "\n" +
-                "Data do Empréstimo = " + dataInicioEmprestimo + '\n' +
-                "Data da Devolução = " + dataDevolucaoEmprestimo + '\'' +
-                "Livro = " + livro + '\n' +
-                "Aluno = " + aluno;
+        return  "\n" +
+                "::: Empréstimo nº " + codigo + " :::\n" +
+                "Data de Retirada: " + dataInicioEmprestimo + "  |  " +
+                "Data da Devolução: " + dataDevolucaoEmprestimo + "\n" +
+                "::: Livro ::: " + livro +
+                "::: Aluno ::: " + aluno +
+                "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨";
     }
 }

@@ -69,7 +69,7 @@ public class EmprestimoService {
         if (this.emprestimos.isEmpty() || this.emprestimos == null) {
             return "Realmente, não há nenhum registro de empréstimos anteriores.";
         }
-        return emprestimos.toString().replaceAll("\\[|\\,|\\]", "\n");
+        return emprestimos.toString().replaceAll("\\[|\\,|\\]|\\_", "");
     }
 
 }
