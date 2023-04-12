@@ -91,6 +91,7 @@ public class Validador {
 
     public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
         boolean checkISBN = true;
+        System.out.println("Passando por validação de input ISBN");
 
         if (currentISBN.isBlank()) {
             checkISBN = false;
