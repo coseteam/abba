@@ -6,15 +6,14 @@ import biblioteca.validations.Validador;
 import javax.swing.*;
 
 public class MenuPrincipal {
-    //BibliotecaService todaBilioteca = new BibliotecaService(); Renba > Att HERE 12/04
 
 
     private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
-                " 3 - Empréstimos\n";
+                " 3 - Empréstimos\n\n 0 - Encerrar\n";
 
     public void menuPrincipal(){
         Validador validador = new Validador();
-        int input;
+        Integer input;
 
         do {
             try {
@@ -22,16 +21,11 @@ public class MenuPrincipal {
             } catch (Exception e) {
                 input = 9;
             }
-        } while (!validador.validarInputInteger(input));
+        } while (!validador.validarInputMenu(input));
 
 
-        if (input == 0) {
-            JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
-            System.exit(0);
-        }
 
         int caminho = input;
-
         switch (caminho) {
             case 1 -> { //Menu livros
                 MenuLivro menuLivro = new MenuLivro();
@@ -45,6 +39,11 @@ public class MenuPrincipal {
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
             }
+            case 0 -> {
+                JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
+                System.exit(0);
+                break;
+            }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção não reconhecida.");
                 menuPrincipal();
@@ -52,11 +51,5 @@ public class MenuPrincipal {
         }
     }
 
-    public static void validaMenu(String input) {
-        if (input == null) {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.menuPrincipal();
-        }
 
-    }
 }

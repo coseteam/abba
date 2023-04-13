@@ -6,7 +6,6 @@ import biblioteca.validations.Validador;
 import javax.swing.*;
 
 
-
 public class MenuLivro extends MenuPrincipal {
 
     private LivroService livroService = new LivroService();
@@ -17,10 +16,20 @@ public class MenuLivro extends MenuPrincipal {
 
 
     public void menuLivro() {
-        String input = JOptionPane.showInputDialog(msg);
-        validaMenu(input);
+        Validador validador = new Validador();
+        Integer input;
 
-        int caminho = Integer.parseInt(input);
+        do {
+            try {
+                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                input = 9;
+            }
+
+        } while (!validador.validarInputMenu(input));
+
+
+        int caminho = input;
         switch (caminho) {
             case 1 -> {
                 TelaAdicionarLivro ad = new TelaAdicionarLivro(); // Renba Tela Adicionar Livro
@@ -28,7 +37,7 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 2 -> {
-                Validador validador = new Validador();
+                //Validador validador = new Validador();
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
@@ -37,7 +46,7 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 3 -> {
-                Validador validador = new Validador();
+                //Validador validador = new Validador();
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro:");

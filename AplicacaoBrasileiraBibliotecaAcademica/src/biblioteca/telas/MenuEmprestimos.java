@@ -5,9 +5,9 @@ import biblioteca.model.Livro;
 import biblioteca.services.AlunoService;
 import biblioteca.services.EmprestimoService;
 import biblioteca.services.LivroService;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
-
 
 
 public class MenuEmprestimos extends MenuPrincipal {
@@ -16,15 +16,26 @@ public class MenuEmprestimos extends MenuPrincipal {
     private LivroService livroService = new LivroService();
     private AlunoService alunoService = new AlunoService();
 
+
+
     private String msg = "Menu Empréstimos\n Escolha uma opção: \n 1 - Registrar Novo Empréstimo\n 2 - Registrar Devolução\n" +
-            " 3 - Ocorrência de Empréstimo\n 4 - Ver todos os Empréstimos\n 0 - Voltar ao menu principal";
+            " 3 - Ver um Empréstimo\n 4 - Ver todos os Empréstimos\n 0 - Voltar ao menu principal";
 
 
     public void menuEmprestimos() {
-        String input = JOptionPane.showInputDialog(msg);
-        validaMenu(input);
+        Validador validador = new Validador();
+        Integer input;
 
-        int caminho = Integer.parseInt(input);
+        do {
+            try {
+                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                input = 9;
+            }
+        } while (!validador.validarInputMenu(input));
+
+
+        int caminho = input;
         switch (caminho) {
             case 1 -> {
                 TelaEmprestimoLivro el = new TelaEmprestimoLivro();
@@ -45,7 +56,7 @@ public class MenuEmprestimos extends MenuPrincipal {
                 menuEmprestimos();
             }
             case 3 -> {
-                JOptionPane.showMessageDialog(null, emprestimoService.listarEmprestimo());
+                JOptionPane.showMessageDialog(null, emprestimoService.buscarEmprestimo(5)); // Renba > ATT: Parâmetro (int 5) para testes
                 menuEmprestimos();
             }
             case 4 -> { // Renba >> ATT Here 12/04

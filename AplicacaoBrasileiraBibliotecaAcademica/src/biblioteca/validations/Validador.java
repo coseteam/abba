@@ -50,6 +50,7 @@ public class Validador {
         boolean checkInteger = true;
 
         if (inputInteger.getClass() == currentInput.getClass()) {
+            System.out.println("INTEGER MESMA CLASSE");
             if (((Integer) currentInput).equals(0) || currentInput == null) {
                 checkInteger = false;
             }
@@ -168,6 +169,23 @@ public class Validador {
 
 
         return checkData;
+    }
+
+    public static boolean validarInputMenu(Integer currentInput) {
+        boolean checkOptionMenu = true;
+
+        if (inputInteger.getClass() == currentInput.getClass()) {
+            System.out.println("INTEGER MESMA CLASSE");
+            if ( currentInput == null) {
+                checkOptionMenu = false;
+            }
+        } else {
+            checkOptionMenu = false;
+        }
+
+        System.out.println("VALIDADOR: check int " + checkOptionMenu);
+        return checkOptionMenu;
+
     }
 
 
