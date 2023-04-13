@@ -125,7 +125,7 @@ public class Validador {
                 System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
             } else {
 
-                System.out.println("Lista ALLISBN: " + copiaISBN);
+                System.out.println("Lista ALLISBN: " + allISBN);
                 if (allISBN.isEmpty()) {
                     checkNovoISBN = true;
                 } else {
@@ -145,6 +145,25 @@ public class Validador {
         System.out.println("valida Novo ISBN >>> " + checkNovoISBN);
         return checkNovoISBN;
     }
+
+
+    public static boolean validarNovoCPF(String currentCPF) {
+        boolean checkCPF = true;
+
+        if (currentCPF.isBlank()) {
+            checkCPF = false;
+        } else {
+            //System.out.println("CPF not is blank: " + checkCPF);
+            if (currentCPF.length() != 11 || !currentCPF.matches("[0-9]+")) {
+                checkCPF = false;
+                //System.out.println("matches and length: " + checkCPF);
+            }
+
+        }
+        return checkCPF;
+    }
+
+
 
 // MÉTODOS DESCARTADOS MOMENTANEAMENTE
 // ============================================================
