@@ -111,7 +111,6 @@ public class Validador {
     }
 
 
-
     public static boolean validarNovoISBN(String currentISBN) { // VALIDAR ISBN
         boolean checkNovoISBN = true;
 
@@ -163,6 +162,13 @@ public class Validador {
         return checkCPF;
     }
 
+
+    public static boolean validarInputDatas(String currentData) {
+        boolean checkData = true;
+
+
+        return checkData;
+    }
 
 
 // MÉTODOS DESCARTADOS MOMENTANEAMENTE

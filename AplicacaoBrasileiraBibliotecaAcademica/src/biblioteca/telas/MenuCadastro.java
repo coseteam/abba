@@ -1,6 +1,7 @@
 package biblioteca.telas;
 
 import biblioteca.services.AlunoService;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
@@ -25,12 +26,21 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 2 -> {
-                String cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
+                Validador validador = new Validador();
+                String cpf;
+                do {
+                    cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
+                } while (!validador.validarInputCPF(cpf));
                 alunoService.removerAluno(cpf);
                 menuCadastro();
             }
             case 3 -> {
-                alunoService.atualizarAluno(JOptionPane.showInputDialog("Digite o CPF do aluno"));
+                Validador validador = new Validador();
+                String cpf;
+                do {
+                    cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
+                } while (!validador.validarInputCPF(cpf));
+                alunoService.atualizarAluno(cpf);
                 menuCadastro();
             }
             case 4 -> {
@@ -41,8 +51,9 @@ public class MenuCadastro extends MenuPrincipal {
                 alunoService.apagarListaAlunos();
                 menuCadastro();
             }
-            case 0 -> menuPrincipal();
-
+            case 0 -> {
+                menuPrincipal();
+            }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção Inválida");
                 menuCadastro();

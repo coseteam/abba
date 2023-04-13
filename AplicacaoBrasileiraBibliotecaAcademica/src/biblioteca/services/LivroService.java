@@ -1,6 +1,7 @@
 package biblioteca.services;
 
 import biblioteca.model.Livro;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
 import java.io.File;
@@ -69,7 +70,18 @@ public class LivroService {
         String msg = "Qual informação deseja atualizar? \n 1 - Título\n 2 - Autor\n 3 - Editora\n 4 - Gênero\n " +
                 "5 - Quantidade de Páginas";
         Livro livro = buscarLivro(isbn);
-        int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+
+        Validador validador = new Validador();
+        int caminho;
+
+        do {
+            try {
+                caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                caminho = 9;
+            }
+        } while (!validador.validarInputInteger(caminho));
+
 
         if (caminho == 1) {
             livro.setTitulo(JOptionPane.showInputDialog("Digite o novo título: "));
@@ -91,6 +103,8 @@ public class LivroService {
             livro.setTotalPaginas(Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade de páginas:")));
             JOptionPane.showMessageDialog(null,"Total de páginas atualizado!");
             persistenciaService.persistirEntidade(this.acervoLivros);
+        } else {
+            JOptionPane.showMessageDialog(null, "Opção não reconhecida.");
         }
     }
 
