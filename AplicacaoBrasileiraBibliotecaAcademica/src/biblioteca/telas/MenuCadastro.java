@@ -14,10 +14,21 @@ public class MenuCadastro extends MenuPrincipal {
 
 
     public void menuCadastro() {
-        String input = JOptionPane.showInputDialog(msg);
-        validaMenu(input);
+        Validador validador = new Validador();
+        Integer input;
 
-        int caminho = Integer.parseInt(input);
+        do {
+            try {
+                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                input = 9;
+            }
+
+
+        } while (!validador.validarInputMenu(input));
+
+
+        int caminho = input;
 
         switch (caminho) {
             case 1 -> {
@@ -26,7 +37,7 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 2 -> {
-                Validador validador = new Validador();
+                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
@@ -35,7 +46,7 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 3 -> {
-                Validador validador = new Validador();
+                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
