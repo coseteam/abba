@@ -10,25 +10,25 @@ public class MenuPrincipal {
 
 
     private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
-                " 3 - Empréstimos\n";
+                " 3 - Empréstimos\n\n 9 - Encerrar\n";
 
     public void menuPrincipal(){
         Validador validador = new Validador();
-        int input;
+        Integer input;
 
         do {
             try {
                 input = Integer.parseInt(JOptionPane.showInputDialog(msg));
             } catch (Exception e) {
-                input = 9;
+                input = 0;
             }
         } while (!validador.validarInputInteger(input));
 
 
-        if (input == 0) {
-            JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
-            System.exit(0);
-        }
+//        if (input == 0) {
+//            JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
+//            System.exit(0);
+//        }
 
         int caminho = input;
 
@@ -44,6 +44,11 @@ public class MenuPrincipal {
             case 3 -> { // Menu emprestimos
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
+            }
+            case 9 -> {
+                JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
+                System.exit(0);
+                break;
             }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção não reconhecida.");

@@ -54,7 +54,7 @@ public class TelaEmprestimoLivro{
 			System.out.println(dataRetiradaDMA[2]);
 		}
 
-		//
+		// =============
 
 		this.data = JOptionPane.showInputDialog("Digite a data de hoje ", "DD/MM/YYYY");
 		this.dataDevolucao = JOptionPane.showInputDialog("Digite a data da devolução ", "DD/MM/YYYY");
