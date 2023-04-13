@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 
 public class LivroService {
+    private PersistenciaService persistenciaService = new PersistenciaService();
     private Livro livro;
     private ArrayList<Livro> acervoLivros = new ArrayList<>();
-    public ArrayList<String> todosISBN = new ArrayList<>(); // Renba 12/04
-    private PersistenciaService persistenciaService = new PersistenciaService();
-
+    public ArrayList<String> todosISBN = persistenciaService.lerISBNPersisitidos();
 
 
     public ArrayList<Livro> getLivros() {
@@ -24,6 +23,7 @@ public class LivroService {
     }
 
     public ArrayList<String> getTodosISBN() {
+        System.out.println("GET TODOS ISBN LIVROSERVICE " + todosISBN);
         return todosISBN;
     }
 
