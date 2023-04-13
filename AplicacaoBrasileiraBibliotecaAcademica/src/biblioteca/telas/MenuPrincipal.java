@@ -1,6 +1,8 @@
 package biblioteca.telas;
 
 
+import biblioteca.validations.Validador;
+
 import javax.swing.*;
 
 public class MenuPrincipal {
@@ -11,14 +13,24 @@ public class MenuPrincipal {
                 " 3 - Empréstimos\n";
 
     public void menuPrincipal(){
+        Validador validador = new Validador();
+        int input;
 
-        String input = JOptionPane.showInputDialog(msg);
-        if (input == null) {
+        do {
+            try {
+                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                input = 9;
+            }
+        } while (!validador.validarInputInteger(input));
+
+
+        if (input == 0) {
             JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
             System.exit(0);
         }
 
-        int caminho = Integer.parseInt(input);
+        int caminho = input;
 
         switch (caminho) {
             case 1 -> { //Menu livros
@@ -32,6 +44,10 @@ public class MenuPrincipal {
             case 3 -> { // Menu emprestimos
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
+            }
+            default -> {
+                JOptionPane.showMessageDialog(null, "Opção não reconhecida.");
+                menuPrincipal();
             }
         }
     }

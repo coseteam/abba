@@ -37,7 +37,12 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 3 -> {
-                livroService.atualizarLivro(JOptionPane.showInputDialog("Digite o ISBN do Livro:"));
+                Validador validador = new Validador();
+                String isbn;
+                do {
+                    isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro:");
+                } while (!validador.validarInputISBN(isbn));
+                livroService.atualizarLivro(isbn);
                 menuLivro();
             }
             case 4 -> {
@@ -48,7 +53,9 @@ public class MenuLivro extends MenuPrincipal {
                 livroService.apagarListaLivros();
                 menuLivro();
             }
-            case 0 -> menuPrincipal();
+            case 0 -> {
+                menuPrincipal();
+            }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção Inválida");
                 menuLivro();

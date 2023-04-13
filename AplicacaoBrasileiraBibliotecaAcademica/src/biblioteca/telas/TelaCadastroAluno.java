@@ -19,7 +19,7 @@ public class TelaCadastroAluno {
 
         do {
             this.cpf = JOptionPane.showInputDialog("Digite o CPF\nApenas Números. 11 dígitos.");
-        } while (!validador.validarInputCPF(this.cpf));
+        } while (!validador.validarNovoCPF(this.cpf));
 
 
         do {
