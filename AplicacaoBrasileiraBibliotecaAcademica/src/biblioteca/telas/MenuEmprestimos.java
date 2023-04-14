@@ -1,6 +1,7 @@
 package biblioteca.telas;
 
 import biblioteca.model.Aluno;
+import biblioteca.model.Emprestimo;
 import biblioteca.model.Livro;
 import biblioteca.services.AlunoService;
 import biblioteca.services.EmprestimoService;
@@ -56,7 +57,13 @@ public class MenuEmprestimos extends MenuPrincipal {
                 menuEmprestimos();
             }
             case 3 -> {
-                JOptionPane.showMessageDialog(null, emprestimoService.buscarEmprestimo(5)); // Renba > ATT: Parâmetro (int 5) para testes
+                int codEmp;
+                do {
+                    codEmp = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o código do Empréstimo "));
+                } while (!validador.validarInputInteger(codEmp));
+                Emprestimo emprestimoLocalizado = emprestimoService.buscarEmprestimo(codEmp); // Renba > ATT: Parâmetro (int 5) para testes
+                String strEmprestimoLocalizado = emprestimoLocalizado.toString().replaceAll("\\[|\\,|\\]|\\_", "");
+                JOptionPane.showMessageDialog(null, strEmprestimoLocalizado);
                 menuEmprestimos();
             }
             case 4 -> { // Renba >> ATT Here 12/04
