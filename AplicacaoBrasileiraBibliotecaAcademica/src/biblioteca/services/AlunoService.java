@@ -1,6 +1,8 @@
 package biblioteca.services;
 
 import biblioteca.model.Aluno;
+import biblioteca.validations.Validador;
+
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -55,18 +57,33 @@ public class AlunoService {
 
 
     public void atualizarAluno(String cpf){
+        Validador validador = new Validador();
         String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matrícula";
         Aluno aluno = buscarAluno(cpf);
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
-            aluno.setNome(JOptionPane.showInputDialog("Digite o nome correto: "));
+            String novoNome = "";
+            do {
+                novoNome = JOptionPane.showInputDialog("Digite o nome correto: ");
+            } while (!validador.validarInputString(novoNome));
+            aluno.setNome(novoNome);
             JOptionPane.showMessageDialog(null, "Nome atualizado!");
+
         }else if (caminho == 2) {
-            aluno.setCpf(JOptionPane.showInputDialog("Digite o CPF correto: "));
+            String novoCPF = "";
+            do {
+                novoCPF = JOptionPane.showInputDialog("Digite o CPF correto: ");
+            } while (!validador.validarInputCPF(novoCPF));
+            aluno.setCpf(novoCPF);
             JOptionPane.showMessageDialog(null,"CPF atualizado!");
+
         }else if (caminho == 3) {
-            aluno.setMatricula(JOptionPane.showInputDialog("Digite a matrícula correta: "));
+            String novaMatricula = "";
+            do {
+                novaMatricula = JOptionPane.showInputDialog("Digite a matrícula correta: ");
+            } while (validador.validarInputStringNumerica(novaMatricula));
+            aluno.setMatricula(novaMatricula);
             JOptionPane.showMessageDialog(null,"A matrícula foi atualizada!");
         }
     }
