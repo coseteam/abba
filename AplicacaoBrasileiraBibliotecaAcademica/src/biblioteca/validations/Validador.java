@@ -3,6 +3,7 @@ package biblioteca.validations;
 import biblioteca.services.LivroService;
 import biblioteca.services.PersistenciaService;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Validador {
@@ -99,7 +100,7 @@ public class Validador {
             checkISBN = false;
         } else {
             //System.out.println("Não is blank: " + checkISBN);
-            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
+            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
                 currentISBN.length();
                 checkISBN = false;
                 //System.out.println("matches and length: " + checkISBN);
@@ -134,6 +135,7 @@ public class Validador {
                             checkNovoISBN = false;
                             System.out.println("Dentro do FOR: " + checkNovoISBN);
                             System.out.println("Esse ISBN já existe");
+                            JOptionPane.showMessageDialog(null, "Esse ISBN já Existe.");
                         }
                     }
                 }
