@@ -65,7 +65,7 @@ public class TelaEmprestimoLivro{
 
 		do {
 			this.aluno = JOptionPane.showInputDialog("CPF do aluno:");
-		} while (validador.validarInputCPF(this.aluno));
+		} while (!validador.validarInputCPF(this.aluno));
 
 	}
 

@@ -48,7 +48,9 @@ public class EmprestimoService {
     }
 
     public Emprestimo buscarEmprestimo(int codigo){
+        System.out.println("EMPRÉSTIMO SERVICE 51: codigo recebido >>> " + codigo);
         for (Emprestimo emp: this.emprestimos){
+            System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
             if (codigo == emp.getCodigo()){
                 JOptionPane.showMessageDialog(null, emp.getAluno());
                 this.emprestimo = emp;
