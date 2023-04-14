@@ -119,7 +119,7 @@ public class Validador {
             checkNovoISBN = false;
         } else {
             System.out.println("Não is blank: " + checkNovoISBN);
-            if (currentISBN.length() < 7 || !currentISBN.matches("[0-9]+")) {
+            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
                 currentISBN.length();
                 checkNovoISBN = false;
                 System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);

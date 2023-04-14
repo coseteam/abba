@@ -28,6 +28,16 @@ public class LivroService {
         return todosISBN;
     }
 
+    public void apagarTodosISBN() {
+        getTodosISBN().clear();
+        todosISBN = new ArrayList<>();
+
+        File file = new File("isbnPersistidos.dat");
+        if (file.delete()) {
+            System.out.println("Arquivo deletado com sucesso");
+        }
+    }
+
 
     public void cadastrarLivro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas){
         Livro livro = new Livro(isbn, titulo, autor, editora, genero, totalPaginas);
@@ -46,8 +56,10 @@ public class LivroService {
         Livro livroR = buscarLivro(isbn);
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este livro?");
         if (confirma == JOptionPane.YES_OPTION){
+            getTodosISBN().remove(isbn);
             getLivros().remove(livroR);
             persistenciaService.persistirEntidade(this.acervoLivros);
+            persistenciaService.persistirEntidade(this.todosISBN);
         }
     }
 
@@ -56,10 +68,13 @@ public class LivroService {
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir todos os livros do acervo?");
         if (confirma == JOptionPane.YES_OPTION){
             getLivros().clear();
+            apagarTodosISBN();
+
             File file = new File("livrosPersistidos.dat");
             if (file.delete()) {
                 System.out.println("Arquivo deletado com sucesso");
             }
+
 
             JOptionPane.showMessageDialog(null, "Operação Finalizada. Não há nenhum livro no acervo.");
         }

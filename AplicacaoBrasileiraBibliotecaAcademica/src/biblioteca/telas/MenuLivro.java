@@ -60,6 +60,7 @@ public class MenuLivro extends MenuPrincipal {
             }
             case 5 -> {
                 livroService.apagarListaLivros();
+                livroService.apagarTodosISBN();
                 menuLivro();
             }
             case 0 -> {
