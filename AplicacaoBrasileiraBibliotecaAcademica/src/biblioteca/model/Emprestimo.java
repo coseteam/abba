@@ -7,14 +7,14 @@ public class Emprestimo implements Serializable {
     private String dataDevolucaoEmprestimo;
     private Livro livro;
     private Aluno aluno;
-    private static int codigo;
+    private int codigo;
 
     public Emprestimo(String dataInicioEmprestimo, String dataDevolucao, Aluno aluno, Livro livro) {
         this.dataInicioEmprestimo = dataInicioEmprestimo;
         this.dataDevolucaoEmprestimo = dataDevolucao;
         this.livro = livro;
         this.aluno = aluno;
-        this.codigo++;
+        this.codigo = (int)(Math.random() * ((1000 - 1)+1)) + 1;;
     }
 
     public String getData() {
