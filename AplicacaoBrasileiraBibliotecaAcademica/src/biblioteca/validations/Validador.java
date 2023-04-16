@@ -1,8 +1,9 @@
 package biblioteca.validations;
 
-import biblioteca.services.BibliotecaService;
+import biblioteca.services.LivroService;
 import biblioteca.services.PersistenciaService;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Validador {
@@ -18,11 +19,13 @@ public class Validador {
 
     // ================== Construtor
     public Validador() {
+        LivroService livroService = new LivroService();
 
         inputString = "Strings";
-        allISBN = (ArrayList<String>) (BibliotecaService.todosISBNCadastrados);
+        allISBN = (ArrayList<String>) livroService.getTodosISBN();
+        copiaISBN = (ArrayList<String>) livroService.todosISBN.clone();
         if (allISBN == null || allISBN.isEmpty()) {
-            allISBN.add("010101");
+            allISBN = livroService.getTodosISBN();
         }
     }
 
@@ -32,14 +35,14 @@ public class Validador {
         boolean checkString = true;
 
         if (inputString.getClass() == currentInput.getClass()) {
-            if(currentInput == "" || ((String) currentInput).isBlank()) {
+            if(currentInput == "" || ((String) currentInput).isBlank() || ((String) currentInput).length() < 3) {
                 checkString = false;
             }
         } else {
             checkString = false;
         }
 
-        System.out.println(checkString);
+        //System.out.println("Check String >>> " + checkString);
         return checkString;
     }
 
@@ -47,42 +50,92 @@ public class Validador {
     public static boolean validarInputInteger(Object currentInput) { // VALIDAR INTEIROS
         boolean checkInteger = true;
 
-        /*System.out.println(currentInput.getClass());
-        System.out.println(inputInteger.getClass());*/
-
         if (inputInteger.getClass() == currentInput.getClass()) {
-            if (((Integer) currentInput).equals(0)) {
+            System.out.println("INTEGER MESMA CLASSE");
+            if (((Integer) currentInput).equals(0) || currentInput == null) {
                 checkInteger = false;
             }
         } else {
             checkInteger = false;
         }
 
-        System.out.println("check int " + checkInteger);
+        System.out.println("VALIDADOR: check int " + checkInteger);
         return checkInteger;
     }
 
 
-    public static boolean validarInputISBN(String inputISBN) { // VALIDAR ISBN
-        boolean checkISBN = true;
+    public static boolean validarInputStringNumerica(String currentInput) {
+        boolean checkStrNum = true;
 
-        if (inputISBN.isBlank()) {
+        if (currentInput.trim().isBlank() || !currentInput.matches("[0-9]+") ) {
+            checkStrNum = false;
+        }
+
+        return checkStrNum;
+    }
+
+
+    public static boolean validarInputCPF(String currentCPF) {
+        boolean checkCPF = true;
+
+        if (currentCPF.isBlank()) {
+            checkCPF = false;
+        } else {
+            //System.out.println("CPF not is blank: " + checkCPF);
+            if (currentCPF.length() != 11 || !currentCPF.matches("[0-9]+")) {
+                checkCPF = false;
+                //System.out.println("matches and length: " + checkCPF);
+            }
+
+        }
+        return checkCPF;
+    }
+
+
+    public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
+        boolean checkISBN = true;
+        System.out.println("Passando por validação de input ISBN");
+
+        if (currentISBN.isBlank()) {
             checkISBN = false;
         } else {
-            System.out.println("Não is blank: " + checkISBN);
-            if (inputISBN.length() < 7) {
-                inputISBN.length();
+            //System.out.println("Não is blank: " + checkISBN);
+            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
+                currentISBN.length();
                 checkISBN = false;
-                System.out.println("matches and length: " + checkISBN);
+                //System.out.println("matches and length: " + checkISBN);
+            }
+
+        }
+
+        //System.out.println("valida ISBN >>> " + checkISBN);
+        return checkISBN;
+    }
+
+
+    public static boolean validarNovoISBN(String currentISBN) { // VALIDAR ISBN
+        boolean checkNovoISBN = true;
+
+        if (currentISBN.isBlank()) {
+            checkNovoISBN = false;
+        } else {
+            System.out.println("Não is blank: " + checkNovoISBN);
+            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
+                currentISBN.length();
+                checkNovoISBN = false;
+                System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
             } else {
 
+                System.out.println("Lista ALLISBN: " + allISBN);
                 if (allISBN.isEmpty()) {
-                    checkISBN = true;
+                    checkNovoISBN = true;
                 } else {
                     for (String isbn : allISBN) {
-                        if (isbn.equals(inputISBN)) {
-                            checkISBN = false;
-                            System.out.println("Dentro do FOR: " + checkISBN);
+                        if (isbn.equals(currentISBN)) {
+                            checkNovoISBN = false;
+                            System.out.println("Dentro do FOR: " + checkNovoISBN);
+                            System.out.println("Esse ISBN já existe");
+                            JOptionPane.showMessageDialog(null, "Esse ISBN já Existe.");
                         }
                     }
                 }
@@ -91,15 +144,74 @@ public class Validador {
 
         }
 
-        System.out.println("valida ISBN >>> " + checkISBN);
-        return checkISBN;
+        System.out.println("valida Novo ISBN >>> " + checkNovoISBN);
+        return checkNovoISBN;
     }
 
 
+    public static boolean validarNovoCPF(String currentCPF) {
+        boolean checkCPF = true;
+
+        if (currentCPF.isBlank()) {
+            checkCPF = false;
+        } else {
+            //System.out.println("CPF not is blank: " + checkCPF);
+            if (currentCPF.length() != 11 || !currentCPF.matches("[0-9]+")) {
+                checkCPF = false;
+                //System.out.println("matches and length: " + checkCPF);
+            }
+
+        }
+        return checkCPF;
+    }
 
 
+    public static boolean validarInputDatas(String currentData) {
+        boolean checkData = true;
 
 
+        return checkData;
+    }
+
+    public static boolean validarInputMenu(Integer currentInput) {
+        boolean checkOptionMenu = true;
+
+        if (inputInteger.getClass() == currentInput.getClass()) {
+            System.out.println("INTEGER MESMA CLASSE");
+            if ( currentInput == null) {
+                checkOptionMenu = false;
+            }
+        } else {
+            checkOptionMenu = false;
+        }
+
+        System.out.println("VALIDADOR: check int " + checkOptionMenu);
+        return checkOptionMenu;
+
+    }
+
+
+// MÉTODOS DESCARTADOS MOMENTANEAMENTE
+// ============================================================
+
+//    public static boolean validarInputTitulo(String inputTitulo) { // VALIDAR TÍTULO
+//        boolean checkTitulo = true;
+//
+//        if (inputTitulo.isBlank()) {
+//            checkTitulo = false;
+//        } else {
+//            System.out.println("Não is blank: " + checkTitulo);
+//            if (inputTitulo.length() < 3) {
+//                inputTitulo.length();
+//                checkTitulo = false;
+//                System.out.println("length: " + checkTitulo);
+//            }
+//
+//        }
+//
+//        System.out.println("valida ISBN >>> " + checkTitulo);
+//        return checkTitulo;
+//    }
 
 
 }

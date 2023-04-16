@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Livro implements Serializable {
 
-    //    Atributos da classe abstrata livro
+    // Atributos
     private int codigo;
     private String isbn;
     private String titulo;
@@ -19,11 +19,9 @@ public class Livro implements Serializable {
     private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     private boolean emprestado; // se estiver emprestado = true
 
-    public int qtdTotalLivrosPersistidos; // Renba: Atributo criado
 
-
-    //    Construtores
-    public Livro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas) { // Renba
+    // Construtores
+    public Livro(String isbn, String titulo, String autor, String editora, String genero, int totalPaginas) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -31,16 +29,10 @@ public class Livro implements Serializable {
         this.editora = editora;
         this.setTotalPaginas(totalPaginas);
         totalLivros++; //contador geral de livros
-
-        //this.setCodigo(getTotalLivros()); //codigo para busca, adiciona um toda vez que um livro for criado
-
-        // ======== Renba: manipulando o atributo para incrementar
-        this.qtdTotalLivrosPersistidos = capturarTotalLivrosPersistidos();
-
     }
 
 
-//    Getters
+    // GETTERS
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -50,18 +42,9 @@ public class Livro implements Serializable {
         return totalLivros;
     }
 
-
-    // ============== ====================== Renba > Teste para persistir quantidade de Livros
-    public int capturarTotalLivrosPersistidos() {
-        int qtdLivrosPersistidos = 55;
-        //qtdLivrosPersistidos = LivroService.capturarQuantidadeLivros();
-        return qtdLivrosPersistidos;
-    }
-
     public String getISBN() {
         return isbn;
     }
-
 
     public String getTitulo() {
         return titulo;
@@ -88,8 +71,7 @@ public class Livro implements Serializable {
     }
 
 
-    //    SETTERS
-
+    // SETTERS
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -148,15 +130,17 @@ public class Livro implements Serializable {
         }
     }
 
+
+
     @Override
     public String toString() {
-        return "ISBN = " + isbn + "\n" +
-                "Título = " + titulo + "\n" +
-                "Autor = " + autor + "\n" +
-                "Editora = " + editora + "\n" +
-                "Gênero = " + genero + "\n" +
-                "Total de páginas = " + totalPaginas + "\n" +
-                "-----------------------------------\n";
+        return  "ISBN: " + isbn + "\n" +
+                "Título: " + titulo + "\n" +
+                "Autoria: " + autor + "\n" +
+                "Editora:  " + editora + "\n" +
+                "Gênero Literário: " + genero + "\n" +
+                "Quantidade de Páginas: " + totalPaginas + "\n" +
+                "______________________________";
     }
 
 }

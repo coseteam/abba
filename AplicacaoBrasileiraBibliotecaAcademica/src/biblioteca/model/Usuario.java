@@ -3,20 +3,15 @@ package biblioteca.model;
 import java.io.Serializable;
 
 public abstract class Usuario implements Serializable {
-    private static int numOfAlunos; // ForJoyce: (3) Essa contagem realmente deve ficar em Usuario?
-    private int id;
+    private static int numOfAlunos;
     private String nome;
     private String cpf;
-
-
-
 
 
     public Usuario(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
         setNumOfAlunos(getNumOfAlunos() + 1);
-        setId(getNumOfAlunos());
     }
 
     public static int getNumOfAlunos() {
@@ -27,13 +22,6 @@ public abstract class Usuario implements Serializable {
         Usuario.numOfAlunos = numOfAlunos;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -54,9 +42,8 @@ public abstract class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "ID =" + id + "\n" +
-                "Nome ='" + nome + "\n" +
-                "CPF ='" + cpf + "\n";
+        return  "Nome: " + nome + "\n" +
+                "CPF: " + cpf + "\n";
 
     }
 }

@@ -1,27 +1,31 @@
 package biblioteca.telas;
 
 
-import biblioteca.services.BibliotecaService;
+import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
 public class MenuPrincipal {
-    BibliotecaService todaBilioteca = new BibliotecaService();
 
 
     private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
-                " 3 - Empréstimos\n";
+                " 3 - Empréstimos\n\n 0 - Encerrar\n";
 
     public void menuPrincipal(){
+        Validador validador = new Validador();
+        Integer input;
 
-        String input = JOptionPane.showInputDialog(msg);
-        if (input == null) {
-            JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
-            System.exit(0);
-        }
+        do {
+            try {
+                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            } catch (Exception e) {
+                input = 9;
+            }
+        } while (!validador.validarInputMenu(input));
 
-        int caminho = Integer.parseInt(input);
 
+
+        int caminho = input;
         switch (caminho) {
             case 1 -> { //Menu livros
                 MenuLivro menuLivro = new MenuLivro();
@@ -35,14 +39,17 @@ public class MenuPrincipal {
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
             }
+            case 0 -> {
+                JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
+                System.exit(0);
+                break;
+            }
+            default -> {
+                JOptionPane.showMessageDialog(null, "Opção não reconhecida.");
+                menuPrincipal();
+            }
         }
     }
 
-    public static void validaMenu(String input) {
-        if (input == null) {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.menuPrincipal();
-        }
 
-    }
 }

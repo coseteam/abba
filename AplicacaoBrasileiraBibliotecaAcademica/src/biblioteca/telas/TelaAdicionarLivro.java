@@ -1,8 +1,9 @@
 package biblioteca.telas;
 
 import biblioteca.validations.Validador;
-
 import javax.swing.*;
+
+
 
 public class TelaAdicionarLivro{
     public String isbn;
@@ -20,19 +21,40 @@ public class TelaAdicionarLivro{
         Validador validador = new Validador();
 
         do {
-            this.isbn = JOptionPane.showInputDialog(("Informe o ISBN da Obra: ")); //Renba
+            this.isbn = JOptionPane.showInputDialog(("Digite o ISBN da Obra\nApenas números. Mínimo 9 dígitos. ")); //Renba
 
-        } while (!validador.validarInputISBN(this.isbn));
+        } while (!validador.validarNovoISBN(this.isbn));
 
 
-        this.titulo = JOptionPane.showInputDialog("Título:");
-        this.autor = JOptionPane.showInputDialog("Pessoa Autora:");
-        this.editora = JOptionPane.showInputDialog("Editora:");
-        this.genero = JOptionPane.showInputDialog("Gênero Literário:");
-        String s = JOptionPane.showInputDialog("Quantidade de Páginas:");
-        if (s != null) {
-            this.totalPaginas = Integer.parseInt(s);
-        }
+        do {
+            this.titulo = JOptionPane.showInputDialog("Informe o Título da Obra");
+        } while (!validador.validarInputString(this.titulo));
+
+
+        do {
+            this.autor = JOptionPane.showInputDialog("Pessoa Autora:");
+        } while (!validador.validarInputString(this.autor));
+
+
+        do {
+            this.editora = JOptionPane.showInputDialog("Editora:");
+        } while (!validador.validarInputString(this.editora));
+
+
+        do {
+            this.genero = JOptionPane.showInputDialog("Gênero Literário:");
+        } while (!validador.validarInputString(this.genero));
+
+
+        do {
+            try {
+                this.totalPaginas = Integer.parseInt(JOptionPane.showInputDialog("Quantidade de Páginas:"));
+            } catch (Exception err) {
+                System.out.println(err);
+            }
+        } while (!validador.validarInputInteger(this.totalPaginas));
+
+
     }
 
 }
