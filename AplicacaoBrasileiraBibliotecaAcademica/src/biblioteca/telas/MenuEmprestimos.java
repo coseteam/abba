@@ -49,8 +49,16 @@ public class MenuEmprestimos extends MenuPrincipal {
                 int codigoEmprestimo = emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
             }
+//            case 2 -> {
+//                TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
+//                Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
+//                Aluno alunoD = alunoService.buscarAluno(dl.aluno);
+//                emprestimoService.devolver(alunoD, livroD, dl.codigo);
+//                menuEmprestimos();
+//            }
             case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
+                System.out.println("IMPRIME DL DEVOLUÇÃO >>> " + dl.aluno);
                 Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
                 Aluno alunoD = alunoService.buscarAluno(dl.aluno);
                 emprestimoService.devolver(alunoD, livroD, dl.codigo);
@@ -65,6 +73,7 @@ public class MenuEmprestimos extends MenuPrincipal {
                         codEmp = 0;
                     }
                 } while (!validador.validarInputInteger(codEmp));
+
                 Emprestimo emprestimoLocalizado = emprestimoService.buscarEmprestimo(codEmp); // Renba > ATT: Parâmetro (int 5) para testes
                 String strEmprestimoLocalizado = emprestimoLocalizado.toString().replaceAll("\\[|\\,|\\]|\\_", "");
                 JOptionPane.showMessageDialog(null, strEmprestimoLocalizado);

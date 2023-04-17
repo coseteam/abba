@@ -47,7 +47,7 @@ public class EmprestimoService {
         this.emprestimos.remove(emp);
     }
 
-    public Emprestimo buscarEmprestimo(int codigo){
+    public Emprestimo buscarEmprestimo(int codigo){ //
         System.out.println("EMPRÉSTIMO SERVICE 51: codigo recebido >>> " + codigo);
         for (Emprestimo emp: this.emprestimos){
             System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
