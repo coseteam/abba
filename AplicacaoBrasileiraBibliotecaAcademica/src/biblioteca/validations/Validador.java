@@ -166,12 +166,6 @@ public class Validador {
     }
 
 
-    public static boolean validarInputDatas(String currentData) {
-        boolean checkData = true;
-
-
-        return checkData;
-    }
 
     public static boolean validarInputMenu(Integer currentInput) {
         boolean checkOptionMenu = true;

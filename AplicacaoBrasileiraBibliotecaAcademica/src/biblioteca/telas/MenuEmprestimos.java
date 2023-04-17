@@ -59,7 +59,11 @@ public class MenuEmprestimos extends MenuPrincipal {
             case 3 -> {
                 int codEmp;
                 do {
-                    codEmp = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o código do Empréstimo "));
+                    try {
+                        codEmp = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o código do Empréstimo "));
+                    } catch (Exception e) {
+                        codEmp = 0;
+                    }
                 } while (!validador.validarInputInteger(codEmp));
                 Emprestimo emprestimoLocalizado = emprestimoService.buscarEmprestimo(codEmp); // Renba > ATT: Parâmetro (int 5) para testes
                 String strEmprestimoLocalizado = emprestimoLocalizado.toString().replaceAll("\\[|\\,|\\]|\\_", "");
