@@ -13,7 +13,9 @@ public class EmprestimoService {
 
 
 
-    public ArrayList<Emprestimo> getEmprestimos() {return emprestimos;}
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
 
 
     public int emprestar(String data, String dataDevolucao, Aluno aluno, Livro livro){
@@ -30,27 +32,52 @@ public class EmprestimoService {
         return emprestimo.getCodigo();
     }
 
-//    public int emprestar(String data, String dataDevolucao, Aluno aluno, Livro livro){ RENBA: COPIA DA VERSAO EMPRESTAR EM 11/04
-//        Emprestimo emprestar = new Emprestimo(data, dataDevolucao, aluno, livro);
-//        livro.estaEmprestado(true, emprestar);
-//        aluno.getEmprestimosDoAluno().add(emprestar);
-//        aluno.getLivrosComAluno().add(livro);
-//        this.emprestimos.add(emprestar);
-//        return emprestar.getCodigo();
-//    }
 
     public void devolver(Aluno aluno, Livro livro, int codigoEmprestimo){
+        if (this.emprestimos.isEmpty()){
+            emprestimos = persistenciaService.lerEmprestimosPersistidos();
+        }
+
         livro.foiDevolvido(true, livro);
-        aluno.getEmprestimosDoAluno().remove(codigoEmprestimo);
-        aluno.getLivrosComAluno().remove(livro);
-        Emprestimo emp = buscarEmprestimo(codigoEmprestimo);
-        this.emprestimos.remove(emp);
+
+        ArrayList<Emprestimo> listaEmprestimosDesteAluno = aluno.getEmprestimosDoAluno();
+        for (Emprestimo emp: listaEmprestimosDesteAluno) {
+            if (emp.getCodigo() == codigoEmprestimo) {
+                Integer indEmprestimo = listaEmprestimosDesteAluno.indexOf(emp);
+                aluno.getEmprestimosDoAluno().remove(indEmprestimo);
+                System.out.println(aluno.getEmprestimosDoAluno());
+                break;
+            }
+        }
+
+        ArrayList<Livro> listaLivrosComEsteAluno = aluno.getLivrosComAluno();
+        for (Livro liv: listaLivrosComEsteAluno) {
+            if (liv.equals(livro)) {
+                Integer indLivro = listaLivrosComEsteAluno.indexOf(liv);
+                aluno.getLivrosComAluno().remove(indLivro);
+                //System.out.println("Emprestimos do aluno");
+                //System.out.println(aluno.getEmprestimosDoAluno());
+                break;
+            }
+        }
+
+        for (Emprestimo emp: emprestimos){
+            //System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
+            if (codigoEmprestimo == emp.getCodigo()){
+                emprestimos.remove(emp);
+                break;
+            }
+        }
+        persistenciaService.persistirEntidade(this.emprestimos);
     }
 
-    public Emprestimo buscarEmprestimo(int codigo){
-        System.out.println("EMPRÉSTIMO SERVICE 51: codigo recebido >>> " + codigo);
+
+    public Emprestimo buscarEmprestimo(int codigo){ //
+        if (this.emprestimos.isEmpty()){
+            emprestimos = persistenciaService.lerEmprestimosPersistidos();
+        }
+
         for (Emprestimo emp: this.emprestimos){
-            System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
             if (codigo == emp.getCodigo()){
                 JOptionPane.showMessageDialog(null, emp.getAluno());
                 this.emprestimo = emp;
@@ -61,8 +88,10 @@ public class EmprestimoService {
         if (this.emprestimo == null){
             JOptionPane.showMessageDialog(null,"Desculpe, não localizamos este empréstimo.;");
         }
+
         return this.emprestimo;
     }
+
 
     public String listarEmprestimo(){
         if (this.emprestimos.isEmpty()){
@@ -71,6 +100,7 @@ public class EmprestimoService {
         if (this.emprestimos.isEmpty() || this.emprestimos == null) {
             return "Realmente, não há nenhum registro de empréstimos anteriores.";
         }
+
         return emprestimos.toString().replaceAll("\\[|\\,|\\]|\\_", "");
     }
 

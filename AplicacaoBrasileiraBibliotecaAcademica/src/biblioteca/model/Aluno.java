@@ -8,6 +8,8 @@ public class Aluno extends Usuario implements Serializable {
     private ArrayList<Emprestimo> emprestimosDoAluno = new ArrayList();
     private ArrayList<Livro> livrosComAluno = new ArrayList();
 
+
+
     public Aluno(String nome, String cpf, String matricula) {
         super(nome, cpf);
         this.matricula = matricula;
@@ -18,6 +20,7 @@ public class Aluno extends Usuario implements Serializable {
         return matricula;
     }
 
+
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
@@ -27,16 +30,12 @@ public class Aluno extends Usuario implements Serializable {
         return emprestimosDoAluno;
     }
 
+
     public ArrayList<Livro> getLivrosComAluno() {
         return livrosComAluno;
     }
 
 
-
-//    @Override
-//    public String getCpf() {
-//        return this.getCpf();
-//    }
 
     @Override
     public String toString() {
@@ -45,6 +44,8 @@ public class Aluno extends Usuario implements Serializable {
                 "Matrícula: " + matricula + "\n" +
                 "_____________________________";
     }
+
+
 }
 
 

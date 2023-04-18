@@ -51,7 +51,7 @@ public class Validador {
         boolean checkInteger = true;
 
         if (inputInteger.getClass() == currentInput.getClass()) {
-            System.out.println("INTEGER MESMA CLASSE");
+            //System.out.println("INTEGER MESMA CLASSE");
             if (((Integer) currentInput).equals(0) || currentInput == null) {
                 checkInteger = false;
             }
@@ -59,7 +59,7 @@ public class Validador {
             checkInteger = false;
         }
 
-        System.out.println("VALIDADOR: check int " + checkInteger);
+        //System.out.println("VALIDADOR: check int " + checkInteger);
         return checkInteger;
     }
 
@@ -94,7 +94,7 @@ public class Validador {
 
     public static boolean validarInputISBN(String currentISBN) { // VALIDAR ISBN
         boolean checkISBN = true;
-        System.out.println("Passando por validação de input ISBN");
+        //System.out.println("Passando por validação de input ISBN");
 
         if (currentISBN.isBlank()) {
             checkISBN = false;
@@ -119,11 +119,11 @@ public class Validador {
         if (currentISBN.isBlank()) {
             checkNovoISBN = false;
         } else {
-            System.out.println("Não is blank: " + checkNovoISBN);
+            //System.out.println("Não is blank: " + checkNovoISBN);
             if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
                 currentISBN.length();
                 checkNovoISBN = false;
-                System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
+                //System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
             } else {
 
                 System.out.println("Lista ALLISBN: " + allISBN);
@@ -133,8 +133,8 @@ public class Validador {
                     for (String isbn : allISBN) {
                         if (isbn.equals(currentISBN)) {
                             checkNovoISBN = false;
-                            System.out.println("Dentro do FOR: " + checkNovoISBN);
-                            System.out.println("Esse ISBN já existe");
+//                            System.out.println("Dentro do FOR: " + checkNovoISBN);
+//                            System.out.println("Esse ISBN já existe");
                             JOptionPane.showMessageDialog(null, "Esse ISBN já Existe.");
                         }
                     }
@@ -144,7 +144,7 @@ public class Validador {
 
         }
 
-        System.out.println("valida Novo ISBN >>> " + checkNovoISBN);
+        //System.out.println("valida Novo ISBN >>> " + checkNovoISBN);
         return checkNovoISBN;
     }
 
@@ -166,18 +166,12 @@ public class Validador {
     }
 
 
-    public static boolean validarInputDatas(String currentData) {
-        boolean checkData = true;
-
-
-        return checkData;
-    }
 
     public static boolean validarInputMenu(Integer currentInput) {
         boolean checkOptionMenu = true;
 
         if (inputInteger.getClass() == currentInput.getClass()) {
-            System.out.println("INTEGER MESMA CLASSE");
+            //System.out.println("INTEGER MESMA CLASSE");
             if ( currentInput == null) {
                 checkOptionMenu = false;
             }
@@ -185,33 +179,9 @@ public class Validador {
             checkOptionMenu = false;
         }
 
-        System.out.println("VALIDADOR: check int " + checkOptionMenu);
+        // System.out.println("VALIDADOR: check int " + checkOptionMenu);
         return checkOptionMenu;
 
     }
-
-
-// MÉTODOS DESCARTADOS MOMENTANEAMENTE
-// ============================================================
-
-//    public static boolean validarInputTitulo(String inputTitulo) { // VALIDAR TÍTULO
-//        boolean checkTitulo = true;
-//
-//        if (inputTitulo.isBlank()) {
-//            checkTitulo = false;
-//        } else {
-//            System.out.println("Não is blank: " + checkTitulo);
-//            if (inputTitulo.length() < 3) {
-//                inputTitulo.length();
-//                checkTitulo = false;
-//                System.out.println("length: " + checkTitulo);
-//            }
-//
-//        }
-//
-//        System.out.println("valida ISBN >>> " + checkTitulo);
-//        return checkTitulo;
-//    }
-
 
 }
