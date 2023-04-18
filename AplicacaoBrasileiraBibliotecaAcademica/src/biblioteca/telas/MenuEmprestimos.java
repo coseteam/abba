@@ -49,21 +49,23 @@ public class MenuEmprestimos extends MenuPrincipal {
                 int codigoEmprestimo = emprestimoService.emprestar(el.data, el.dataDevolucao, alunoE, livroE);
                 menuEmprestimos();
             }
-//            case 2 -> {
-//                TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
-//                Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
-//                Aluno alunoD = alunoService.buscarAluno(dl.aluno);
-//                emprestimoService.devolver(alunoD, livroD, dl.codigo);
-//                menuEmprestimos();
-//            }
+
             case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
                 System.out.println("IMPRIME DL DEVOLUÇÃO >>> " + dl.codigo);
+                Emprestimo currentEmp = emprestimoService.buscarEmprestimo(dl.codigo);
+                System.out.println(currentEmp);
+                System.out.println("CAPTURANDO LIVRO E ALUNO");
+                Livro livroD = currentEmp.getLivro();
+                System.out.println(livroD);
+                Aluno alunoD = currentEmp.getAluno();
+                System.out.println(alunoD);
                 //Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
                 //Aluno alunoD = alunoService.buscarAluno(dl.aluno);
-                //emprestimoService.devolver(alunoD, livroD, dl.codigo);
+                emprestimoService.devolver(alunoD, livroD, dl.codigo);
                 menuEmprestimos();
             }
+
             case 3 -> {
                 int codEmp;
                 do {
@@ -79,11 +81,15 @@ public class MenuEmprestimos extends MenuPrincipal {
                 JOptionPane.showMessageDialog(null, strEmprestimoLocalizado);
                 menuEmprestimos();
             }
+
             case 4 -> { // Renba >> ATT Here 12/04
                 JOptionPane.showMessageDialog(null, emprestimoService.listarEmprestimo());
                 menuEmprestimos();
             }
-            case 0 -> menuPrincipal();
+
+            case 0 -> {
+                menuPrincipal();
+            }
 
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção Inválida");

@@ -22,21 +22,24 @@ public class Aluno extends Usuario implements Serializable {
         this.matricula = matricula;
     }
 
-
     public ArrayList<Emprestimo> getEmprestimosDoAluno() {
         return emprestimosDoAluno;
     }
+
+//    public void setEmprestimosDoAluno(ArrayList<Emprestimo> atuaisEmprestimos) {
+//        this.emprestimosDoAluno = atuaisEmprestimos;
+//    }
 
     public ArrayList<Livro> getLivrosComAluno() {
         return livrosComAluno;
     }
 
-
-
-//    @Override
-//    public String getCpf() {
-//        return this.getCpf();
+//    public void setLivrosComAluno(ArrayList<Livro> atuaisLivros) {
+//        this.livrosComAluno = atuaisLivros;
 //    }
+
+
+
 
     @Override
     public String toString() {

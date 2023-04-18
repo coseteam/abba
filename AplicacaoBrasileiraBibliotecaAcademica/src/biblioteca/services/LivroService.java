@@ -24,7 +24,7 @@ public class LivroService {
     }
 
     public ArrayList<String> getTodosISBN() {
-        System.out.println("GET TODOS ISBN LIVROSERVICE " + todosISBN);
+        //System.out.println("GET TODOS ISBN LIVROSERVICE " + todosISBN);
         return todosISBN;
     }
 
