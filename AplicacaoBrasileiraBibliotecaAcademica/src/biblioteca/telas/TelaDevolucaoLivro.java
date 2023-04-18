@@ -1,16 +1,30 @@
 package biblioteca.telas;
 
+import biblioteca.model.Emprestimo;
+import biblioteca.services.EmprestimoService;
+import biblioteca.validations.Validador;
+
 import javax.swing.*;
 
 public class TelaDevolucaoLivro {
-    public String aluno;
-    public String livro;
     public int codigo;
 
+
     public TelaDevolucaoLivro() {
-        this.livro = JOptionPane.showInputDialog("Digite o codigo do livro: ");
-        this.aluno = JOptionPane.showInputDialog("Digite o CPF do aluno:");
-        this.codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o codigo do emprestimo:"));
+        Validador validador = new Validador();
+        EmprestimoService emprestimoService = new EmprestimoService();
+
+        do {
+            try {
+                this.codigo = Integer.parseInt(JOptionPane.showInputDialog("Informe o Código do Empréstimo "));
+            } catch (Exception err) {
+                this.codigo = 0;
+            }
+        } while (!validador.validarInputInteger(this.codigo));
+
+
+        //System.out.println("+++ Tela Devolucao 39 +++");
+
     }
 
 }

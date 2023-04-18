@@ -60,6 +60,7 @@ public class AlunoService {
         Validador validador = new Validador();
         String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matrícula";
         Aluno aluno = buscarAluno(cpf);
+        System.out.println(aluno.getLivrosComAluno().toString());
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
 
         if (caminho == 1) {
@@ -82,7 +83,7 @@ public class AlunoService {
             String novaMatricula = "";
             do {
                 novaMatricula = JOptionPane.showInputDialog("Digite a matrícula correta: ");
-            } while (validador.validarInputStringNumerica(novaMatricula));
+            } while (!validador.validarInputStringNumerica(novaMatricula));
             aluno.setMatricula(novaMatricula);
             JOptionPane.showMessageDialog(null,"A matrícula foi atualizada!");
         }
