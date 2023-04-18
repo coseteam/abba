@@ -15,18 +15,22 @@ public class LivroService {
     public ArrayList<String> todosISBN = persistenciaService.lerISBNPersisitidos();
 
 
+
     public ArrayList<Livro> getLivros() {
         return acervoLivros;
     }
+
 
     public void setLivros(ArrayList<Livro> livros) {
         this.acervoLivros = livros;
     }
 
+
     public ArrayList<String> getTodosISBN() {
         //System.out.println("GET TODOS ISBN LIVROSERVICE " + todosISBN);
         return todosISBN;
     }
+
 
     public void apagarTodosISBN() {
         getTodosISBN().clear();

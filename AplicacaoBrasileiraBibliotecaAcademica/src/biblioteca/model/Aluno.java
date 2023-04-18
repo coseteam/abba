@@ -8,6 +8,8 @@ public class Aluno extends Usuario implements Serializable {
     private ArrayList<Emprestimo> emprestimosDoAluno = new ArrayList();
     private ArrayList<Livro> livrosComAluno = new ArrayList();
 
+
+
     public Aluno(String nome, String cpf, String matricula) {
         super(nome, cpf);
         this.matricula = matricula;
@@ -18,26 +20,20 @@ public class Aluno extends Usuario implements Serializable {
         return matricula;
     }
 
+
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
+
 
     public ArrayList<Emprestimo> getEmprestimosDoAluno() {
         return emprestimosDoAluno;
     }
 
-//    public void setEmprestimosDoAluno(ArrayList<Emprestimo> atuaisEmprestimos) {
-//        this.emprestimosDoAluno = atuaisEmprestimos;
-//    }
 
     public ArrayList<Livro> getLivrosComAluno() {
         return livrosComAluno;
     }
-
-//    public void setLivrosComAluno(ArrayList<Livro> atuaisLivros) {
-//        this.livrosComAluno = atuaisLivros;
-//    }
-
 
 
 
@@ -48,6 +44,8 @@ public class Aluno extends Usuario implements Serializable {
                 "Matrícula: " + matricula + "\n" +
                 "_____________________________";
     }
+
+
 }
 
 

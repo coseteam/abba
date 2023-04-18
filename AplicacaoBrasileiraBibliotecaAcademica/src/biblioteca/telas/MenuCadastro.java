@@ -13,6 +13,7 @@ public class MenuCadastro extends MenuPrincipal {
             "0 - Voltar ao menu principal";
 
 
+
     public void menuCadastro() {
         Validador validador = new Validador();
         Integer input;

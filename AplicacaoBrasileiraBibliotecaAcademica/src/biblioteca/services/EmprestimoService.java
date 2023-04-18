@@ -13,7 +13,9 @@ public class EmprestimoService {
 
 
 
-    public ArrayList<Emprestimo> getEmprestimos() {return emprestimos;}
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
 
 
     public int emprestar(String data, String dataDevolucao, Aluno aluno, Livro livro){
@@ -53,14 +55,14 @@ public class EmprestimoService {
             if (liv.equals(livro)) {
                 Integer indLivro = listaLivrosComEsteAluno.indexOf(liv);
                 aluno.getLivrosComAluno().remove(indLivro);
-                System.out.println("Emprestimos do aluno");
-                System.out.println(aluno.getEmprestimosDoAluno());
+                //System.out.println("Emprestimos do aluno");
+                //System.out.println(aluno.getEmprestimosDoAluno());
                 break;
             }
         }
 
         for (Emprestimo emp: emprestimos){
-            System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
+            //System.out.println("PERCORRENDO A LISTA DE EMPRESTIMOS " + emp);
             if (codigoEmprestimo == emp.getCodigo()){
                 emprestimos.remove(emp);
                 break;
@@ -75,7 +77,6 @@ public class EmprestimoService {
             emprestimos = persistenciaService.lerEmprestimosPersistidos();
         }
 
-        System.out.println("EMPRÉSTIMO SERVICE 51: codigo recebido >>> " + codigo);
         for (Emprestimo emp: this.emprestimos){
             if (codigo == emp.getCodigo()){
                 JOptionPane.showMessageDialog(null, emp.getAluno());

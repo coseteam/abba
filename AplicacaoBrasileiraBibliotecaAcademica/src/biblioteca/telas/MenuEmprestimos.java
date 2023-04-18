@@ -53,16 +53,20 @@ public class MenuEmprestimos extends MenuPrincipal {
             case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
                 System.out.println("IMPRIME DL DEVOLUÇÃO >>> " + dl.codigo);
-                Emprestimo currentEmp = emprestimoService.buscarEmprestimo(dl.codigo);
-                System.out.println(currentEmp);
-                System.out.println("CAPTURANDO LIVRO E ALUNO");
-                Livro livroD = currentEmp.getLivro();
-                System.out.println(livroD);
-                Aluno alunoD = currentEmp.getAluno();
-                System.out.println(alunoD);
-                //Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
-                //Aluno alunoD = alunoService.buscarAluno(dl.aluno);
-                emprestimoService.devolver(alunoD, livroD, dl.codigo);
+                try {
+                    Emprestimo currentEmp = emprestimoService.buscarEmprestimo(dl.codigo);
+                    System.out.println(currentEmp);
+                    System.out.println("CAPTURANDO LIVRO E ALUNO");
+                    Livro livroD = currentEmp.getLivro();
+                    System.out.println(livroD);
+                    Aluno alunoD = currentEmp.getAluno();
+                    System.out.println(alunoD);
+                    //Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
+                    //Aluno alunoD = alunoService.buscarAluno(dl.aluno);
+                    emprestimoService.devolver(alunoD, livroD, dl.codigo);
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Dica: \nConfirme se o código do Empréstimo está correto.");
+                }
                 menuEmprestimos();
             }
 
@@ -76,13 +80,18 @@ public class MenuEmprestimos extends MenuPrincipal {
                     }
                 } while (!validador.validarInputInteger(codEmp));
 
-                Emprestimo emprestimoLocalizado = emprestimoService.buscarEmprestimo(codEmp); // Renba > ATT: Parâmetro (int 5) para testes
-                String strEmprestimoLocalizado = emprestimoLocalizado.toString().replaceAll("\\[|\\,|\\]|\\_", "");
-                JOptionPane.showMessageDialog(null, strEmprestimoLocalizado);
+                try {
+                    Emprestimo emprestimoLocalizado = emprestimoService.buscarEmprestimo(codEmp); // Renba > ATT: Parâmetro (int 5) para testes
+                    String strEmprestimoLocalizado = emprestimoLocalizado.toString().replaceAll("\\[|\\,|\\]|\\_", "");
+                    JOptionPane.showMessageDialog(null, strEmprestimoLocalizado);
+                } catch (Exception err) {
+                    JOptionPane.showMessageDialog(null, "Dica: \nConfirme o código do Empréstimo");
+                }
+
                 menuEmprestimos();
             }
 
-            case 4 -> { // Renba >> ATT Here 12/04
+            case 4 -> {
                 JOptionPane.showMessageDialog(null, emprestimoService.listarEmprestimo());
                 menuEmprestimos();
             }
