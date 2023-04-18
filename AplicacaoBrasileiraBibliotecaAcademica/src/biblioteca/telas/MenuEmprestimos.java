@@ -58,10 +58,10 @@ public class MenuEmprestimos extends MenuPrincipal {
 //            }
             case 2 -> {
                 TelaDevolucaoLivro dl = new TelaDevolucaoLivro();
-                System.out.println("IMPRIME DL DEVOLUÇÃO >>> " + dl.aluno);
-                Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
-                Aluno alunoD = alunoService.buscarAluno(dl.aluno);
-                emprestimoService.devolver(alunoD, livroD, dl.codigo);
+                System.out.println("IMPRIME DL DEVOLUÇÃO >>> " + dl.codigo);
+                //Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
+                //Aluno alunoD = alunoService.buscarAluno(dl.aluno);
+                //emprestimoService.devolver(alunoD, livroD, dl.codigo);
                 menuEmprestimos();
             }
             case 3 -> {

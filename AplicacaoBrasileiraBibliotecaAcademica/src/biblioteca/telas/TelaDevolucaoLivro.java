@@ -1,17 +1,15 @@
 package biblioteca.telas;
 
-import biblioteca.model.Aluno;
 import biblioteca.model.Emprestimo;
-import biblioteca.model.Livro;
 import biblioteca.services.EmprestimoService;
 import biblioteca.validations.Validador;
-import com.sun.security.jgss.GSSUtil;
 
 import javax.swing.*;
 
 public class TelaDevolucaoLivro {
-    public String aluno;
-    public String livro;
+//    public Emprestimo currentEmprestimo;
+//    public String aluno;
+//    public String livro;
     public int codigo;
 
 //    public Aluno aluno;
@@ -38,10 +36,13 @@ public class TelaDevolucaoLivro {
 
 
         System.out.println("+++ Tela Devolucao 39 +++");
-        int codEmp = this.codigo;
-        Emprestimo currentEmprestimo = emprestimoService.buscarEmprestimo(codEmp);
-        System.out.println(currentEmprestimo.getLivro());
-        System.out.println(currentEmprestimo.getAluno());
+//        int codEmp = this.codigo;
+//        currentEmprestimo = emprestimoService.buscarEmprestimo(codEmp);
+//
+//        return currentEmprestimo;
+
+//        System.out.println(currentEmprestimo.getLivro());
+//        System.out.println(currentEmprestimo.getAluno());
 //        this.livro = currentEmprestimo.getLivro().getISBN();
 //        this.aluno = currentEmprestimo.getAluno().getCpf();
 

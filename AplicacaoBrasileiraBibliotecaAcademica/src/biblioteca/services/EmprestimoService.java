@@ -64,6 +64,7 @@ public class EmprestimoService {
         return this.emprestimo;
     }
 
+
     public String listarEmprestimo(){
         if (this.emprestimos.isEmpty()){
             emprestimos = persistenciaService.lerEmprestimosPersistidos();

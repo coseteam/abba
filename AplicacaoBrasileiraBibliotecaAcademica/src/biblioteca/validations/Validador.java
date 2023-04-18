@@ -51,7 +51,7 @@ public class Validador {
         boolean checkInteger = true;
 
         if (inputInteger.getClass() == currentInput.getClass()) {
-            System.out.println("INTEGER MESMA CLASSE");
+            //System.out.println("INTEGER MESMA CLASSE");
             if (((Integer) currentInput).equals(0) || currentInput == null) {
                 checkInteger = false;
             }
@@ -123,7 +123,7 @@ public class Validador {
             if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
                 currentISBN.length();
                 checkNovoISBN = false;
-                System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
+                //System.out.println("VALIDADOR: Novo ISBN matches and length: " + checkNovoISBN);
             } else {
 
                 System.out.println("Lista ALLISBN: " + allISBN);
@@ -171,7 +171,7 @@ public class Validador {
         boolean checkOptionMenu = true;
 
         if (inputInteger.getClass() == currentInput.getClass()) {
-            System.out.println("INTEGER MESMA CLASSE");
+            //System.out.println("INTEGER MESMA CLASSE");
             if ( currentInput == null) {
                 checkOptionMenu = false;
             }
