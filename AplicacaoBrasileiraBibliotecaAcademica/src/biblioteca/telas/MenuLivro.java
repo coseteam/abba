@@ -37,7 +37,6 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 2 -> {
-                //Validador validador = new Validador();
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
@@ -46,7 +45,6 @@ public class MenuLivro extends MenuPrincipal {
                 menuLivro();
             }
             case 3 -> {
-                //Validador validador = new Validador();
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro:");

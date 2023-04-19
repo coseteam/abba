@@ -14,7 +14,7 @@ public class TelaBoasVindas extends JDialog {
 
         // cria o painel e coloca texto
         JPanel panel = new JPanel(new BorderLayout());
-        JLabel label = new JLabel("Carregando...\n");
+        JLabel label = new JLabel("Aplicação Brasileira para Bibliotecas Acadêmicas\n");
         label.setFont(new Font("Arial", Font.BOLD, 18));
         label.setHorizontalAlignment(JLabel.CENTER);
         panel.add(label, BorderLayout.CENTER);
@@ -23,7 +23,7 @@ public class TelaBoasVindas extends JDialog {
         add(panel);
 
         // temporizador para fechar a janela após 2 secs
-        Timer timer = new Timer(1000, e -> dispose());
+        Timer timer = new Timer(2000, e -> dispose());
         timer.setRepeats(false);
         timer.start();
 
