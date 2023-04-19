@@ -61,8 +61,6 @@ public class MenuEmprestimos extends MenuPrincipal {
                     System.out.println(livroD);
                     Aluno alunoD = currentEmp.getAluno();
                     System.out.println(alunoD);
-                    //Livro livroD = livroService.buscarLivro(String.valueOf(dl.livro));
-                    //Aluno alunoD = alunoService.buscarAluno(dl.aluno);
                     emprestimoService.devolver(alunoD, livroD, dl.codigo);
                 } catch (Exception err) {
                     JOptionPane.showMessageDialog(null, "Dica: \nConfirme se o código do Empréstimo está correto.");

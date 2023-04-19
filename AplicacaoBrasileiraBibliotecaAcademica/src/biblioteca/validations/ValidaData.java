@@ -16,7 +16,6 @@ public class ValidaData {
         boolean checkFormatoData = true;
 
         try {
-            //dd = dia, MM = mes, yyyy = ano
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             formato.setLenient(false);
             formato.parse(currentData);

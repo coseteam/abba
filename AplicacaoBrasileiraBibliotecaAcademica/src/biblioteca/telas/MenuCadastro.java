@@ -30,7 +30,6 @@ public class MenuCadastro extends MenuPrincipal {
 
 
         int caminho = input;
-
         switch (caminho) {
             case 1 -> {
                 TelaCadastroAluno ca = new TelaCadastroAluno();
@@ -38,7 +37,6 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 2 -> {
-                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
@@ -47,7 +45,6 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 3 -> {
-                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
