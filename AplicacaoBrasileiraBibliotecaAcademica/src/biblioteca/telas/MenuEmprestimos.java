@@ -19,8 +19,8 @@ public class MenuEmprestimos extends MenuPrincipal {
 
 
 
-    private String msg = "Menu Empréstimos\n Escolha uma opção: \n 1 - Registrar Novo Empréstimo\n 2 - Registrar Devolução\n" +
-            " 3 - Ver um Empréstimo\n 4 - Ver todos os Empréstimos\n 0 - Voltar ao menu principal";
+    private String msg = "Escolha uma opção: \n 1 - Registrar Novo Empréstimo\n 2 - Registrar Devolução\n" +
+            " 3 - Ver um Empréstimo\n 4 - Ver todos os Empréstimos\n \n 0 - Voltar ao menu principal";
 
 
     public void menuEmprestimos() {
@@ -29,7 +29,7 @@ public class MenuEmprestimos extends MenuPrincipal {
 
         do {
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Empréstimos", 3));
             } catch (Exception e) {
                 input = 9;
             }
