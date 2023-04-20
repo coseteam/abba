@@ -9,7 +9,6 @@ import javax.swing.*;
 public class MenuLivro extends MenuPrincipal {
 
     private LivroService livroService = new LivroService();
-
     private String msg = "Escolha uma opção:\n \n 1 - Cadastrar Novo Livro\n 2 - Excluir um Livro\n" +
             " 3 - Atualizar um Livro\n 4 - Listar todo o Acervo\n 5 - Apagar todos os Livros do Acervo\n " +
             "\n 0 - Voltar ao menu principal";

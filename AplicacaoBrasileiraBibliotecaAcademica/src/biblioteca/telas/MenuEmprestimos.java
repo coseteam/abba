@@ -16,9 +16,6 @@ public class MenuEmprestimos extends MenuPrincipal {
     private EmprestimoService emprestimoService = new EmprestimoService();
     private LivroService livroService = new LivroService();
     private AlunoService alunoService = new AlunoService();
-
-
-
     private String msg = "Escolha uma opção: \n 1 - Registrar Novo Empréstimo\n 2 - Registrar Devolução\n" +
             " 3 - Ver um Empréstimo\n 4 - Ver todos os Empréstimos\n \n 0 - Voltar ao menu principal";
 
