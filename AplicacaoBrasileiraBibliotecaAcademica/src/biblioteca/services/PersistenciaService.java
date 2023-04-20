@@ -117,7 +117,7 @@ public class PersistenciaService {
 
     }
 
-    public <T> ArrayList<T> lerEmprestimosPersistidos(){ // {PAUSEPLAY} Renba > STOP HERE - GET HERE
+    public <T> ArrayList<T> lerEmprestimosPersistidos(){
         FileInputStream fis = null;
         try {
             fis = new FileInputStream("emprestimosPersistidos.dat");

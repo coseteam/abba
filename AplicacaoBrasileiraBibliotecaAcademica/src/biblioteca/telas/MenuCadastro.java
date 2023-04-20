@@ -8,9 +8,9 @@ import javax.swing.*;
 public class MenuCadastro extends MenuPrincipal {
 
     private AlunoService alunoService = new AlunoService();
-    private String msg = "Menu Biblioteca\n Escolha uma opção: \n 1 - Cadastrar Novo Aluno\n 2 - Excluir um Aluno\n" +
+    private String msg = "Escolha uma opção:\n \n 1 - Cadastrar Novo Aluno\n 2 - Excluir um Aluno\n" +
             " 3 - Editar Cadastro de Aluno\n 4 - Ver todos os Alunos\n 5 - Excluir todos os Alunos do Cadastro\n " +
-            "0 - Voltar ao menu principal";
+            "\n 0 - Voltar ao menu principal";
 
 
 
@@ -20,7 +20,7 @@ public class MenuCadastro extends MenuPrincipal {
 
         do {
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Diretório de Usuários", 3));
             } catch (Exception e) {
                 input = 9;
             }
@@ -30,7 +30,6 @@ public class MenuCadastro extends MenuPrincipal {
 
 
         int caminho = input;
-
         switch (caminho) {
             case 1 -> {
                 TelaCadastroAluno ca = new TelaCadastroAluno();
@@ -38,7 +37,6 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 2 -> {
-                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
@@ -47,7 +45,6 @@ public class MenuCadastro extends MenuPrincipal {
                 menuCadastro();
             }
             case 3 -> {
-                //Validador validador = new Validador();
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");

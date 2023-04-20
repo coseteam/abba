@@ -61,7 +61,9 @@ public class AlunoService {
         String msg = "Qual informação gostaria de atualizar:\n 1 - Nome\n 2 - CPF\n 3 - Matrícula";
         Aluno aluno = buscarAluno(cpf);
         System.out.println(aluno.getLivrosComAluno().toString());
+
         int caminho = Integer.parseInt(JOptionPane.showInputDialog(msg));
+
 
         if (caminho == 1) {
             String novoNome = "";
@@ -70,6 +72,7 @@ public class AlunoService {
             } while (!validador.validarInputString(novoNome));
             aluno.setNome(novoNome);
             JOptionPane.showMessageDialog(null, "Nome atualizado!");
+            persistenciaService.persistirEntidade(this.carteiraAlunos);
 
         }else if (caminho == 2) {
             String novoCPF = "";
@@ -78,6 +81,7 @@ public class AlunoService {
             } while (!validador.validarInputCPF(novoCPF));
             aluno.setCpf(novoCPF);
             JOptionPane.showMessageDialog(null,"CPF atualizado!");
+            persistenciaService.persistirEntidade(this.carteiraAlunos);
 
         }else if (caminho == 3) {
             String novaMatricula = "";
@@ -86,6 +90,7 @@ public class AlunoService {
             } while (!validador.validarInputStringNumerica(novaMatricula));
             aluno.setMatricula(novaMatricula);
             JOptionPane.showMessageDialog(null,"A matrícula foi atualizada!");
+            persistenciaService.persistirEntidade(this.carteiraAlunos);
         }
     }
 

@@ -8,16 +8,17 @@ import javax.swing.*;
 public class MenuPrincipal {
 
 
-    private String msg ="Menu Biblioteca\n Escolha uma opção: \n 1 - Livros\n 2 - Alunos\n" +
+    private String msg ="Escolha uma opção\n \n 1 - Livros\n 2 - Alunos\n" +
                 " 3 - Empréstimos\n\n 0 - Encerrar\n";
 
     public void menuPrincipal(){
         Validador validador = new Validador();
         Integer input;
 
+
         do {
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "ABBA", 3));
             } catch (Exception e) {
                 input = 9;
             }
