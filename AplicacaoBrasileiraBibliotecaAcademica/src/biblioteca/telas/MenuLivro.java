@@ -9,10 +9,9 @@ import javax.swing.*;
 public class MenuLivro extends MenuPrincipal {
 
     private LivroService livroService = new LivroService();
-
-    private String msg = "Menu Biblioteca\n Escolha uma opção: \n 1 - Cadastrar Novo Livro\n 2 - Excluir um Livro\n" +
+    private String msg = "Escolha uma opção:\n \n 1 - Cadastrar Novo Livro\n 2 - Excluir um Livro\n" +
             " 3 - Atualizar um Livro\n 4 - Listar todo o Acervo\n 5 - Apagar todos os Livros do Acervo\n " +
-            "0 - Voltar ao menu principal";
+            "\n 0 - Voltar ao menu principal";
 
 
     public void menuLivro() {
@@ -21,7 +20,7 @@ public class MenuLivro extends MenuPrincipal {
 
         do {
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(msg));
+                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Catálogo e Acervo", 3));
             } catch (Exception e) {
                 input = 9;
             }
@@ -32,7 +31,7 @@ public class MenuLivro extends MenuPrincipal {
         int caminho = input;
         switch (caminho) {
             case 1 -> {
-                TelaAdicionarLivro ad = new TelaAdicionarLivro(); // Renba Tela Adicionar Livro
+                TelaAdicionarLivro ad = new TelaAdicionarLivro();
                 livroService.cadastrarLivro(ad.isbn, ad.titulo, ad.autor, ad.editora, ad.genero, ad.totalPaginas);
                 menuLivro();
             }

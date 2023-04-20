@@ -20,7 +20,16 @@ Ao permitir que as bibliotecas gerenciem essas operações de forma eletrônica 
 - Acessar os registros em diferentes dispositivos
 
 ## Screenshots
-<img src="./to_readme/screen-menuprincipal.png" alt="Exemplo" width="128">
+<div style="display: flex; justify-content: space-around;">
+<img src="./to_readme/screenshot/screen-boasvindas.png" alt="Print de Menu Principal" height="128">
+<img src="./to_readme/screenshot/screen-menuprincipal.png" alt="Print de Menu Principal" height="128">
+</div>
+<br>
+<div style="display: flex; justify-content: space-around;">
+<img src="./to_readme/screenshot/screen-acervo.png" alt="Print de Menu Principal" height="128">
+<img src="./to_readme/screenshot/screen-usuarios.png" alt="Print de Menu Principal" height="128">
+<img src="./to_readme/screenshot/screen-emprestimos.png" alt="Print de Menu Principal" height="128">
+</div>
 
 ## Linguagens e Tecnologias
 <table>
@@ -48,6 +57,7 @@ Ao permitir que as bibliotecas gerenciem essas operações de forma eletrônica 
 - Polimorfismo com Override
 - Persistência de dados em arquivos .dat
 - Tratamento de Erros e Exceções
+- Modelagem de classes em UML
 - Desenvolvimento em grupo
 
 
@@ -59,7 +69,35 @@ Para baixar, clique aqui.
 
 
 ## Autoria
-_Em ordem alfabética:_
+_Este projeto foi desenvolvido durante o cumprimento da disciplina Programação Orientada a Objetos, na PUC-PR,
+pelos discentes:_
+
+
 - Abner Andrade
+  - Interessado em saber sobre os fundamentos das coisas. Dedicado aos estudos sobre algoritmos, linguagens de baixo nível e bases numéricas.
+  - <a href="https://www.linkedin.com/in/abnerandrade/" target="_blank"> GitHub
+    <img src="https://img.icons8.com/office/16/null/external-link.png"></a> 
+       |   
+    <a href="https://www.linkedin.com/in/abnerandrade/" target="_blank"> LinkedIn
+    <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
+
+    
 - Joyce Lemos
+    - Focada em criar interfaces de usuário intuitivas e visualmente atraentes para sites e aplicativos. Sólida base em HTML, CSS e JavaScript.
+    - <a href="https://www.linkedin.com/in/joycelemos73/" target="_blank"> GitHub 
+      <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
+       |  
+      <a href="https://www.linkedin.com/in/joycelemos73/" target="_blank"> LinkedIn
+      <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
+
+    
 - Vinícius Reis
+    - Dedicado a aplicar e desenvolver conhecimentos na área de Análise e Desenvolvimento de Sistemas e no Desenvolvimento de Soluções Críticas 
+    - <a href="https://github.com/vinicr28" target="_blank"> GitHub
+      <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
+       | 
+      <a href="https://www.linkedin.com/in/vinicius-camargo-reis-9b7068253/" target="_blank"> LinkedIn
+      <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
+
+
+
