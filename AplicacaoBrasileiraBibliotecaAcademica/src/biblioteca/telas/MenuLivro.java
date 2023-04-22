@@ -19,8 +19,12 @@ public class MenuLivro extends MenuPrincipal {
         Integer input;
 
         do {
+            String inputString = JOptionPane.showInputDialog(null, msg, "Catálogo e Acervo", 3);
+            if(inputString == null) { // Handle cancel button
+                menuPrincipal();
+            }
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Catálogo e Acervo", 3));
+                input = Integer.parseInt(inputString);
             } catch (Exception e) {
                 input = 9;
             }
@@ -39,6 +43,10 @@ public class MenuLivro extends MenuPrincipal {
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro: ");
+                    if (isbn == null) {
+                        menuLivro();
+                        return;
+                    }
                 } while (!validador.validarInputISBN(isbn));
                 livroService.removerLivro(isbn);
                 menuLivro();
@@ -47,6 +55,10 @@ public class MenuLivro extends MenuPrincipal {
                 String isbn;
                 do {
                     isbn = JOptionPane.showInputDialog("Digite o ISBN do Livro:");
+                    if (isbn == null) {
+                        menuLivro();
+                        return;
+                    }
                 } while (!validador.validarInputISBN(isbn));
                 livroService.atualizarLivro(isbn);
                 menuLivro();

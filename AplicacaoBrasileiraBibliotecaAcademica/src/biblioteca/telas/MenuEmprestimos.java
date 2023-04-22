@@ -25,11 +25,17 @@ public class MenuEmprestimos extends MenuPrincipal {
         Integer input;
 
         do {
+            String inputString = JOptionPane.showInputDialog(null, msg, "Emprestimos", 3);
+            if(inputString == null) { // Handle cancel button
+                menuPrincipal();
+                return;
+            }
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Empréstimos", 3));
+                input = Integer.parseInt(inputString);
             } catch (Exception e) {
                 input = 9;
             }
+            input = Integer.parseInt(inputString);
         } while (!validador.validarInputMenu(input));
 
 
