@@ -2,9 +2,11 @@ package biblioteca.validations;
 
 import biblioteca.services.LivroService;
 import biblioteca.services.PersistenciaService;
+import biblioteca.telas.MenuAluno;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Validador {
     Object input;
@@ -14,6 +16,7 @@ public class Validador {
     public static ArrayList<String> copiaISBN;
     private PersistenciaService persistenciaService = new PersistenciaService();
 
+    private static MenuAluno menuAluno = new MenuAluno();
 
     public Validador() {
         LivroService livroService = new LivroService();
@@ -27,11 +30,11 @@ public class Validador {
     }
 
 
-    public static boolean validarInputString(Object currentInput) {
+    public static boolean validarInputString(String currentInput) {
         boolean checkString = true;
 
-        if (inputString.getClass() == currentInput.getClass()) {
-            if(currentInput == "" || ((String) currentInput).isBlank() || ((String) currentInput).length() < 3) {
+        if (currentInput != null) {
+            if(Objects.equals(currentInput, "") || (currentInput).isBlank() || (currentInput).length() < 3) {
                 checkString = false;
             }
         } else {
@@ -43,19 +46,17 @@ public class Validador {
     }
 
 
-    public static boolean validarInputInteger(Object currentInput) {
+    public static boolean validarInputInteger(Integer currentInput) {
         boolean checkInteger = true;
 
-        if (inputInteger.getClass() == currentInput.getClass()) {
-            if (((Integer) currentInput).equals(0) || currentInput == null) {
+        if (currentInput != null) {
+            if (currentInput.equals(0)) {
                 checkInteger = false;
             }
-        } else {
-            checkInteger = false;
+        }
+            return checkInteger;
         }
 
-        return checkInteger;
-    }
 
 
     public static boolean validarInputStringNumerica(String currentInput) {
@@ -88,16 +89,18 @@ public class Validador {
     public static boolean validarInputISBN(String currentISBN) {
         boolean checkISBN = true;
 
-        if (currentISBN.isBlank()) {
-            checkISBN = false;
-        } else {
-            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
-                currentISBN.length();
+        if (currentISBN != null){
+            if (currentISBN.isBlank()) {
                 checkISBN = false;
+            } else {
+                if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
+                    currentISBN.length();
+                    checkISBN = false;
+                }
             }
-
+        } else {
+            checkISBN = false;
         }
-
         return checkISBN;
     }
 
@@ -105,30 +108,31 @@ public class Validador {
     public static boolean validarNovoISBN(String currentISBN) {
         boolean checkNovoISBN = true;
 
-        if (currentISBN.isBlank()) {
-            checkNovoISBN = false;
-        } else {
-            if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
-                currentISBN.length();
+        if (currentISBN != null){
+            if (currentISBN.isBlank()) {
                 checkNovoISBN = false;
             } else {
-
-                System.out.println("Lista ALLISBN: " + allISBN);
-                if (allISBN.isEmpty()) {
-                    checkNovoISBN = true;
+                if (currentISBN.length() < 9 || !currentISBN.matches("[0-9]+")) {
+                    currentISBN.length();
+                    checkNovoISBN = false;
                 } else {
-                    for (String isbn : allISBN) {
-                        if (isbn.equals(currentISBN)) {
-                            checkNovoISBN = false;
-                            JOptionPane.showMessageDialog(null, "Esse ISBN já Existe.");
+
+                    System.out.println("Lista ALLISBN: " + allISBN);
+                    if (allISBN.isEmpty()) {
+                        checkNovoISBN = true;
+                    } else {
+                        for (String isbn : allISBN) {
+                            if (isbn.equals(currentISBN)) {
+                                checkNovoISBN = false;
+                                JOptionPane.showMessageDialog(null, "Esse ISBN já Existe.");
+                            }
                         }
                     }
                 }
-
             }
-
+        } else {
+            menuAluno.menuAluno();
         }
-
         return checkNovoISBN;
     }
 
@@ -142,12 +146,9 @@ public class Validador {
             if (currentCPF.length() != 11 || !currentCPF.matches("[0-9]+")) {
                 checkCPF = false;
             }
-
         }
         return checkCPF;
     }
-
-
 
     public static boolean validarInputMenu(Integer currentInput) {
         boolean checkOptionMenu = true;
@@ -159,9 +160,6 @@ public class Validador {
         } else {
             checkOptionMenu = false;
         }
-
         return checkOptionMenu;
-
     }
-
 }

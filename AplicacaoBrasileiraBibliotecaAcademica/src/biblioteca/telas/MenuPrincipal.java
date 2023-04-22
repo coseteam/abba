@@ -17,8 +17,13 @@ public class MenuPrincipal {
 
 
         do {
+            String inputString = JOptionPane.showInputDialog(null, msg, "ABBA", 3);
+            if(inputString == null) { // Handle cancel button
+                encerrarAplicacao();
+                return;
+            }
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "ABBA", 3));
+                input = Integer.parseInt(inputString);
             } catch (Exception e) {
                 input = 9;
             }
@@ -33,23 +38,26 @@ public class MenuPrincipal {
                 menuLivro.menuLivro();
             }
             case 2 -> { // Menu cadastros
-                MenuCadastro menuCadastro = new MenuCadastro();
-                menuCadastro.menuCadastro();
+                MenuAluno menuAluno = new MenuAluno();
+                menuAluno.menuAluno();
             }
             case 3 -> { // Menu emprestimos
                 MenuEmprestimos menuEmprestimos = new MenuEmprestimos();
                 menuEmprestimos.menuEmprestimos();
             }
             case 0 -> {
-                JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
-                System.exit(0);
-                break;
+                encerrarAplicacao();
             }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção não reconhecida.");
                 menuPrincipal();
             }
         }
+    }
+
+    private void encerrarAplicacao() {
+        JOptionPane.showMessageDialog(null, "Encerrando Aplicação...");
+        System.exit(0);
     }
 
 
