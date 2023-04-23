@@ -74,26 +74,32 @@ pelos discentes:_
 
 
 - Abner Andrade
-  - Interessado em saber sobre os fundamentos das coisas. Dedicado aos estudos sobre algoritmos, linguagens de baixo nível e bases numéricas.
-  - <a href="https://www.linkedin.com/in/abnerandrade/" target="_blank"> GitHub
+  
+  Interessado em saber sobre os fundamentos das coisas. Dedicado aos estudos sobre algoritmos, linguagens de baixo nível e bases numéricas.
+  
+  <a href="https://www.linkedin.com/in/abnerandrade/" target="_blank"> GitHub
     <img src="https://img.icons8.com/office/16/null/external-link.png"></a> 
-       |   
+       | 
     <a href="https://www.linkedin.com/in/abnerandrade/" target="_blank"> LinkedIn
     <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
 
     
 - Joyce Lemos
-    - Focada em criar interfaces de usuário intuitivas e visualmente atraentes para sites e aplicativos. Sólida base em HTML, CSS e JavaScript.
-    - <a href="https://www.linkedin.com/in/joycelemos73/" target="_blank"> GitHub 
+
+     Focada em criar interfaces de usuário intuitivas e visualmente atraentes para sites e aplicativos. Sólida base em HTML, CSS e JavaScript.
+     
+     <a href="https://www.linkedin.com/in/joycelemos73/" target="_blank"> GitHub 
       <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
-       |  
+       | 
       <a href="https://www.linkedin.com/in/joycelemos73/" target="_blank"> LinkedIn
       <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
 
     
 - Vinícius Reis
-    - Dedicado a aplicar e desenvolver conhecimentos na área de Análise e Desenvolvimento de Sistemas e no Desenvolvimento de Soluções Críticas 
-    - <a href="https://github.com/vinicr28" target="_blank"> GitHub
+    
+     Dedicado a aplicar e desenvolver conhecimentos na área de Análise e Desenvolvimento de Sistemas e no Desenvolvimento de Soluções Críticas 
+    
+    <a href="https://github.com/vinicr28" target="_blank"> GitHub
       <img src="https://img.icons8.com/office/16/null/external-link.png"></a>
        | 
       <a href="https://www.linkedin.com/in/vinicius-camargo-reis-9b7068253/" target="_blank"> LinkedIn
