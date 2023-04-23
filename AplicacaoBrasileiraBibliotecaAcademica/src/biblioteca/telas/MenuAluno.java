@@ -5,7 +5,7 @@ import biblioteca.validations.Validador;
 
 import javax.swing.*;
 
-public class MenuCadastro extends MenuPrincipal {
+public class MenuAluno extends MenuPrincipal {
 
     private AlunoService alunoService = new AlunoService();
     private String msg = "Escolha uma opção:\n \n 1 - Cadastrar Novo Aluno\n 2 - Excluir um Aluno\n" +
@@ -14,17 +14,21 @@ public class MenuCadastro extends MenuPrincipal {
 
 
 
-    public void menuCadastro() {
+    public void menuAluno() {
         Validador validador = new Validador();
         Integer input;
 
         do {
+            String inputString = JOptionPane.showInputDialog(null, msg, "Diretório de Usuários", 3);
+                if(inputString == null) { // Handle cancel button
+                    menuPrincipal();
+                    return;
+                }
             try {
-                input = Integer.parseInt(JOptionPane.showInputDialog(null, msg, "Diretório de Usuários", 3));
+                input = Integer.parseInt(inputString);
             } catch (Exception e) {
                 input = 9;
             }
-
 
         } while (!validador.validarInputMenu(input));
 
@@ -34,38 +38,44 @@ public class MenuCadastro extends MenuPrincipal {
             case 1 -> {
                 TelaCadastroAluno ca = new TelaCadastroAluno();
                 alunoService.cadastrarAluno(ca.nome, ca.cpf, ca.matricula);
-                menuCadastro();
+                menuAluno();
             }
             case 2 -> {
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
+                    if (cpf == null) {
+                        menuAluno();
+                    }
                 } while (!validador.validarInputCPF(cpf));
                 alunoService.removerAluno(cpf);
-                menuCadastro();
+                menuAluno();
             }
             case 3 -> {
                 String cpf;
                 do {
                     cpf = JOptionPane.showInputDialog("Digite o CPF do aluno");
+                    if (cpf == null) {
+                        menuAluno();
+                    }
                 } while (!validador.validarInputCPF(cpf));
                 alunoService.atualizarAluno(cpf);
-                menuCadastro();
+                menuAluno();
             }
             case 4 -> {
                 JOptionPane.showMessageDialog(null, alunoService.listarAlunos());
-                menuCadastro();
+                menuAluno();
             }
             case 5 -> {
                 alunoService.apagarListaAlunos();
-                menuCadastro();
+                menuAluno();
             }
             case 0 -> {
                 menuPrincipal();
             }
             default -> {
                 JOptionPane.showMessageDialog(null, "Opção Inválida");
-                menuCadastro();
+                menuAluno();
             }
         }
 
